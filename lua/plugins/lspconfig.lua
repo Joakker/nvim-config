@@ -63,3 +63,7 @@ lspconf.jedi_language_server.setup {
 lspconf.gopls.setup {
     on_attach = on_attach
 }
+
+lspconf.gdscript.setup {
+    on_attach = on_attach
+}
