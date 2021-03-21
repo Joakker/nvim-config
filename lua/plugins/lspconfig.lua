@@ -24,33 +24,50 @@ local function on_attach(client, bufnr)
             autocmd! * <buffer>
             autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]], false)
+        augroup END]], false)
     end
 
-    require 'completion'.on_attach(client, bufnr)
+    require 'completion'.on_attach(client)
 end
 
-local lua_dir = vim.fn.stdpath'data' .. '/servers/lua'
+local servers_path = vim.fn.stdpath'data' .. '/servers'
+
+local lua_dir = servers_path .. '/lua'
 local lua_bin = lua_dir .. '/bin/lua-language-server'
+
+local function get_paths()
+    local paths = {}
+    paths[vim.fn.stdpath'config'] = true
+    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+        local lua_path = path .. '/lua'
+        if vim.fn.isdirectory(lua_path) then
+            paths[lua_path] = true
+        end
+    end
+    paths[vim.fn.expand'$VIMRUNTIME/lua'] = true
+    paths[vim.fn.expand'$VIMRUNTIME/lua/vim/lsp'] = true
+    return paths
+end
 
 lspconf.sumneko_lua.setup {
     cmd = {lua_bin, '-E', lua_dir .. '/main.lua'},
     on_attach = on_attach,
     settings = {
         Lua = {
+            hint = {
+                enable = true
+            },
             runtime = {
                 version = 'LuaJIT',
-                path = vim.split(package.path, ';')
+                special = {
+                    import = 'require',
+                }
             },
             diagnostics = {
                 globals = {'vim', 'import'}
             },
             workspace = {
-                library = {
-                    [vim.fn.expand'$VIMRUNTIME/lua'] = true,
-                    [vim.fn.expand'$VIMRUNTIME/lua/vim/lsp'] = true,
-                }
+                library = get_paths()
             }
         }
     }
@@ -65,5 +82,17 @@ lspconf.gopls.setup {
 }
 
 lspconf.gdscript.setup {
+    on_attach = on_attach
+}
+
+local omn_bin = servers_path .. '/omnisharp/run'
+
+lspconf.omnisharp.setup {
+    cmd = {
+        omn_bin,
+        '--languageserver',
+        '--hostPID',
+        tostring(vim.fn.getpid())
+    },
     on_attach = on_attach
 }
