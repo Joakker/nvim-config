@@ -14,6 +14,7 @@ end
 
 set_keymap('n', '<F1>', '<CMD>Telescope help_tags<CR>')
 set_keymap('n', '<F2>', ':tabnew ', {silent = false})
+set_keymap('n', '<F5>', '<CMD>lua import"build".build()<CR>')
 
 set_keymap('n', '<leader>vs', '<CMD>lua require"utils".reload_config()<CR>')
 set_keymap('n', '<leader>wo', '<CMD>only<CR>')
