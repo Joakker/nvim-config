@@ -36,4 +36,8 @@ return require'packer'.startup(function()
         'windwp/nvim-autopairs',
         config = function() import 'plugins.autopairs' end
     }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
 end)
