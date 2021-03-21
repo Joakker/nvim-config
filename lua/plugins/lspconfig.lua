@@ -55,3 +55,11 @@ lspconf.sumneko_lua.setup {
         }
     }
 }
+
+lspconf.jedi_language_server.setup {
+    on_attach = on_attach
+}
+
+lspconf.gopls.setup {
+    on_attach = on_attach
+}
