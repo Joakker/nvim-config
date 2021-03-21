@@ -22,7 +22,8 @@ end
 M.conditions = {
     ['Makefile'] = 'make',
     ['go.mod'] = {'go', args = {'build'} },
-    ['Cargo.toml'] = {'cargo', args = {'build'}}
+    ['Cargo.toml'] = {'cargo', args = {'build'}},
+    ['tsconfig.json'] = 'tsc',
 }
 
 function M.build()
