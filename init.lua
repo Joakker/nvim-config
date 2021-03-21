@@ -3,5 +3,9 @@ function _G.import(path)
     return require(path)
 end
 
+
 import 'config'
 import 'plugins'
+import 'snippet-defs'
+
+vim.cmd [[colo aurora]]
