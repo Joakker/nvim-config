@@ -2,25 +2,51 @@ local M = {}
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
+-- Sets the option key to value in the given scope, which can be one of:
+-- - o: Global option
+-- - b: Buffer option
+-- - w: Window option
+--
+---@param   scope   string                  The scope of the option
+---@param   key     string                  The name of the option
+---@param   value   string|number|boolean   The value of the option
 function M.opt(scope, key, value)
     scopes[scope][key] = value
     if scope ~= 'o' then scopes['o'][key] = value end
 end
 
+-- Wrapper around vim.tbl_extend so that it always forces extension
+--
+---@param   table1  table       The original table
+---@param   table2  table       The entries to enter in table1
+---@return  table
 function M.extend(table1, table2)
     return vim.tbl_extend('force', table1, table2)
 end
 
+-- Sources $MYVIMRC to reload the configuration. Only packages loaded with import
+-- will be affected. It is roughly equivalent to ':source $MYVIMRC' in vimL
 function M.reload_config()
     vim.cmd('luafile ' .. vim.env.MYVIMRC)
     print 'Reloaded config! 🥰'
 end
 
-function M.set_keymap(mode, lhs, rhs, opts, buffer)
+-- Wraps vim.api.nvim_buf_set_keymap() and vim.api.nvim_set_keymap(). Which one
+-- will be called depends on whether the opts parameter contains a member called
+-- 'buffer'. If it does, it must be the number of the buffer that the mapping
+-- takes place in (0 for current buffer)
+--
+---@param   mode    string      The mode in which the mapping is valid
+---@param   lhs     string      The keys that trigger the mapping
+---@param   rhs     string      The value the mapping corresponds to
+---@param   opts    table       The options for the mapping
+function M.set_keymap(mode, lhs, rhs, opts)
     local options = {noremap = true, silent = true}
     if opts then options = M.extend(options, opts) end
-    if buffer then
-        vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, options)
+    if opts and opts.buffer then
+        local buffer = opts.buffer
+        opts.buffer = nil
+        vim.api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
     else
         vim.api.nvim_set_keymap(mode, lhs, rhs, options)
     end
