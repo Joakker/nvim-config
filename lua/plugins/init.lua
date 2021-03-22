@@ -29,7 +29,7 @@ return require'packer'.startup(function()
     }
     use {
         'neovim/nvim-lspconfig',
-        requires = 'nvim-lua/completion-nvim',
+        requires = {'nvim-lua/completion-nvim', 'onsails/lspkind-nvim'},
         config = function()
             import 'lsp-config'
         end

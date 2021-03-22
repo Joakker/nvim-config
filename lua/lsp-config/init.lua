@@ -1,6 +1,6 @@
-import'lsp-config.completion-icons'.init {with_text = true}
-
 local g = vim.g
+
+require'lspkind'.init {}
 
 g.completion_confirm_key = ''
 g.completion_trigger_character = {'.'}
