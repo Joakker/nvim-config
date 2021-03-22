@@ -15,9 +15,19 @@ local function on_attach(client, bufnr)
 
     set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
     set_keymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
+    set_keymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
+    set_keymap('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
+
     set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
+
+    set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>')
+
+    set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<cR>')
+    set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<cR>')
+
     set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {})
     set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
+
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
         augroup lsp_document_highlight
@@ -108,7 +118,6 @@ lspconf.efm.setup {
     on_attach = on_attach,
     filetypes = {'lua', 'python'},
     settings = {
-        log_file = '/home/joakker/efm.log',
         languages = {
             lua = {luaFormat},
             python = {blackFormat, isortFormat, flake8Lint}
