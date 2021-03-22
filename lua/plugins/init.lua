@@ -57,6 +57,18 @@ return require'packer'.startup(function()
         end,
         requires = 'nvim-lua/plenary.nvim'
     }
+    use {
+        'numToStr/FTerm.nvim',
+        config = function()
+            import'plugins.fterm'
+        end
+    }
+    use {
+        '~/Projects/surround.nvim',
+        config = function()
+            require 'surround'.setup{}
+        end
+    }
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'
     use 'phaazon/hop.nvim'
