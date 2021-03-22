@@ -13,7 +13,7 @@ end
 
 function M.reload_config()
     vim.cmd('luafile ' .. vim.env.MYVIMRC)
-    print 'Reloaded config!'
+    print 'Reloaded config! 🥰'
 end
 
 function M.set_keymap(mode, lhs, rhs, opts, buffer)
