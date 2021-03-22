@@ -57,4 +57,5 @@ return require'packer'.startup(function()
         end,
         requires = 'nvim-lua/plenary.nvim'
     }
+    use 'ThePrimeagen/vim-be-good'
 end)
