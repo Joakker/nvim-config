@@ -8,7 +8,7 @@ set_keymap('n', '<C-j>', '<CMD>tabn<CR>')
 set_keymap('i', '<C-k>', '<CMD>tabp<CR>')
 set_keymap('i', '<C-j>', '<CMD>tabn<CR>')
 
-for _, dir in ipairs{'h','j','k','l'} do
+for _, dir in ipairs {'h', 'j', 'k', 'l'} do
     set_keymap('n', string.format('<M-%s', dir), string.format('<C-w>%s', dir))
 end
 

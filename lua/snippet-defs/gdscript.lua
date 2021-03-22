@@ -7,7 +7,7 @@ for $1 in $2:
     func = i [[
 func $1($2):
 	$0]],
-    match = i[[
+    match = i [[
 match $1:
 	case $2:
 		$0]]
