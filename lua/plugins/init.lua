@@ -60,16 +60,17 @@ return require'packer'.startup(function()
     use {
         'numToStr/FTerm.nvim',
         config = function()
-            import'plugins.fterm'
+            import 'plugins.fterm'
         end
     }
     use {
         '~/Projects/surround.nvim',
         config = function()
-            require 'surround'.setup{}
+            require'surround'.setup {}
         end
     }
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'
     use 'phaazon/hop.nvim'
+    use 'kyazdani42/nvim-tree.lua'
 end)
