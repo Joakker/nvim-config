@@ -3,5 +3,6 @@ require'snippets'.snippets = {
     lua = import 'snippet-defs.lua',
     gdscript = import 'snippet-defs.gdscript',
     python = import 'snippet-defs.python',
-    go = import 'snippet-defs.go'
+    go = import 'snippet-defs.go',
+    c = import 'snippet-defs.c'
 }
