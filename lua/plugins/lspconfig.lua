@@ -85,7 +85,7 @@ lspconf.clangd.setup {
 }
 
 local luaFormat = {
-    formatCommand = 'lua-format -i' .. ' --no-keep-simple-function-one-line'
+    formatCommand = 'lua-format -i --no-keep-simple-function-one-line'
         .. ' --no-break-after-operator --column-limit=80'
         .. ' --break-after-table-lb',
     formatStdin = true
@@ -94,13 +94,24 @@ local luaFormat = {
 local flake8Lint = {
     lintCommand = 'flake8 --ignore=E501 --stdin-display-name ${INPUT} -',
     lintStdin = true,
-    lintFormats = {'%f:%l:%c: %m'}
+    lintFormats = {'%f:%l:%c: %m'},
+    lintIgnoreExitCode = true
 }
 
+local isortFormat = {formatCommand = 'isort --stdout -', formatStdin = true}
+local blackFormat = {formatCommand = 'black -', formatStdin = true}
+
 lspconf.efm.setup {
+    -- cmd = 'efm-langserver -logfile "/home/joakker/efm.log" -loglevel 1',
     init_options = {documentFormatting = true},
     root_dir = vim.loop.cwd,
     on_attach = on_attach,
-    filetypes = {'lua'},
-    settings = {languages = {lua = {luaFormat}, python = {flake8Lint}}}
+    filetypes = {'lua', 'python'},
+    settings = {
+        log_file = '/home/joakker/efm.log',
+        languages = {
+            lua = {luaFormat},
+            python = {blackFormat, isortFormat, flake8Lint}
+        }
+    }
 }
