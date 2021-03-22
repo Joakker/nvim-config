@@ -1,0 +1,15 @@
+#!/bin/sh
+
+wget --no-check-certificate --content-disposition       \
+    "https://github.com/neovim/neovim/tarball/nightly"  \
+    -O neovim-nightly.tar.gz
+
+tar -xvf neovim-nightly.tar.gz --strip-components 1 --one-top-level
+
+cd neovim-nightly
+
+make CMAKE_BUILD_TYPE=Release
+
+strip build/bin/nvim
+
+sudo make install
