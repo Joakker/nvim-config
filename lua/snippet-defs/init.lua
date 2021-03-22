@@ -4,5 +4,6 @@ require'snippets'.snippets = {
     gdscript = import 'snippet-defs.gdscript',
     python = import 'snippet-defs.python',
     go = import 'snippet-defs.go',
-    c = import 'snippet-defs.c'
+    c = import 'snippet-defs.c',
+    cpp = import 'snippet-defs.cpp'
 }
