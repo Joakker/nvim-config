@@ -58,4 +58,6 @@ return require'packer'.startup(function()
         requires = 'nvim-lua/plenary.nvim'
     }
     use 'ThePrimeagen/vim-be-good'
+    use 'b3nj5m1n/kommentary'
+    use 'phaazon/hop.nvim'
 end)
