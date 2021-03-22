@@ -1,3 +1,5 @@
+import'lsp-config.completion-icons'.init {with_text = true}
+
 local lspconf = require 'lspconfig'
 local g = vim.g
 
