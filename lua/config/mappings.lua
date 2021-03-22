@@ -9,7 +9,7 @@ set_keymap('i', '<C-k>', '<CMD>tabp<CR>')
 set_keymap('i', '<C-j>', '<CMD>tabn<CR>')
 
 for _, dir in ipairs {'h', 'j', 'k', 'l'} do
-    set_keymap('n', string.format('<M-%s', dir), string.format('<C-w>%s', dir))
+    set_keymap('n', string.format('<M-%s>', dir), string.format('<C-w>%s', dir))
 end
 
 set_keymap('n', '<F1>', '<CMD>Telescope help_tags<CR>')
@@ -20,4 +20,4 @@ set_keymap('n', '<leader>vs', '<CMD>lua require"utils".reload_config()<CR>')
 set_keymap('n', '<leader>wo', '<CMD>only<CR>')
 set_keymap('n', '<leader>wc', '<CMD>close<CR>')
 set_keymap('n', '<leader>ms', '<CMD>messages<CR>')
--- set_keymap('n'
+set_keymap('n', '<leader>cc', '<CMD>cclose<CR>')
