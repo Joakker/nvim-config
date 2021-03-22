@@ -38,6 +38,8 @@ local function on_attach(client, bufnr)
     end
 
     if client.resolved_capabilities.document_formatting then
+        set_keymap('n', '<leader>lf', '<CMD>lua vim.lsp.buf.formatting()<CR>')
+
         vim.api.nvim_exec([[
             autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
         ]], false)
