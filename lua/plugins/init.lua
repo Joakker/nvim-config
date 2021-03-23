@@ -18,7 +18,7 @@ return require'packer'.startup(function()
         end,
         run = ':TSUpdate'
     }
-    use 'christianchiarulli/nvcode-color-schemes.vim'
+    use '~/Projects/nvcode-color-schemes.vim'
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
@@ -68,6 +68,18 @@ return require'packer'.startup(function()
         config = function()
             require'surround'.setup {}
         end
+    }
+    use { '~/Projects/godot.nvim',
+        config = function()
+            require'godot'.setup{
+                versionmsg = false
+            }
+        end
+    }
+    use {
+        'akinsho/nvim-bufferline.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'bufferline'.setup{} end
     }
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'

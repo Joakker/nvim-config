@@ -9,13 +9,17 @@ sign_define('LspDiagnosticsSignWarning', {text = ''})
 sign_define('LspDiagnosticsSignInformation', {text = ''})
 sign_define('LspDiagnosticsSignHint', {text = ''})
 
+g.completion_enable_auto_popup = false
+g.completion_enable_aut_paren = true
 g.completion_confirm_key = ''
 g.completion_trigger_character = {'.'}
 g.completion_trigger_keyword_length = 3
 g.completion_enable_snippet = 'snippets.nvim'
+g.completion_customize_lsp_label = {['snippets.nvim'] = '﬌ Snippet'}
 
 local servers = {
-    'efm', 'clangd', 'gdscript', 'omnisharp', 'gopls', 'jedi', 'sumneko'
+    'efm', 'clangd', 'gdscript', 'omnisharp', 'gopls', 'jedi', 'sumneko',
+    'vimls'
 }
 
 for _, server in pairs(servers) do import('lsp-config.' .. server) end

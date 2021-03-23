@@ -22,6 +22,8 @@ function M.on_attach(client, bufnr)
     set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {})
     set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
 
+    set_keymap('i', '<C-Space>', '<Plug>(completion_trigger)', {})
+
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
         augroup lsp_document_highlight
