@@ -89,4 +89,5 @@ return require'packer'.startup(function()
     use 'b3nj5m1n/kommentary'
     use 'phaazon/hop.nvim'
     use 'kyazdani42/nvim-tree.lua'
+    use 'rktjmp/lush.nvim'
 end)
