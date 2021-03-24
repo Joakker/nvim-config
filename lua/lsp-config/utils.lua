@@ -8,13 +8,18 @@ function M.on_attach(client, bufnr)
     end
 
     set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
-    set_keymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
+    set_keymap('n', 'gd',
+               '<CMD>lua require"lspsaga.provider".preview_definition()<CR>')
     set_keymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
     set_keymap('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
 
-    set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
+    set_keymap('n', 'K',
+               '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
 
-    set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>')
+    set_keymap('n', '<leader>rn',
+               '<CMD>lua require"lspsaga.rename".rename()<CR>')
+    set_keymap('n', '<leader>ca',
+               '<CMD>lua require"lspsaga.codeaction".code_action()<CR>')
 
     set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<cR>')
     set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<cR>')
