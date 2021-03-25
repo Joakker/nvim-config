@@ -34,11 +34,11 @@ function M.build()
             local args
             if type(v) == 'string' then
                 cmd = v
-            elseif type(v) == table then
+            elseif type(v) == 'table' then
                 cmd = v[1]
                 args = v.args
             else
-                print('build.lua: Invalid command for condition:' .. k)
+                print('build.lua: Invalid command for condition:' .. k .. '🧐')
                 return
             end
             Job:new{
