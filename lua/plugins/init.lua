@@ -57,7 +57,7 @@ return require'packer'.startup(function()
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
-            require'gitsigns'.setup()
+            import'plugins.gitsigns'
         end,
         requires = 'nvim-lua/plenary.nvim'
     }
@@ -70,30 +70,23 @@ return require'packer'.startup(function()
     use {
         '~/Projects/surround.nvim',
         config = function()
-            require'surround'.setup {}
+            import'plugins.surround'
         end
     }
     use { '~/Projects/godot.nvim',
         config = function()
-            require'godot'.setup{
-                versionmsg = false
-            }
+            import'plugins.godot'
         end
     }
     use {
         'akinsho/nvim-bufferline.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require'bufferline'.setup{} end
+        config = function() import'plugins.bufferline' end
     }
     use {
         'glepnir/indent-guides.nvim',
         config = function()
-            require'indent_guides'.setup{
-                indent_soft_pattern = '\\s',
-                indent_char = '|',
-                even_colors = { fg = '#DEADBEEF', bg = '#332b36' },
-                odd_colors =  { fg = '#DEADBEEF', bg = '#2a3834' },
-            }
+            import'plugins.indent-guides'
         end
     }
     use 'ThePrimeagen/vim-be-good'
