@@ -85,6 +85,17 @@ return require'packer'.startup(function()
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require'bufferline'.setup{} end
     }
+    use {
+        'glepnir/indent-guides.nvim',
+        config = function()
+            require'indent_guides'.setup{
+                indent_soft_pattern = '\\s',
+                indent_char = '|',
+                even_colors = { fg = '#DEADBEEF', bg = '#332b36' },
+                odd_colors =  { fg = '#DEADBEEF', bg = '#2a3834' },
+            }
+        end
+    }
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'
     use 'phaazon/hop.nvim'
