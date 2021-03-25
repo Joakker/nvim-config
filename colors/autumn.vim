@@ -1,6 +1,6 @@
 set background=dark
 
-let g:colors_name = 'lush_template'
+" let g:colors_name = 'lush_template'
 
 lua package.loaded['themes.autumn'] = nil
 
