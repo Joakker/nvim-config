@@ -1,1 +1,1 @@
-require'go'.setup {}
+require'go'.setup {auto_lint = false, linter = 'staticcheck'}

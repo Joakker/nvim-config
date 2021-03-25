@@ -14,7 +14,12 @@ func init() {
 }]],
     func = [[
 // ${-1:$1}
-func $1($2) ${3|vim.trim(S.v):gsub("^%S", " %0")} {
+func $1($2)${3|vim.trim(S.v):gsub("^%S", " %0")} {
+    $0
+}]],
+    meth = [[
+// ${-1:$2}
+func ($1) $2($3)${4|vim.trim(S.v):gsub("^%S", " %0")} {
     $0
 }]]
 }

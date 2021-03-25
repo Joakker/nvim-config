@@ -94,7 +94,7 @@ return require'packer'.startup(function()
     use {
         'crispgm/nvim-go',
         config = function()
-            import 'plugins.vim-go'
+            import 'plugins.nvim-go'
         end,
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
