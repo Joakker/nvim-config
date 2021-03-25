@@ -30,8 +30,7 @@ return require'packer'.startup(function()
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'nvim-lua/completion-nvim',
-            'glepnir/lspsaga.nvim',
+            'nvim-lua/completion-nvim', 'glepnir/lspsaga.nvim',
             'nvim-lua/lsp_extensions.nvim'
         },
         config = function()
@@ -57,7 +56,7 @@ return require'packer'.startup(function()
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
-            import'plugins.gitsigns'
+            import 'plugins.gitsigns'
         end,
         requires = 'nvim-lua/plenary.nvim'
     }
@@ -70,24 +69,34 @@ return require'packer'.startup(function()
     use {
         '~/Projects/surround.nvim',
         config = function()
-            import'plugins.surround'
+            import 'plugins.surround'
         end
     }
-    use { '~/Projects/godot.nvim',
+    use {
+        '~/Projects/godot.nvim',
         config = function()
-            import'plugins.godot'
+            import 'plugins.godot'
         end
     }
     use {
         'akinsho/nvim-bufferline.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() import'plugins.bufferline' end
+        config = function()
+            import 'plugins.bufferline'
+        end
     }
     use {
         'glepnir/indent-guides.nvim',
         config = function()
-            import'plugins.indent-guides'
+            import 'plugins.indent-guides'
         end
+    }
+    use {
+        'crispgm/nvim-go',
+        config = function()
+            import 'plugins.vim-go'
+        end,
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'
