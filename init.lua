@@ -8,8 +8,6 @@ function _G.import(path)
     return require(path)
 end
 
-require 'stringx'
-
 import 'config'
 import 'plugins'
 import 'snippet-defs'
