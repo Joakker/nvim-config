@@ -8,7 +8,7 @@ local luaFormat = {
 }
 
 local flake8Lint = {
-    lintCommand = 'flake8 --ignore=E501 --stdin-display-name ${INPUT} -',
+    lintCommand = 'flake8 --ignore=E501,W503 --stdin-display-name ${INPUT} -',
     lintStdin = true,
     lintFormats = {'%f:%l:%c: %m'},
     lintIgnoreExitCode = true
