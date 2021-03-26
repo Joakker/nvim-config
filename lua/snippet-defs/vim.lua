@@ -13,7 +13,7 @@ augroup END]],
     auc = i [[
 autocmd $1 $2 $3]],
     ifx = i [[
-if $1exists($2)
+if ${1:!}exists($2)
     $0
 endif]],
     ['for'] = i [[

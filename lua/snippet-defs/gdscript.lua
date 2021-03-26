@@ -1,3 +1,4 @@
+-- vim:noexpandtab
 local u = require 'snippets.utils'
 local i = u.match_indentation
 return {
