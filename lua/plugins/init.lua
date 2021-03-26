@@ -8,6 +8,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 local use = require'packer'.use
+local use_rocks = require'packer'.use_rocks
+
+require'packer'.init{
+    luarocks = {
+        python_cmd = 'python3'
+    }
+}
 
 return require'packer'.startup(function()
     use 'wbthomason/packer.nvim'
@@ -41,7 +48,7 @@ return require'packer'.startup(function()
         'norcalli/snippets.nvim',
         config = function()
             import 'plugins.snippets'
-        end
+        end,
     }
     use {
         'windwp/nvim-autopairs',
