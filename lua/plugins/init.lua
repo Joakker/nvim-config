@@ -25,7 +25,7 @@ return require'packer'.startup(function()
         end,
         run = ':TSUpdate'
     }
-    use '~/Projects/nvcode-color-schemes.vim'
+    use 'ChristianChiarulli/nvcode-color-schemes.vim'
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
