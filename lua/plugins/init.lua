@@ -105,6 +105,12 @@ return require'packer'.startup(function()
         end,
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
+    use {
+        'vimwiki/vimwiki',
+        config = function()
+            import 'plugins.vimwiki'
+        end
+    }
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'
     use 'phaazon/hop.nvim'
