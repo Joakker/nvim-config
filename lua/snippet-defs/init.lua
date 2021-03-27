@@ -6,5 +6,6 @@ require'snippets'.snippets = {
     go = import 'snippet-defs.go',
     c = import 'snippet-defs.c',
     cpp = import 'snippet-defs.cpp',
-    vim = import 'snippet-defs.vim'
+    vim = import 'snippet-defs.vim',
+    vimwiki = import 'snippet-defs.vimwiki'
 }
