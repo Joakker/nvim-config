@@ -26,4 +26,4 @@ set_keymap('n', '<leader>ms', '<CMD>messages<CR>')
 set_keymap('n', '<leader>cc', '<CMD>cclose<CR>')
 
 set_keymap('n', '<leader><leader>w', '<CMD>lua require"hop".hint_words()<CR>')
-set_keymap('n', '<leader><leader>l', '<CMD>lua require"hop".hint_words()<CR>')
+-- set_keymap('n', '<leader><leader>l', '<CMD>lua require"hop".hint_words()<CR>')
