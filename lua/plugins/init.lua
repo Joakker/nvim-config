@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 local use = require'packer'.use
-local use_rocks = require'packer'.use_rocks
+-- local use_rocks = require'packer'.use_rocks
 
 require'packer'.init{
     luarocks = {
@@ -23,7 +23,8 @@ return require'packer'.startup(function()
         config = function()
             import 'plugins.treesitter'
         end,
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     }
     use 'ChristianChiarulli/nvcode-color-schemes.vim'
     use {
