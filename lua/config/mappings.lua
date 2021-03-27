@@ -3,10 +3,10 @@ local set_keymap = require'utils'.set_keymap
 
 g.mapleader = ','
 
-set_keymap('n', '<C-k>', '<CMD>tabp<CR>')
-set_keymap('n', '<C-j>', '<CMD>tabn<CR>')
-set_keymap('i', '<C-k>', '<CMD>tabp<CR>')
-set_keymap('i', '<C-j>', '<CMD>tabn<CR>')
+set_keymap('n', '<C-k>', '<CMD>BufferLineCyclePrev<CR>')
+set_keymap('n', '<C-j>', '<CMD>BufferLineCycleNext<CR>')
+set_keymap('i', '<C-k>', '<CMD>BufferLineCyclePrev<CR>')
+set_keymap('i', '<C-j>', '<CMD>BufferLineCycleNext<CR>')
 
 for _, dir in ipairs {'h', 'j', 'k', 'l'} do
     set_keymap('n', string.format('<M-%s>', dir), string.format('<C-w>%s', dir))
