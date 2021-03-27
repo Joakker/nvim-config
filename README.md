@@ -13,8 +13,8 @@ know the language
 
 | Mapping | Modes | Effect       |
 |:-------:|-------|--------------|
-|  <C-j>  | ni    | Next tab     |
-|  <C-k>  | ni    | Previous tab |
+| `<C-j>` | ni    | Next tab     |
+| `<C-k>` | ni    | Previous tab |
 
 
 ## LSP
