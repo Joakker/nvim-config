@@ -31,7 +31,7 @@ return {
     ['for'] = i [[
 for $1 in $2:
     $0]],
-    def = i [[
+    func = i [[
 def $1($2)${3|vim.trim(S.v):gsub("^%S", " -> %0")}:
     $0]],
     ['if'] = i [[
@@ -55,5 +55,8 @@ class $1${2|vim.trim(S.v):gsub("^%S", "(%0"):gsub("%S$", "%0)")}:
     ${-1|normalize_params(S[3])}
     """
     def __init__(self, $3):
-        $0]]
+        $0]],
+    meth = i [[
+def $1(self${2|vim.trim(S.v):gsub("^[^,]", ", %0")}):
+    $0]]
 }

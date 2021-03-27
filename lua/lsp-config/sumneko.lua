@@ -22,7 +22,7 @@ require'lspconfig'.sumneko_lua.setup {
         Lua = {
             hint = {enable = true},
             runtime = {version = 'LuaJIT', special = {import = 'require'}},
-            diagnostics = {globals = {'vim', 'import'}},
+            diagnostics = {globals = {'vim', 'import', 'inspect'}},
             workspace = {library = get_paths()}
         }
     }
