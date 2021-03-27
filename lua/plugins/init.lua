@@ -59,14 +59,14 @@ return require'packer'.startup(function()
     }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        requires = {{'nvim-lua/popup.nvim'}, {'~/Projects/plenary.nvim'}}
     }
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
             import 'plugins.gitsigns'
         end,
-        requires = 'nvim-lua/plenary.nvim'
+        requires = '~/Projects/plenary.nvim'
     }
     use {
         'numToStr/FTerm.nvim',
@@ -104,7 +104,7 @@ return require'packer'.startup(function()
         config = function()
             import 'plugins.nvim-go'
         end,
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        requires = {{'nvim-lua/popup.nvim'}, {'~/Projects/plenary.nvim'}}
     }
     use {
         'vimwiki/vimwiki',
