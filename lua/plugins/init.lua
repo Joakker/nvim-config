@@ -117,4 +117,5 @@ return require'packer'.startup(function()
     use 'phaazon/hop.nvim'
     use 'kyazdani42/nvim-tree.lua'
     use 'rktjmp/lush.nvim'
+    use 'rafcamlet/nvim-luapad'
 end)
