@@ -63,4 +63,28 @@ function M.format_annotated_args(args, any)
     return join(formatted, '    ')
 end
 
+-- Transforms the type Atype to the receiver (a Atype)
+--
+---@param   line    string      The input type
+---@return  string
+function M.extract_go_receiver(line)
+    line = vim.trim(line)
+    -- Extract the name
+    ---@type string[]
+    local extracted = map(trim, split(line, '*'))
+    if #extracted == 1 then
+        -- The user only inputted the type name
+        local receiver = extracted[1]
+        -- Handle the input being empty still
+        if receiver == '' then return '' end
+        return ('%s %s'):format(receiver:sub(1, 1):lower(), receiver)
+    elseif #extracted == 2 then
+        -- Found an '*', which means extracted[2] is the thing we care about
+        local receiver = extracted[2]
+        -- Handle the input being empty still
+        if receiver == '' then return '*' end
+        return ('%s *%s'):format(receiver:sub(1, 1):lower(), receiver)
+    end
+end
+
 return M

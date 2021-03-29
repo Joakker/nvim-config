@@ -7,6 +7,6 @@ require'snippets'.snippets = {
     c = import 'snippet-defs.c',
     cpp = import 'snippet-defs.cpp',
     vim = import 'snippet-defs.vim',
-    vimwiki = import 'snippet-defs.vimwiki',
+    -- vimwiki = import 'snippet-defs.vimwiki',
     rust = import 'snippet-defs.rust'
 }

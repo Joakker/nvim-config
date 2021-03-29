@@ -20,7 +20,7 @@ func $1($2)${3|vim.trim(S.v):gsub("^%S", " %0")} {
 }]],
     meth = [[
 // ${-1:$2}
-func ($1) $2($3)${4|vim.trim(S.v):gsub("^%S", " %0")} {
+func (${1|require'snippet-defs.utils'.extract_go_receiver(S.v)}) $2($3)${4|vim.trim(S.v):gsub("^%S", " %0")} {
 	$0
 }]],
     fore = i [[
