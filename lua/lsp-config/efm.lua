@@ -1,9 +1,14 @@
 local utils = require 'lsp-config.utils'
 
 local luaFormat = {
-    formatCommand = 'lua-format -i --no-keep-simple-function-one-line'
-        .. ' --no-break-after-operator --column-limit=80'
-        .. ' --break-after-table-lb',
+    formatCommand = 'lua-format -i' -- Use stdio
+    .. ' --no-keep-simple-function-one-line' -- Always use multiline functions
+    .. ' --no-break-after-operator' -- Break long statements before operator
+    .. ' --column-limit=80' -- Max width is 80 characters
+    -- .. ' --indent-width=2' -- Use 2 spaces for indents (sometimes)
+    .. ' --break-after-table-lb' -- Break after table {
+    .. ' --chop-down-table' -- Chop down
+    ,
     formatStdin = true
 }
 
