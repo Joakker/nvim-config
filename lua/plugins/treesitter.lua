@@ -11,5 +11,6 @@ require'nvim-treesitter.configs'.setup {
                 ['ic'] = '@class.inner'
             }
         }
-    }
+    },
+    playground = {enable = true}
 }

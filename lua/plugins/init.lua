@@ -24,7 +24,10 @@ return require'packer'.startup(function()
             import 'plugins.treesitter'
         end,
         run = ':TSUpdate',
-        requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+        requires = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter/playground'
+        },
     }
     use 'ChristianChiarulli/nvcode-color-schemes.vim'
     use {
