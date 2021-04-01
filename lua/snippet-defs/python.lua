@@ -1,10 +1,6 @@
 local u = require 'snippets.utils'
 local i = u.match_indentation
 
-local stringx = require 'stringx'
-
-for k, v in pairs(stringx) do string[k] = v end
-
 return {
     ['for'] = i [[
 for $1 in $2:
