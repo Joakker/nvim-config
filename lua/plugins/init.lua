@@ -10,7 +10,7 @@ end
 local use = require'packer'.use
 -- local use_rocks = require'packer'.use_rocks
 
-require'packer'.init{luarocks={python_cmd='python3'}}
+require'packer'.init {luarocks = {python_cmd = 'python3'}}
 
 return require'packer'.startup(function()
     use 'wbthomason/packer.nvim'
@@ -23,7 +23,7 @@ return require'packer'.startup(function()
         requires = {
             'nvim-treesitter/nvim-treesitter-textobjects',
             'nvim-treesitter/playground'
-        },
+        }
     }
     use 'ChristianChiarulli/nvcode-color-schemes.vim'
     use {
@@ -37,7 +37,8 @@ return require'packer'.startup(function()
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'nvim-lua/completion-nvim', 'glepnir/lspsaga.nvim',
+            'nvim-lua/completion-nvim',
+            'glepnir/lspsaga.nvim',
             'nvim-lua/lsp_extensions.nvim'
         },
         config = function()
@@ -48,7 +49,7 @@ return require'packer'.startup(function()
         'norcalli/snippets.nvim',
         config = function()
             import 'plugins.snippets'
-        end,
+        end
     }
     use {
         'windwp/nvim-autopairs',
@@ -58,8 +59,14 @@ return require'packer'.startup(function()
     }
     use {
         'nvim-telescope/telescope.nvim',
-        config = function() import 'plugins.telescope' end,
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-media-files.nvim'}}
+        config = function()
+            import 'plugins.telescope'
+        end,
+        requires = {
+            {'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope-media-files.nvim'}
+        }
     }
     use {
         'lewis6991/gitsigns.nvim',
