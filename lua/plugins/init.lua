@@ -58,7 +58,8 @@ return require'packer'.startup(function()
     }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        config = function() import 'plugins.telescope' end,
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-media-files.nvim'}}
     }
     use {
         'lewis6991/gitsigns.nvim',
@@ -117,4 +118,5 @@ return require'packer'.startup(function()
     use 'kyazdani42/nvim-tree.lua'
     use 'rktjmp/lush.nvim'
     use 'rafcamlet/nvim-luapad'
+    use 'lark-parser/vim-lark-syntax'
 end)
