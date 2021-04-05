@@ -52,4 +52,10 @@ function M.set_keymap(mode, lhs, rhs, opts)
     end
 end
 
+function M.has_parent(dir, name)
+    for _, path in ipairs(vim.split(dir, '/')) do
+        if path == name then return true end
+    end
+end
+
 return M

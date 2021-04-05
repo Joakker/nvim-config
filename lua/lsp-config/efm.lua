@@ -11,11 +11,8 @@ local luaFormat = {
     formatStdin = true
 }
 
-for _, path in ipairs(vim.split(vim.loop.cwd(), '/')) do
-    if path == 'plenary.nvim' then
-        luaFormat.formatCommand = luaFormat.formatCommand .. ' --indent-width=2' -- Use 2 spaces for indents (sometimes)
-        break
-    end
+if require'utils'.has_parent(vim.loop.cwd(), 'plenary.nvim') then
+    luaFormat.formatCommand = luaFormat.formatCommand .. ' --indent-width=2' -- Use 2 spaces for indents (sometimes)
 end
 
 local flake8Lint = {
