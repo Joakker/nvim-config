@@ -126,4 +126,5 @@ return require'packer'.startup(function()
     use 'rktjmp/lush.nvim'
     use 'rafcamlet/nvim-luapad'
     use 'lark-parser/vim-lark-syntax'
+    use 'Joakker/vim-antlr4'
 end)
