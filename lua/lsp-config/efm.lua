@@ -5,12 +5,18 @@ local luaFormat = {
     .. ' --no-keep-simple-function-one-line' -- Always use multiline functions
     .. ' --no-break-after-operator' -- Break long statements before operator
     .. ' --column-limit=80' -- Max width is 80 characters
-    -- .. ' --indent-width=2' -- Use 2 spaces for indents (sometimes)
     .. ' --break-after-table-lb' -- Break after table {
     .. ' --chop-down-table' -- Chop down
     ,
     formatStdin = true
 }
+
+for _, path in ipairs(vim.split(vim.loop.cwd(), '/')) do
+    if path == 'plenary.nvim' then
+        luaFormat.formatCommand = luaFormat.formatCommand .. ' --indent-width=2' -- Use 2 spaces for indents (sometimes)
+        break
+    end
+end
 
 local flake8Lint = {
     lintCommand = 'flake8 --ignore=E501,W503 --stdin-display-name ${INPUT} -',
