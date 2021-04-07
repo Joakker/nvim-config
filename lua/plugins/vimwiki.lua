@@ -1,6 +1,7 @@
 local g = vim.g
 
 g.vimwiki_hl_headers = 1
+g.vimwiki_global_ext = 0
 g.vimwiki_hl_cb_checked = 2
 --[[ g.vimwiki_key_mappings = {
     global = false,
