@@ -13,7 +13,7 @@ for _, dir in ipairs {'h', 'j', 'k', 'l'} do
 end
 
 set_keymap('n', '<F1>', '<CMD>Telescope help_tags<CR>')
-set_keymap('n', '<F2>', ':tabnew ', {silent = false})
+set_keymap('n', '<F2>', ':edit ', {silent = false})
 set_keymap('n', '<F3>', '<CMD>NvimTreeToggle<CR>')
 set_keymap('n', '<F5>', '<CMD>lua import"build".build()<CR>')
 set_keymap('n', '<F7>', '<CMD>lua require"FTerm".toggle()<CR>')
@@ -24,6 +24,11 @@ set_keymap('n', '<leader>wo', '<CMD>only<CR>')
 set_keymap('n', '<leader>wc', '<CMD>close<CR>')
 set_keymap('n', '<leader>ms', '<CMD>messages<CR>')
 set_keymap('n', '<leader>cc', '<CMD>cclose<CR>')
+
+set_keymap('n', '<leader>pc', '<CMD>require"packer".clean()<CR>')
+set_keymap('n', '<leader>pi', '<CMD>require"packer".install()<CR>')
+set_keymap('n', '<leader>pk', '<CMD>require"packer".compile()<CR>')
+set_keymap('n', '<leader>pu', '<CMD>require"packer".update()<CR>')
 
 set_keymap('n', '<leader><leader>w', '<CMD>lua require"hop".hint_words()<CR>')
 -- set_keymap('n', '<leader><leader>l', '<CMD>lua require"hop".hint_words()<CR>')
