@@ -1,4 +1,3 @@
----@diagnostic disable: unused-local, undefined-global
 --
 -- Built with,
 --
@@ -12,18 +11,55 @@
 -- dP" "88P        I8,    ,8I  ,8'  Yb   I8P    I8
 -- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
+--
+
+-- This is a starter colorscheme for use with Lush,
+-- for usage guides, see :h lush or :LushRunTutorial
+
+--
+-- Note: Because this is lua file, vim will append your file to the runtime,
+--       which means you can require(...) it in other lua code (this is useful),
+--       but you should also take care not to conflict with other libraries.
+--
+--       (This is a lua quirk, as it has somewhat poor support for namespacing.)
+--
+--       Basically, name your file,
+--
+--       "super_theme/lua/lush_theme/super_theme_dark.lua",
+--
+--       not,
+--
+--       "super_theme/lua/dark.lua".
+--
+--       With that caveat out of the way...
+--
+
+-- Enable lush.ify on this file, run:
+--
+--  `:Lushify`
+--
+--  or
+--
+--  `:lua require('lush').ify()`
 
 local lush = require('lush')
 local hsl = lush.hsl
 
 local colors = {
-    grey    = hsl('#607466'),
-    orange  = hsl('#DC965A'),
-    red     = hsl('#DB5A42'),
-    green   = hsl('#428142'),
-    blue    = hsl('#759EB8'),
-    purple  = hsl('#6F5060'),
-    cerise  = hsl('#D8315B'),
+    red1        = hsl('#E84855'),
+    red2        = hsl('#EF3054'),
+    red3        = hsl('#D42941'),
+    grn1        = hsl('#9EBC9E'),
+    grn2        = hsl('#8CAE68'),
+    grn3        = hsl('#055864'),
+    yel1        = hsl('#E2C290'),
+    yel2        = hsl('#FCD581'),
+    prp1        = hsl('#6C596E'),
+    prp2        = hsl('#4C3B4D'),
+    prp3        = hsl('#32021F'),
+    blu1        = hsl('#BBCDE5'),
+    blu2        = hsl('#639FAB'),
+    blu3        = hsl('#08617C'),
 }
 
 local theme = lush(function()
@@ -40,49 +76,49 @@ local theme = lush(function()
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    Comment      { fg = colors.red.lighten(15), gui = 'italic' }, -- any comment
-    ColorColumn  { fg = colors.grey.darken(100) ,bg = colors.grey }, -- used for the columns set with 'colorcolumn'
-    Conceal      { fg = colors.grey.lighten(40), bg = colors.grey.darken(40) }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Comment      { fg = colors.red1, gui = 'italic,bold' }, -- any comment
+    -- ColorColumn  { }, -- used for the columns set with 'colorcolumn'
+    -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     -- Cursor       { }, -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
     -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- CursorLine   { }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory    { fg = colors.blue, gui = 'underline' }, -- directory names (and other special names in listings)
-    DiffAdd      { fg = colors.grey.lighten(50), bg = colors.blue.darken(55)}, -- diff mode: Added line |diff.txt|
-    DiffChange   { fg = DiffAdd.fg, bg = colors.cerise.darken(40) }, -- diff mode: Changed line |diff.txt|
-    DiffDelete   { fg = DiffAdd.fg, bg = colors.purple.darken(30), gui = 'strikethrough' }, -- diff mode: Deleted line |diff.txt|
-    DiffText     { fg = DiffAdd.fg, gui = 'underline' }, -- diff mode: Changed text within a changed line |diff.txt|
-    -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    -- Directory    { }, -- directory names (and other special names in listings)
+    -- DiffAdd      { }, -- diff mode: Added line |diff.txt|
+    -- DiffChange   { }, -- diff mode: Changed line |diff.txt|
+    -- DiffDelete   { }, -- diff mode: Deleted line |diff.txt|
+    -- DiffText     { }, -- diff mode: Changed text within a changed line |diff.txt|
+    EndOfBuffer  { fg = colors.grn3 }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
-    ErrorMsg     { fg = colors.cerise, gui = 'underline' }, -- error messages on the command line
+    ErrorMsg     { fg = colors.red3, gui = 'underline' }, -- error messages on the command line
     VertSplit    { }, -- the column separating vertically split windows
-    Folded       { Conceal }, -- line used for closed folds
-    FoldColumn   { Conceal }, -- 'foldcolumn'
+    Folded       { fg = colors.grn1, bg = colors.prp2 }, -- line used for closed folds
+    FoldColumn   { }, -- 'foldcolumn'
     SignColumn   { }, -- column where |signs| are displayed
     -- IncSearch    { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    -- Substitute   { }, -- |:substitute| replacement text highlighting
-    LineNr       { fg = colors.orange }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr { fg = colors.orange.li(70) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    MatchParen   { bg = colors.red.darken(40).rotate(-30) }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-    ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
+    Substitute   { fg = colors.yel2, bg = colors.prp3 }, -- |:substitute| replacement text highlighting
+    LineNr       { fg = colors.yel1 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr { fg = colors.grn1 }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    MatchParen   { fg = colors.yel1, gui = 'underline' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg      { }, -- |more-prompt|
-    Normal       { fg = colors.blue.lighten(30) }, -- normal text
-    NonText      { fg = Normal.fg.darken(40) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    -- NormalFloat  { }, -- Normal text in floating windows.
+    NonText      { EndOfBuffer }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal       { fg = colors.yel1.lighten(30) }, -- normal text
+    NormalFloat  { Normal }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    Pmenu        { fg = colors.grey.lighten(80), bg = colors.purple }, -- Popup menu: normal item.
-    PmenuSel     { Pmenu, bg = Pmenu.bg.darken(30) }, -- Popup menu: selected item.
-    PmenuSbar    { Pmenu }, -- Popup menu: scrollbar.
-    PmenuThumb   { fg = colors.blue, bg = colors.grey }, -- Popup menu: Thumb of the scrollbar.
+    Pmenu        { fg = Normal.fg, bg = colors.prp1 }, -- Popup menu: normal item.
+    PmenuSel     { Pmenu, bg = colors.prp3 }, -- Popup menu: selected item.
+    PmenuSbar    { bg = colors.grn1 }, -- Popup menu: scrollbar.
+    PmenuThumb   { bg = colors.prp2 }, -- Popup menu: Thumb of the scrollbar.
     -- Question     { }, -- |hit-enter| prompt and yes/no questions
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search       { fg = colors.orange, bg = colors.purple.darken(70) }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    SpecialKey   { NonText }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    SpellBad     { gui = 'underline,bold' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    Search       { fg = colors.grn3, bg = colors.yel2.darken(10), gui = 'bold' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    SpecialKey   { fg = colors.grn3.lighten(20) }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpellBad     { fg = ErrorMsg.fg, gui = 'underline' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
     -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal   { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare    { }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
@@ -91,12 +127,12 @@ local theme = lush(function()
     -- TabLine      { }, -- tab pages line, not active tab page label
     -- TabLineFill  { }, -- tab pages line, where there are no labels
     -- TabLineSel   { }, -- tab pages line, active tab page label
-    Title        { fg = colors.cerise, gui = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
-    Visual       { Search }, -- Visual mode selection
+    -- Title        { }, -- titles for output from ":set all", ":autocmd" etc.
+    Visual       { Substitute }, -- Visual mode selection
     -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
-    WarningMsg   { fg = colors.orange.darken(30), gui = 'underline' }, -- warning messages
-    Whitespace   { NonText }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    WildMenu     { PmenuSel }, -- current match in 'wildmenu' completion
+    -- WarningMsg   { }, -- warning messages
+    -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    -- WildMenu     { }, -- current match in 'wildmenu' completion
 
     -- These groups are not listed as default vim groups,
     -- but they are defacto standard group names for syntax highlighting.
@@ -104,75 +140,75 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    -- Constant       { }, -- (preferred) any constant
-    String         { fg = colors.orange, gui = 'italic' }, --   a string constant: "this is a string"
-    Character      { fg = colors.green.rotate(50), gui = 'italic'}, --  a character constant: 'c', '\n'
-    Number         { fg = colors.blue }, --   a number constant: 234, 0xff
-    Boolean        { fg = colors.red, gui = 'bold' }, --  a boolean constant: TRUE, false
+    Constant       { fg = colors.grn1, gui = 'bold' }, -- (preferred) any constant
+    String         { fg = colors.yel1, gui = 'italic' }, --   a string constant: "this is a string"
+    -- Character      { }, --  a character constant: 'c', '\n'
+    Number         { fg = colors.blu2 }, --   a number constant: 234, 0xff
+    -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
 
-    Identifier     { fg = colors.orange.lighten(30) }, -- (preferred) any variable name
-    Function       { fg = colors.green.lighten(20), gui = 'italic,bold' }, -- function name (also: methods for classes)
+    Identifier     { fg = colors.yel2 }, -- (preferred) any variable name
+    Function       { fg = colors.grn2, gui = 'bold,italic'}, -- function name (also: methods for classes)
 
-    Statement      { fg = colors.purple.lighten(30) }, -- (preferred) any statement
+    Statement      { fg = colors.prp1.lighten(24) }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
-    Operator       { fg = colors.green.rotate(40).lighten(20) }, -- "sizeof", "+", "*", etc.
+    -- Operator       { }, -- "sizeof", "+", "*", etc.
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    PreProc        { fg =colors.blue, gui = 'bold' }, -- (preferred) generic Preprocessor
+    -- PreProc        { }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = colors.cerise.lighten(20) }, -- (preferred) int, long, char, etc.
+    Type           { fg = colors.yel2, gui = 'bold' }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    Special        { fg = colors.orange }, -- (preferred) any special symbol
+    Special        { fg = colors.yel2.darken(18) }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
     -- Delimiter      { }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
 
-    Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
-    Bold       { gui = "bold" },
-    Italic     { gui = "italic" },
+    Underlined { gui = 'underline' }, -- (preferred) text that stands out, HTML links
+    Bold       { gui = 'bold' },
+    Italic     { gui = 'italic' },
 
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
 
     Error          { ErrorMsg }, -- (preferred) any erroneous construct
 
-    Todo           { Special }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo           { fg = colors.yel2, gui = 'bold' }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
 
-    LspReferenceText                     { fg = colors.grey.lighten(50), bg = Search.bg }, -- used for highlighting "text" references
-    LspReferenceRead                     { LspReferenceText }, -- used for highlighting "read" references
-    LspReferenceWrite                    { LspReferenceText }, -- used for highlighting "write" references
+    -- LspReferenceText                     { }, -- used for highlighting "text" references
+    -- LspReferenceRead                     { }, -- used for highlighting "read" references
+    -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
-    LspDiagnosticsDefaultError           { fg = colors.cerise, gui = 'bold' }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultWarning         { fg = colors.orange, gui = 'bold' }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation     { fg = colors.grey.lighten(15) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultHint            { fg = colors.blue.darken(24), gui = 'bold'}, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultWarning         { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
     -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
     -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
     -- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
     -- LspDiagnosticsVirtualTextHint        { }, -- Used for "Hint" diagnostic virtual text
 
-    LspDiagnosticsUnderlineError         { LspDiagnosticsDefaultError        , gui = 'underline' }, -- Used to underline "Error" diagnostics
-    LspDiagnosticsUnderlineWarning       { LspDiagnosticsDefaultWarning      , gui = 'underline' }, -- Used to underline "Warning" diagnostics
-    LspDiagnosticsUnderlineInformation   { LspDiagnosticsDefaultInformation  , gui = 'underline' }, -- Used to underline "Information" diagnostics
-    LspDiagnosticsUnderlineHint          { LspDiagnosticsDefaultHint         , gui = 'underline' }, -- Used to underline "Hint" diagnostics
+    -- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
+    -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
+    -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
+    -- LspDiagnosticsUnderlineHint          { }, -- Used to underline "Hint" diagnostics
 
     -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
@@ -249,3 +285,4 @@ end)
 return theme
 
 -- vi:nowrap
+
