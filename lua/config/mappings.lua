@@ -31,4 +31,4 @@ set_keymap('n', '<leader>pk', '<CMD>lua require"packer".compile()<CR>')
 set_keymap('n', '<leader>pu', '<CMD>lua require"packer".update()<CR>')
 
 set_keymap('n', '<leader><leader>w', '<CMD>lua require"hop".hint_words()<CR>')
--- set_keymap('n', '<leader><leader>l', '<CMD>lua require"hop".hint_words()<CR>')
+set_keymap('n', '<leader><leader>l', '<CMD>lua require"hop".hint_lines()<CR>')
