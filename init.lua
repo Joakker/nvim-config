@@ -9,10 +9,9 @@ function _G.import(path)
 end
 
 -- Wrapper around vim.inspect so that it prints the result
---
----@param   object  any         The object to be inspected
-function _G.inspect(object)
-    print(vim.inspect(object))
+function _G.inspect(...)
+    local objs = vim.tbl_map(vim.inspect, {...})
+    print(unpack(objs))
 end
 
 import 'config'
