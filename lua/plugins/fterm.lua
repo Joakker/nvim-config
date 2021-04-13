@@ -1,1 +1,1 @@
-require'FTerm'.setup {border = {vertical = '│'}}
+require'FTerm'.setup {border = 'double'}
