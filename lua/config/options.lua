@@ -30,7 +30,7 @@ opt('w', 'colorcolumn', '80')
 opt('w', 'foldmethod', 'expr')
 opt('w', 'foldexpr', 'nvim_treesitter#foldexpr()')
 opt('w', 'list', true)
-opt('w', 'listchars', 'eol:,tab:--,trail:·')
+opt('w', 'listchars', 'eol:,tab:──,trail:·')
 
 g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0
