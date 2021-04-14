@@ -10,6 +10,7 @@ opt('o', 'updatetime', 300)
 opt('o', 'inccommand', 'nosplit')
 opt('o', 'pumblend', 15)
 opt('o', 'guifont', 'Iosevka:12')
+opt('o', 'mouse', 'a')
 
 opt('o', 'completeopt', 'menuone,noinsert,noselect')
 opt('o', 'shortmess', vim.o.shortmess .. 'c')
@@ -30,7 +31,7 @@ opt('w', 'colorcolumn', '80')
 opt('w', 'foldmethod', 'expr')
 opt('w', 'foldexpr', 'nvim_treesitter#foldexpr()')
 opt('w', 'list', true)
-opt('w', 'listchars', 'eol:,tab:──,trail:·')
+opt('w', 'listchars', 'eol:,tab:──,trail:·')
 
 g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0

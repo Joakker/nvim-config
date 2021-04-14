@@ -16,23 +16,21 @@ return require'packer'.startup(function()
     use 'wbthomason/packer.nvim'
     use {
         'nvim-treesitter/nvim-treesitter',
-        config = function()
-            import 'plugins.treesitter'
-        end,
+        config = function() import 'plugins.treesitter' end,
         run = ':TSUpdate',
         requires = {
             'nvim-treesitter/nvim-treesitter-textobjects',
             'nvim-treesitter/playground'
         }
     }
-    use 'ChristianChiarulli/nvcode-color-schemes.vim'
+    use {
+        'kyazdani42/nvim-web-devicons',
+        config = function() import 'plugins.devicons' end
+    }
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = function()
-            import 'plugins.statusline'
-        end
+        config = function() import 'plugins.statusline' end
     }
     use {
         'neovim/nvim-lspconfig',
@@ -41,88 +39,67 @@ return require'packer'.startup(function()
             'glepnir/lspsaga.nvim',
             'nvim-lua/lsp_extensions.nvim'
         },
-        config = function()
-            import 'lsp-config'
-        end
+        config = function() import 'lsp-config' end
     }
     use {
         'norcalli/snippets.nvim',
-        config = function()
-            import 'plugins.snippets'
-        end
+        config = function() import 'plugins.snippets' end
     }
     use {
         'windwp/nvim-autopairs',
-        config = function()
-            import 'plugins.autopairs'
-        end
+        config = function() import 'plugins.autopairs' end
     }
     use {
         'nvim-telescope/telescope.nvim',
-        config = function()
-            import 'plugins.telescope'
-        end,
+        config = function() import 'plugins.telescope' end,
         requires = {
-            {'nvim-lua/popup.nvim'},
-            {'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-media-files.nvim'}
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-media-files.nvim'
         }
     }
     use {
         'lewis6991/gitsigns.nvim',
-        config = function()
-            import 'plugins.gitsigns'
-        end,
+        config = function() import 'plugins.gitsigns' end,
         requires = 'nvim-lua/plenary.nvim'
     }
     use {
         'numToStr/FTerm.nvim',
-        config = function()
-            import 'plugins.fterm'
-        end
+        config = function() import 'plugins.fterm' end
     }
     use {
         'blackCauldron7/surround.nvim',
-        config = function()
-            import 'plugins.surround'
-        end
+        config = function() import 'plugins.surround' end
     }
     use {
         '~/Projects/godot.nvim',
-        config = function()
-            import 'plugins.godot'
-        end
+        config = function() import 'plugins.godot' end
     }
     use {
         'akinsho/nvim-bufferline.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            import 'plugins.bufferline'
-        end
+        config = function() import 'plugins.bufferline' end
     }
     use {
         'glepnir/indent-guides.nvim',
-        config = function()
-            import 'plugins.indent-guides'
-        end
+        config = function() import 'plugins.indent-guides' end
     }
     use {
         'crispgm/nvim-go',
-        config = function()
-            import 'plugins.nvim-go'
-        end,
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        config = function() import 'plugins.nvim-go' end,
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
     use {
         'vimwiki/vimwiki',
-        config = function()
-            import 'plugins.vimwiki'
-        end
+        config = function() import 'plugins.vimwiki' end
     }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        config = function() import 'plugins.nvim-tree' end
+    }
+    use 'ChristianChiarulli/nvcode-color-schemes.vim'
     use 'ThePrimeagen/vim-be-good'
     use 'b3nj5m1n/kommentary'
     use 'phaazon/hop.nvim'
-    use 'kyazdani42/nvim-tree.lua'
     use 'rktjmp/lush.nvim'
     use 'rafcamlet/nvim-luapad'
     use 'lark-parser/vim-lark-syntax'
