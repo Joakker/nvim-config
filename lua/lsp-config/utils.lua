@@ -13,8 +13,8 @@ function M.on_attach(client, bufnr)
     set_keymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
     set_keymap('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
 
-    set_keymap('n', 'K',
-               '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
+    set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
+    -- '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
 
     set_keymap('n', '<leader>rn',
                '<CMD>lua require"lspsaga.rename".rename()<CR>')

@@ -1,7 +1,7 @@
 local utils = require 'lsp-config.utils'
 
 local lua_dir = utils.server_dir .. '/lua'
-local lua_bin = lua_dir .. '/bin/lua-language-server'
+local lua_bin = lua_dir .. '/bin/Linux/lua-language-server'
 
 local function get_paths()
     local paths = {}
