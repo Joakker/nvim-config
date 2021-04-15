@@ -35,9 +35,10 @@ return require'packer'.startup(function()
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'nvim-lua/completion-nvim',
+            -- 'nvim-lua/completion-nvim',
             'glepnir/lspsaga.nvim',
-            'nvim-lua/lsp_extensions.nvim'
+            'nvim-lua/lsp_extensions.nvim',
+            'hrsh7th/nvim-compe'
         },
         config = function() import 'lsp-config' end
     }

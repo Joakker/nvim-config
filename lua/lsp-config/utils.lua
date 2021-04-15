@@ -1,5 +1,36 @@
 local M = {}
 
+local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col '.' - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col) then
+        return true
+    else
+        return false
+    end
+end
+
+_G.tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t '<C-n>'
+    elseif check_back_space() then
+        return t '<TAB>'
+    else
+        return vim.fn['compe#complete']()
+    end
+end
+
+_G.s_tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t '<C-p>'
+    else
+        return t '<S-TAB>'
+    end
+end
+
 function M.on_attach(client, bufnr)
     local opts = {noremap = true, silent = true}
     local function set_keymap(...)
@@ -13,8 +44,8 @@ function M.on_attach(client, bufnr)
     set_keymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
     set_keymap('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
 
-    set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
-    -- '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
+    set_keymap('n', 'K', -- '<CMD>lua vim.lsp.buf.hover()<CR>')
+    '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
 
     set_keymap('n', '<leader>rn',
                '<CMD>lua require"lspsaga.rename".rename()<CR>')
@@ -24,10 +55,10 @@ function M.on_attach(client, bufnr)
     set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<cR>')
     set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<cR>')
 
-    set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {})
-    set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
+    set_keymap('i', '<TAB>', 'v:lua.tab_complete()', {expr = true})
+    set_keymap('i', '<S-TAB>', 'v:lua.s_tab_complete()', {expr = true})
 
-    set_keymap('i', '<C-Space>', '<Plug>(completion_trigger)', {})
+    set_keymap('i', '<C-Space>', '', {})
 
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
@@ -46,7 +77,7 @@ function M.on_attach(client, bufnr)
         ]], false)
     end
 
-    require'completion'.on_attach(client)
+    -- require'completion'.on_attach(client)
 end
 
 M.server_dir = vim.fn.stdpath 'data' .. '/servers'

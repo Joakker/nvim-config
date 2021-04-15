@@ -1,8 +1,8 @@
 # :moon: nvim-config: A neovim configuration focused on lua
 
-> NOTE: Some of the plugin paths specified in my
+<!-- > NOTE: Some of the plugin paths specified in my
 > [specification](lua/plugins/init.lua) are local to my machine, but they can be
-> found here on github too
+> found here on github too -->
 
 My personal neovim configuration. It is mostly written in lua, so it pays to
 know the language
@@ -52,6 +52,7 @@ All the following mappings start with `<leader>`, which is defined as `,`
 |       Mapping       | Modes | Effect                      |
 |:-------------------:|-------|-----------------------------|
 | `<leader><leader>w` | n     | Hop to a word on the screen |
+| `<leader><leader>w` | n     | Hop to line on the screen   |
 
 ## LSP
 

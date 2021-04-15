@@ -1,15 +1,20 @@
-local g = vim.g
-
 local saga = require 'lspsaga'
 
 saga.init_lsp_saga()
 
-g.completion_enable_aut_paren = true
-g.completion_confirm_key = ''
-g.completion_trigger_character = {'.'}
-g.completion_trigger_keyword_length = 2
-g.completion_enable_snippet = 'snippets.nvim'
-g.completion_customize_lsp_label = {['snippets.nvim'] = '﬌ Snippet'}
+require'compe'.setup {
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    preselect = 'enable',
+    source = {
+        path = true,
+        buffer = true,
+        nvim_lsp = true,
+        nvim_lua = true,
+        snippets_nvim = true
+    }
+}
 
 local servers = {
     'efm',
