@@ -16,6 +16,6 @@ end
 
 import 'config'
 import 'plugins'
--- import 'snippet-defs'
+import 'lsp-config'
 
--- vim.cmd [[colo aurora]]
+vim.cmd [[colo aurora]]

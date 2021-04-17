@@ -40,12 +40,10 @@ end
 ---@param   lhs     string      The keys that trigger the mapping
 ---@param   rhs     string      The value the mapping corresponds to
 ---@param   opts    table       The options for the mapping
-function M.set_keymap(mode, lhs, rhs, opts)
+function M.set_keymap(mode, lhs, rhs, opts, buffer)
     local options = {noremap = true, silent = true}
     if opts then options = M.extend(options, opts) end
-    if opts and opts.buffer then
-        local buffer = opts.buffer
-        opts.buffer = nil
+    if buffer then
         vim.api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
     else
         vim.api.nvim_set_keymap(mode, lhs, rhs, options)
