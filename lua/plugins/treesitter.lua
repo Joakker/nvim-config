@@ -13,5 +13,6 @@ require'nvim-treesitter.configs'.setup {
             }
         }
     },
+    rainbow = {enable = true},
     playground = {enable = true}
 }

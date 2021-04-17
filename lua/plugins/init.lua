@@ -20,7 +20,8 @@ return require'packer'.startup(function()
         run = ':TSUpdate',
         requires = {
             'nvim-treesitter/nvim-treesitter-textobjects',
-            'nvim-treesitter/playground'
+            'nvim-treesitter/playground',
+            'p00f/nvim-ts-rainbow'
         }
     }
     use {
@@ -35,7 +36,6 @@ return require'packer'.startup(function()
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            -- 'nvim-lua/completion-nvim',
             'glepnir/lspsaga.nvim',
             'nvim-lua/lsp_extensions.nvim',
             'hrsh7th/nvim-compe'
