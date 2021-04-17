@@ -30,6 +30,7 @@ know the language
 | Mapping | Modes | Effect                                             |
 |:-------:|-------|----------------------------------------------------|
 | `<F1>`  | n     | Open Telescope window and search through help tags |
+| `<F2>`  | n     | `:edit`                                            |
 | `<F3>`  | n     | Toggle `tree.nvim`                                 |
 | `<F5>`  | n     | Build project                                      |
 | `<F7>`  | nt    | Toggle `FTerm.nvim`                                |
