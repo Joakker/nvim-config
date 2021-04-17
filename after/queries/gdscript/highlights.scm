@@ -1,4 +1,5 @@
-
+(extends_statement
+    "extends" @keyword)
 (const_statement
     "const" @keyword
     (name)  @constant)
