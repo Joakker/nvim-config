@@ -5,16 +5,12 @@ local Job = require 'plenary.job'
 -- Finds the path of 'file' in the ancestors of the current directory. Returns
 -- the directory that was found to contain 'file', in Path form
 ---@param file  string   The relative path of the file
----@return table
+---@return table|nil
 function M.find_parents(file)
     local cur = Path:new(vim.loop.cwd())
-
-    -- Iterate over parent directories
-    while true do
-        local test_path = cur / file
-        if test_path:exists() then return cur end
-        if not cur:parents() then break end
-        cur = Path:new(cur:parents())
+    for _, path in ipairs(cur:parents()) do
+        local test_path = Path:new(path) / file
+        if test_path:exists() then return test_path end
     end
     return nil
 end
