@@ -9,16 +9,17 @@ local colors = {
     amaranth = '#E83151',
     ivory = '#F6F7EB',
     prussian_blue = '#23395B',
-    warm_black = '#004643'
+    warm_black = '#004643',
 }
 
 gls.left[1] = {
     Padding = {
-        provider = function() return '   ' end,
-        highlight = {colors.ivory, colors.warm_black}
-    }
+        provider = function()
+            return '   '
+        end,
+        highlight = {colors.ivory, colors.warm_black},
+    },
 }
-
 gls.left[2] = {
     ViMode = {
         provider = function()
@@ -29,22 +30,25 @@ gls.left[2] = {
                 v = '',
                 V = '',
                 s = '',
-                [''] = ''
+                [''] = '',
             }
             return (alias[fn.mode()] or fn.mode()) .. ' '
         end,
         highlight = {colors.ivory, colors.warm_black},
         separator = ' ',
-        separator_highlight = {colors.warm_black, colors.amaranth}
-    }
+        separator_highlight = {colors.warm_black, colors.amaranth},
+    },
 }
 gls.left[3] = {
     FileIcon = {
         provider = 'FileIcon',
-        highlight = {colors.ivory, colors.amaranth},
+        highlight = {
+            require'galaxyline.provider_fileinfo'.get_file_icon_color,
+            colors.amaranth,
+        },
         separator = '',
-        separator_highlight = {colors.amaranth, colors.prussian_blue}
-    }
+        separator_highlight = {colors.amaranth, colors.prussian_blue},
+    },
 }
 
 gls.right[1] = {
@@ -56,6 +60,6 @@ gls.right[1] = {
         end,
         highlight = {colors.ivory, colors.amaranth},
         separator = '',
-        separator_highlight = {colors.amaranth, colors.prussian_blue}
-    }
+        separator_highlight = {colors.amaranth, colors.prussian_blue},
+    },
 }
