@@ -7,8 +7,11 @@ packer.init {
 }
 
 local use = packer.use
+local use_rocks = packer.use_rocks
 
 packer.startup(function()
+    use_rocks 'lua-cjson'
+
     -- Let packer manage itself
     use 'wbthomason/packer.nvim'
 
@@ -65,4 +68,6 @@ packer.startup(function()
     -- Simple Plugins
     use 'christianchiarulli/nvcode-color-schemes.vim'
     use 'windwp/nvim-autopairs'
+    use 'rktjmp/lush.nvim'
+    use 'b3nj5m1n/kommentary'
 end)
