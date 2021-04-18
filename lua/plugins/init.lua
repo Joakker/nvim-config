@@ -70,4 +70,5 @@ packer.startup(function()
     use 'windwp/nvim-autopairs'
     use 'rktjmp/lush.nvim'
     use 'b3nj5m1n/kommentary'
+    use 'rafcamlet/nvim-luapad'
 end)
