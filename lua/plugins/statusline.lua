@@ -42,10 +42,7 @@ gls.left[2] = {
 gls.left[3] = {
     FileIcon = {
         provider = 'FileIcon',
-        highlight = {
-            require'galaxyline.provider_fileinfo'.get_file_icon_color,
-            colors.amaranth,
-        },
+        highlight = {colors.ivory, colors.amaranth},
         separator = '',
         separator_highlight = {colors.amaranth, colors.prussian_blue},
     },
