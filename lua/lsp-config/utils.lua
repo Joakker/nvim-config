@@ -1,11 +1,30 @@
 local function on_attach(client, bufnr)
-    local set_keymap = require'utils'.set_keymap
-    local opts = {noremap = true, silent = true}
-    set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>', opts, bufnr)
-    set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {noremap = false},
-               bufnr)
+    local _set_keymap = require'utils'.set_keymap
+    local _opts = {noremap = true, silent = true}
+
+    local function set_keymap(mode, lhs, rhs, opts)
+        _set_keymap(mode, lhs, rhs, opts or _opts, bufnr)
+    end
+
+    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
+    set_keymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
+    set_keymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
+    set_keymap('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
+
+    set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>')
+    set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>')
+
+    set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
+
+    set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {noremap = false})
     set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)',
-               {noremap = false}, bufnr)
+               {noremap = false})
+
+    set_keymap('n', '<leader>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>')
+    set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>')
+
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
         augroup lsp_doc_highlight

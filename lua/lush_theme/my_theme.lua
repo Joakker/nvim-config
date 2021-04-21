@@ -191,7 +191,7 @@ local theme = lush(function()
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
 
-    LspReferenceText                     { bg = colors.blu1.darken(20) }, -- used for highlighting "text" references
+    LspReferenceText                     { fg = colors.prp3, bg = colors.blu1.darken(20) }, -- used for highlighting "text" references
     LspReferenceRead                     { LspReferenceText }, -- used for highlighting "read" references
     LspReferenceWrite                    { LspReferenceText }, -- used for highlighting "write" references
 
