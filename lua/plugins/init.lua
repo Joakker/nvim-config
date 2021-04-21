@@ -33,10 +33,7 @@ packer.startup(function()
     }
     use {
         'neovim/nvim-lspconfig',
-        requires = {
-            'nvim-lua/completion-nvim', 'SirVer/ultisnips',
-            'honza/vim-snippets',
-        },
+        requires = {'nvim-lua/completion-nvim', 'SirVer/ultisnips'},
     }
     use {
         'nvim-treesitter/nvim-treesitter',
