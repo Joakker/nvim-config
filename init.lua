@@ -18,5 +18,5 @@ import 'config'
 import 'plugins'
 import 'lsp-config'
 
--- vim.cmd [[colo aurora]]
-vim.cmd [[colo my_color]]
+vim.cmd [[colo aurora]]
+-- vim.cmd [[colo my_color]]
