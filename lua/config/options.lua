@@ -11,6 +11,7 @@ opt('o', 'inccommand', 'nosplit')
 opt('o', 'pumblend', 15)
 opt('o', 'guifont', 'Iosevka:12')
 opt('o', 'mouse', 'a')
+opt('o', 'clipboard', 'unnamedplus')
 
 opt('o', 'completeopt', 'menuone,noinsert,noselect')
 opt('o', 'shortmess', vim.o.shortmess .. 'c')
