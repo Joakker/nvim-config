@@ -6,14 +6,12 @@ g.UltiSnipsExpandTrigger = '<TAB>'
 g.UltiSnipsJumpForwardTrigger = '<M-l>'
 g.UltiSnipsBackwardTrigger = '<M-h>'
 
+g.completion_confirm_key = ''
+
 local npairs = require 'nvim-autopairs'
 npairs.setup()
 
-_G.MUtils = {}
-
-g.completion_confirm_key = ''
-
-function MUtils.completion_confirm()
+function _G.completion_confirm()
     if vim.fn.pumvisible() ~= 0 then
         if vim.fn.complete_info()['selected'] ~= -1 then
             require'completion'.confirmCompletion()
@@ -28,13 +26,15 @@ function MUtils.completion_confirm()
     end
 end
 
-require'utils'.set_keymap('i', '<CR>', 'v:lua.MUtils.completion_confirm()',
+require'utils'.set_keymap('i', '<CR>', 'v:lua.completion_confirm()',
                           {expr = true, noremap = true})
 
 local servers = {
     'sumneko', 'omnisharp', 'pyright', 'tsserver', 'vimls', 'bashls', 'gopls',
     'gdscript', 'clangd', 'efm',
 }
+
+require'lspsaga'.init_lsp_saga()
 
 vim.cmd [[ autocmd BufEnter * lua require 'completion'.on_attach() ]]
 

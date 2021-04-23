@@ -16,14 +16,17 @@ local function on_attach(client, bufnr)
     set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>')
     set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>')
 
-    set_keymap('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
+    set_keymap('n', 'K',
+               '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
 
     set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {noremap = false})
     set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)',
                {noremap = false})
 
-    set_keymap('n', '<leader>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>')
-    set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>')
+    set_keymap('n', '<leader>ca',
+               '<CMD>lua require"lspsaga.codeaction".code_action()<CR>')
+    set_keymap('n', '<leader>rn',
+               '<CMD>lua require"lspsaga.rename".rename()<CR>')
 
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
@@ -45,4 +48,8 @@ local function on_attach(client, bufnr)
     end
 end
 
-return {on_attach = on_attach, serv_path = vim.fn.stdpath 'data' .. '/servers'}
+return {
+    on_attach = on_attach,
+    serv_path = vim.fn.stdpath 'data' .. '/servers',
+    completion_confirm = completion_confirm,
+}
