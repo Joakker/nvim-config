@@ -78,6 +78,12 @@ packer.startup(function()
             require 'plugins.hop'
         end,
     }
+    use {
+        '~/Projects/godot.nvim',
+        config = function()
+            require'godot'.setup {versionmsg = false}
+        end,
+    }
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
