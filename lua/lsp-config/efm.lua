@@ -9,6 +9,10 @@ local lua_args = {
     },
 }
 
+local javascript_args = {
+    {formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true},
+}
+
 if require'utils'.has_parent(vim.loop.cwd(), 'plenary.nvim') then
     lua_args[1].formatCommand = lua_args[1].formatCommand .. ' --indent-width=2'
 end
@@ -16,6 +20,14 @@ end
 require'lspconfig'.efm.setup {
     on_attach = utils.on_attach,
     init_options = {documentFormatting = true, codeAction = false},
-    filetypes = {'lua', 'python'},
-    settings = {rootMarkers = {'.git'}, languages = {lua = lua_args}},
+    filetypes = {'lua', 'python', 'javascript', 'typescript'},
+    root_dir = vim.loop.cwd,
+    settings = {
+        rootMarkers = {'.git'},
+        languages = {
+            lua = lua_args,
+            javascript = javascript_args,
+            typescript = javascript_args,
+        },
+    },
 }
