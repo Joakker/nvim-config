@@ -6,7 +6,7 @@ local function get_workspace()
     local empty = vim.fn.empty
     local result = {
         [expand '$VIMRUNTIME/lua'] = true,
-        [expand '$VIMRUNTIME/lua/vim/lsp'] = true
+        [expand '$VIMRUNTIME/lua/vim/lsp'] = true,
     }
     local rtp = vim.split(vim.o.runtimepath, ',')
     for _, path in pairs(rtp) do
@@ -24,7 +24,8 @@ require'lspconfig'.sumneko_lua.setup {
             runtime = {version = 'LuaJIT', path = vim.split(package.path, ';')},
             diagnostics = {globals = {'vim', 'inspect', 'import'}},
             workspace = {library = get_workspace()},
-            telemetry = {enable = false}
-        }
-    }
+            telemetry = {enable = false},
+            completion = {keywordSnippet = 'Disable', callSnippet = 'Disable'},
+        },
+    },
 }

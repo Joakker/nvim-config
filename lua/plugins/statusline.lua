@@ -12,7 +12,7 @@ local colors = {
     warm_black = '#004643',
 }
 
-gls.left[1] = {
+gls.left[1] = { -- Padding
     Padding = {
         provider = function()
             return '   '
@@ -20,7 +20,7 @@ gls.left[1] = {
         highlight = {colors.ivory, colors.warm_black},
     },
 }
-gls.left[2] = {
+gls.left[2] = { -- Vi Mode
     ViMode = {
         provider = function()
             local alias = {
@@ -39,7 +39,7 @@ gls.left[2] = {
         separator_highlight = {colors.warm_black, colors.amaranth},
     },
 }
-gls.left[3] = {
+gls.left[3] = { -- File Icon
     FileIcon = {
         provider = 'FileIcon',
         highlight = {colors.ivory, colors.amaranth},
@@ -48,7 +48,7 @@ gls.left[3] = {
     },
 }
 
-gls.right[1] = {
+gls.right[1] = { -- Position
     Position = {
         provider = function()
             local c = tonumber(fn.col '.')
