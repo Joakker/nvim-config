@@ -94,6 +94,13 @@ packer.startup(function()
             import 'plugins.gitsigns'
         end,
     }
+    use { -- indent-blankline.nvim
+        'lukas-reineke/indent-blankline.nvim',
+        branch = 'lua',
+        config = function()
+            import 'plugins.indentlines'
+        end,
+    }
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
