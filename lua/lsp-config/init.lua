@@ -41,7 +41,7 @@ require'utils'.set_keymap('i', '<CR>', 'v:lua.completion_confirm()',
 
 local servers = {
     'sumneko', 'omnisharp', 'pyright', 'tsserver', 'vimls', 'bashls', 'gopls',
-    'gdscript', 'clangd', 'efm',
+    'gdscript', 'clangd', 'efm', 'rust-analyzer',
 }
 
 require'lspsaga'.init_lsp_saga()
