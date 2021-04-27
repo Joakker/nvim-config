@@ -26,14 +26,14 @@ endsnippet
 
 snippet meth "Method definition"
 // $2...
-func (${1/\*?(.).*/\l$1 /}$1) ${2:Method}($3)${4/^(.)/ /}$4 {
+func (${1/\*?(.).*/\l$1 /}$1) ${2:Method}($3)${4/^(.).*/ /}$4 {
 	$0
 }
 endsnippet
 
 snippet func "Function definition"
 // $1...
-func ${1:Function}($2)${3/^(.)/ /}$3 {
+func ${1:Function}($2)${3/^(.).*/ /}$3 {
 	$0
 }
 endsnippet
