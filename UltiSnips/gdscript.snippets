@@ -2,3 +2,38 @@ snippet func "Function definition"
 func ${1:name}($2) -> ${3:void}:
 	$0
 endsnippet
+
+snippet for "For loop"
+for ${1:i} in ${2:10}:
+	$0
+endsnippet
+
+snippet if "If statement"
+if $1:
+	$0
+endsnippet
+
+snippet elif "Elif statement"
+elif $1:
+	$0
+endsnippet
+
+snippet else "Else statement"
+else:
+	$0
+endsnippet
+
+snippet while "While loop"
+while $1:
+	$0
+endsnippet
+
+snippet match "Match statement"
+match ${1:element}:
+	${2:pattern}:
+		$0
+endsnippet
+
+snippet cndexpr "Conditional expression"
+${1:value} if ${2:condition} else ${3:default}
+endsnippet
