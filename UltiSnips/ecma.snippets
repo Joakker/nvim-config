@@ -1,5 +1,31 @@
+priority -50
+
 snippet func "Function definition"
 function ${1:name}($2) {
+	$0
+}
+endsnippet
+
+snippet fori "For i..."
+for (let ${1:i} = ${2:0}; ${4:$1 < $3}; ${5:$1++}) {
+	$0
+}
+endsnippet
+
+snippet forn "For e in..."
+for (const ${1:e} in ${2:object} ) {
+	$0
+}
+endsnippet
+
+snippet foro "For of..."
+for (const ${1:e} of ${2:array}) {
+	$0
+}
+endsnippet
+
+snippet class "Class definition"
+class ${1:Person} {
 	$0
 }
 endsnippet
