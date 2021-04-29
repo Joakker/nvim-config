@@ -9,17 +9,19 @@ local Job = require 'plenary.job'
 function M.find_parents(file)
     local cur = Path:new(vim.loop.cwd())
     for _, path in ipairs(cur:parents()) do
-        local test_path = Path:new(path) / file
-        if test_path:exists() then return test_path end
+        local test_path = Path:new(path)
+        if (test_path / file):exists() then return test_path end
     end
     return nil
 end
+
+M.filetypes = {['latex'] = ':TexlabBuild'}
 
 M.conditions = {
     ['Makefile'] = 'make',
     ['go.mod'] = {'go', args = {'build'}},
     ['Cargo.toml'] = {'cargo', args = {'build'}},
-    ['tsconfig.json'] = 'tsc'
+    ['tsconfig.json'] = 'tsc',
 }
 
 function M.build()
@@ -29,6 +31,10 @@ function M.build()
             local cmd
             local args
             if type(v) == 'string' then
+                if v:sub(1, 1) == ':' then
+                    vim.cmd(v)
+                    return
+                end
                 cmd = v
             elseif type(v) == 'table' then
                 cmd = v[1]
@@ -47,10 +53,15 @@ function M.build()
                     else
                         print [[build.lua: Success! 😎]]
                     end
-                end
+                end,
             }:sync()
             return
         end
+    end
+    local cmd = M.filetypes[vim.bo.filetype]
+    if cmd then
+        vim.cmd(cmd)
+        return
     end
     print [[build.lua: No build conditions were found 😢]]
 end
