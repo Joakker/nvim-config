@@ -101,6 +101,12 @@ packer.startup(function()
             import 'plugins.indentlines'
         end,
     }
+    use { -- nvim-colorizer.lua
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            import 'plugins.colorizer'
+        end,
+    }
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
