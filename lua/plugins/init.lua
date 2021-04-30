@@ -110,6 +110,7 @@ packer.startup(function()
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
+    use 'rhysd/vim-goyacc'
     use 'christianchiarulli/nvcode-color-schemes.vim'
     use 'windwp/nvim-autopairs'
     use 'rktjmp/lush.nvim'
