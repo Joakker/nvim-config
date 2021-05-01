@@ -8,9 +8,6 @@ g.UltiSnipsBackwardTrigger = '<M-h>'
 
 g.completion_confirm_key = ''
 
-local npairs = require 'nvim-autopairs'
-npairs.setup()
-
 vim.lsp.protocol.CompletionItemKind = {
     '   (Text) ', '   (Method)', '   (Function)',
     '   (Constructor)', ' ﴲ  (Field)', '[] (Variable)', '   (Class)',
@@ -20,6 +17,8 @@ vim.lsp.protocol.CompletionItemKind = {
     '   (EnumMember)', ' ﲀ  (Constant)', ' ﳤ  (Struct)', '   (Event)',
     '   (Operator)', '   (TypeParameter)',
 }
+
+local npairs = require 'nvim-autopairs'
 
 function _G.completion_confirm()
     if vim.fn.pumvisible() ~= 0 then

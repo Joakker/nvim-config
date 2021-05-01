@@ -107,12 +107,17 @@ packer.startup(function()
             import 'plugins.colorizer'
         end,
     }
+    use { -- nvim-autopairs
+        'windwp/nvim-autopairs',
+        config = function()
+            import 'plugins.autopairs'
+        end
+    }
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
     use 'rhysd/vim-goyacc'
     use 'christianchiarulli/nvcode-color-schemes.vim'
-    use 'windwp/nvim-autopairs'
     use 'rktjmp/lush.nvim'
     use 'b3nj5m1n/kommentary'
     use 'rafcamlet/nvim-luapad'
