@@ -18,6 +18,8 @@ set_keymap('n', '<F3>', '<CMD>NvimTreeToggle<CR>')
 set_keymap('n', '<F5>', '<CMD>lua import"build".build()<CR>')
 set_keymap('n', '<F7>', '<CMD>lua require"FTerm".toggle()<CR>')
 set_keymap('t', '<F7>', '<CMD>lua require"FTerm".toggle()<CR>')
+set_keymap('n', '<F8>', '<CMD>lua require"plugins.fterm".gitui()<CR>')
+set_keymap('t', '<F8>', '<CMD>lua require"plugins.fterm".gitui()<CR>')
 
 set_keymap('n', '<leader>vs', '<CMD>lua require"utils".reload_config()<CR>')
 set_keymap('n', '<leader>wo', '<CMD>only<CR>')
