@@ -101,17 +101,17 @@ local theme = lush(function()
     Search       { QuickFixLine },
     WildMenu     { QuickFixLine },
 
-    -- Constant       { },
+    Constant       { fg = colors.blu[1] },
     -- String         { },
     -- Character      { },
     -- Number         { },
     -- Boolean        { },
     -- Float          { },
 
-    -- Identifier     { },
-    Function       { fg = colors.grn[3] },
+    Identifier     { fg = colors.ylw[2] },
+    Function       { fg = colors.grn[3], gui = 'italic' },
 
-    -- Statement      { },
+    Statement      { fg = colors.prp[1] },
     -- Conditional    { },
     -- Repeat         { },
     -- Label          { },
@@ -125,7 +125,7 @@ local theme = lush(function()
     -- Macro          { },
     -- PreCondit      { },
 
-    -- Type           { },
+    Type           { fg = colors.prp[1] },
     -- StorageClass   { },
     -- Structure      { },
     -- Typedef        { },
@@ -156,10 +156,10 @@ local theme = lush(function()
     -- LspReferenceRead                     { },
     -- LspReferenceWrite                    { },
 
-    -- LspDiagnosticsDefaultError           { },
-    -- LspDiagnosticsDefaultWarning         { },
-    -- LspDiagnosticsDefaultInformation     { },
-    -- LspDiagnosticsDefaultHint            { },
+    LspDiagnosticsDefaultError           { ErrorMsg },
+    LspDiagnosticsDefaultWarning         { WarningMsg },
+    LspDiagnosticsDefaultInformation     { fg = colors.grn[2] },
+    LspDiagnosticsDefaultHint            { fg = colors.prp[1] },
 
     -- LspDiagnosticsVirtualTextError       { },
     -- LspDiagnosticsVirtualTextWarning     { },
