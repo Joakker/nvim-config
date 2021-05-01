@@ -41,7 +41,7 @@ packer.startup(function()
     use { -- nvim-treesitter
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        requires = {'p00f/nvim-ts-rainbow'},
+        requires = {'p00f/nvim-ts-rainbow', 'nvim-treesitter/playground'},
         config = function()
             require 'plugins.treesitter'
         end,
@@ -111,7 +111,7 @@ packer.startup(function()
         'windwp/nvim-autopairs',
         config = function()
             import 'plugins.autopairs'
-        end
+        end,
     }
 
     -- Simple Plugins
