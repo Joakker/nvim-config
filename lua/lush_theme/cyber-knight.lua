@@ -13,225 +13,210 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 --
 
-local lush = require 'lush'
+local lush = require('lush')
 local hsl = lush.hsl
 
 local colors = {
-    ylw = {
-        hsl('#FBEC9F'),
-        hsl('#DBC08A'),
-        hsl('#F4D554'),
-    },
-    grn = {
-        hsl('#99C794'),
-        hsl('#9DD067'),
-        hsl('#1ABC9C'),
-    },
-    red = {
-        hsl('#F75f5F'),
-        hsl('#F92772'),
-        hsl('#DC1874'),
-    },
-    blu = {
-        hsl('#7BA1D0'),
-        hsl('#18C6C3'),
-        hsl('#001423'),
-    },
-    prp = {
-        hsl('#9E71CF'),
-        hsl('#23064D'),
-        hsl('#200020'),
-    },
-    gry = {
-        hsl('#AABACF'),
-        hsl('#777F9F'),
-        hsl('#4f4f5E')
-    },
-    wht = hsl('#FAFAFA'),
+    grn1 = hsl('#0C4383'),
+    grn2 = hsl('#22A0B6'),
+    grn3 = hsl('#0ABDC6'),
+    red1 = hsl('#7B1346'),
+    red2 = hsl('#CB0C59'),
+    prp1 = hsl('#020314'),
+    prp2 = hsl('#5932E6'),
+    prp3 = hsl('#8632E6'),
+    prp4 = hsl('#B332E6'),
+    prp5 = hsl('#E032E6'),
+    yel1 = hsl('#635E10'),
+    yel2 = hsl('#B8B158'),
+    yel3 = hsl('#D1C958'),
 }
 
 local theme = lush(function()
   return {
-    Comment      { fg = colors.red[2], gui = 'italic' },
-    ColorColumn  { bg = colors.gry[3] },
+    VertSplit    { }, -- the column separating vertically split windows
+    SignColumn   { }, -- column where |signs| are displayed
+    StatusLine   { }, -- status line of current window
+    StatusLineNC { }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 
-    DiffAdd      { fg = colors.grn[2] },
-    DiffChange   { fg = colors.prp[1] },
-    DiffDelete   { fg = colors.red[1], gui = 'strikethrough'},
-    DiffText     { fg = colors.blu[3], bg = colors.grn[3], gui = 'bold' },
+    LineNr       { fg = colors.yel3, gui = 'bold' }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr { fg = colors.red2.lighten(30), gui = 'bold' }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 
+    Comment      { fg = colors.red2, gui = 'italic' }, -- any comment
 
-    MoreMsg      { fg = colors.grn[3] },
-    ErrorMsg     { fg = colors.red[2], gui = 'bold' },
-    WarningMsg   { fg = colors.ylw[1] },
+    -- ColorColumn  { }, -- used for the columns set with 'colorcolumn'
+    -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    -- Cursor       { }, -- character under the cursor
+    -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
+    -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
+    -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    -- CursorLine   { }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    -- Directory    { }, -- directory names (and other special names in listings)
+    -- DiffAdd      { }, -- diff mode: Added line |diff.txt|
+    -- DiffChange   { }, -- diff mode: Changed line |diff.txt|
+    -- DiffDelete   { }, -- diff mode: Deleted line |diff.txt|
+    -- DiffText     { }, -- diff mode: Changed text within a changed line |diff.txt|
+    -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    -- TermCursor   { }, -- cursor in a focused terminal
+    -- TermCursorNC { }, -- cursor in an unfocused terminal
+    -- ErrorMsg     { }, -- error messages on the command line
+    -- Folded       { }, -- line used for closed folds
+    -- FoldColumn   { }, -- 'foldcolumn'
+    -- IncSearch    { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    -- Substitute   { }, -- |:substitute| replacement text highlighting
+    -- MatchParen   { }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
+    -- MsgArea      { }, -- Area for messages and cmdline
+    -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
+    -- MoreMsg      { }, -- |more-prompt|
+    -- NonText      { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    -- Normal       { }, -- normal text
+    -- NormalFloat  { }, -- Normal text in floating windows.
+    -- NormalNC     { }, -- normal text in non-current windows
+    -- Pmenu        { }, -- Popup menu: normal item.
+    -- PmenuSel     { }, -- Popup menu: selected item.
+    -- PmenuSbar    { }, -- Popup menu: scrollbar.
+    -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
+    -- Question     { }, -- |hit-enter| prompt and yes/no questions
+    -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    -- TabLine      { }, -- tab pages line, not active tab page label
+    -- TabLineFill  { }, -- tab pages line, where there are no labels
+    -- TabLineSel   { }, -- tab pages line, active tab page label
+    -- Title        { }, -- titles for output from ":set all", ":autocmd" etc.
 
-    Question     { MoreMsg },
-    Title        { Question, gui = 'bold,italic' },
+    Visual       { fg = colors.yel1.lighten(10), bg = colors.prp1 }, -- Visual mode selection
+    VisualNOS    { Visual, fg = colors.red2 }, -- Visual mode selection when vim is "Not Owning the Selection".
+    Search       { Visual, fg = colors.grn3 }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 
-    Folded       { fg = colors.blu[1] , bg = colors.gry[3], gui = 'bold,italic' },
+    -- WarningMsg   { }, -- warning messages
+    -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    -- WildMenu     { }, -- current match in 'wildmenu' completion
 
-    VertSplit    { },
-    FoldColumn   { },
-    SignColumn   { },
+    -- Constant       { }, -- (preferred) any constant
+    -- String         { }, --   a string constant: "this is a string"
+    -- Character      { }, --  a character constant: 'c', '\n'
+    -- Number         { }, --   a number constant: 234, 0xff
+    -- Boolean        { }, --  a boolean constant: TRUE, false
+    -- Float          { }, --    a floating point constant: 2.3e10
 
-    Visual       { fg = colors.ylw[2], bg = colors.prp[3] },
-    IncSearch    { Visual },
-    Substitute   { Visual },
+    Identifier     { fg = colors.yel2 }, -- (preferred) any variable name
+    Function       { fg = colors.grn3, gui = 'italic' }, -- function name (also: methods for classes)
 
-    LineNr       { fg = colors.ylw[2] },
-    CursorLineNr { fg = colors.blu[2] },
+    -- Statement      { }, -- (preferred) any statement
+    -- Conditional    { }, --  if, then, else, endif, switch, etc.
+    -- Repeat         { }, --   for, do, while, etc.
+    -- Label          { }, --    case, default, etc.
+    -- Operator       { }, -- "sizeof", "+", "*", etc.
+    -- Keyword        { }, --  any other keyword
+    -- Exception      { }, --  try, catch, throw
 
-    MatchParen   { fg = colors.ylw[1], gui = 'undercurl' },
+    -- PreProc        { }, -- (preferred) generic Preprocessor
+    -- Include        { }, --  preprocessor #include
+    -- Define         { }, --   preprocessor #define
+    -- Macro          { }, --    same as Define
+    -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    NonText      { fg = colors.blu[2] },
-    EndOfBuffer  { NonText },
-    SpecialKey   { NonText },
-    Whitespace   { NonText },
+    -- Type           { }, -- (preferred) int, long, char, etc.
+    -- StorageClass   { }, -- static, register, volatile, etc.
+    -- Structure      { }, --  struct, union, enum, etc.
+    -- Typedef        { }, --  A typedef
 
-    Normal       { fg = colors.wht },
-    NormalFloat  { Normal },
-    Conceal      { Normal, bg = colors.gry[3] },
+    -- Special        { }, -- (preferred) any special symbol
+    -- SpecialChar    { }, --  special character in a constant
+    -- Tag            { }, --    you can use CTRL-] on this
+    -- Delimiter      { }, --  character that needs attention
+    -- SpecialComment { }, -- special things inside a comment
+    -- Debug          { }, --    debugging statements
 
-    Pmenu        { fg = colors.ylw[1], bg = colors.prp[2] },
-    PmenuSel     { Pmenu, bg = colors.blu[3] },
-    PmenuSbar    { fg = colors.gry[3], bg = colors.gry[3] },
-    PmenuThumb   { fg = colors.prp[3], bg = colors.prp[3] },
+    -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
+    -- Bold       { gui = "bold" },
+    -- Italic     { gui = "italic" },
 
-    QuickFixLine { fg = colors.prp[3], bg = colors.ylw[1], gui = 'bold' },
-    Search       { QuickFixLine },
-    WildMenu     { QuickFixLine },
+    -- Error          { }, -- (preferred) any erroneous construct
 
-    Constant       { fg = colors.blu[1] },
-    -- String         { },
-    -- Character      { },
-    -- Number         { },
-    -- Boolean        { },
-    -- Float          { },
+    -- Todo           { }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-    Identifier     { fg = colors.ylw[2] },
-    Function       { fg = colors.grn[3], gui = 'italic' },
+    -- LspReferenceText                     { }, -- used for highlighting "text" references
+    -- LspReferenceRead                     { }, -- used for highlighting "read" references
+    -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
-    Statement      { fg = colors.prp[1] },
-    -- Conditional    { },
-    -- Repeat         { },
-    -- Label          { },
-    -- Operator       { },
-    -- Keyword        { },
-    -- Exception      { },
+    -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultWarning         { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
-    -- PreProc        { },
-    -- Include        { },
-    -- Define         { },
-    -- Macro          { },
-    -- PreCondit      { },
+    -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
+    -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
+    -- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
+    -- LspDiagnosticsVirtualTextHint        { }, -- Used for "Hint" diagnostic virtual text
 
-    Type           { fg = colors.prp[1] },
-    -- StorageClass   { },
-    -- Structure      { },
-    -- Typedef        { },
+    -- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
+    -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
+    -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
+    -- LspDiagnosticsUnderlineHint          { }, -- Used to underline "Hint" diagnostics
 
-    -- Special        { },
-    -- SpecialChar    { },
-    -- Tag            { },
-    -- Delimiter      { },
-    -- SpecialComment { },
-    -- Debug          { },
+    -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
+    -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
+    -- LspDiagnosticsFloatingInformation    { }, -- Used to color "Information" diagnostic messages in diagnostics float
+    -- LspDiagnosticsFloatingHint           { }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
-    Underlined { gui = "underline" },
-    Bold       { gui = "bold" },
-    Italic     { gui = "italic" },
+    -- LspDiagnosticsSignError              { }, -- Used for "Error" signs in sign column
+    -- LspDiagnosticsSignWarning            { }, -- Used for "Warning" signs in sign column
+    -- LspDiagnosticsSignInformation        { }, -- Used for "Information" signs in sign column
+    -- LspDiagnosticsSignHint               { }, -- Used for "Hint" signs in sign column
 
-    -- ("Ignore", below, may be invisible...)
-    -- Ignore         { },
+    -- TSAnnotation         { };    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+    -- TSAttribute          { };    -- (unstable) TODO: docs
+    -- TSBoolean            { };    -- For booleans.
+    -- TSCharacter          { };    -- For characters.
+    -- TSComment            { };    -- For comment blocks.
+    -- TSConstructor        { };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
+    -- TSConditional        { };    -- For keywords related to conditionnals.
+    -- TSConstant           { };    -- For constants
+    -- TSConstBuiltin       { };    -- For constant that are built in the language: `nil` in Lua.
+    -- TSConstMacro         { };    -- For constants that are defined by macros: `NULL` in C.
+    -- TSError              { };    -- For syntax/parser errors.
+    -- TSException          { };    -- For exception related keywords.
+    -- TSField              { };    -- For fields.
+    -- TSFloat              { };    -- For floats.
+    -- TSFunction           { };    -- For function (calls and definitions).
+    -- TSFuncBuiltin        { };    -- For builtin functions: `table.insert` in Lua.
+    -- TSFuncMacro          { };    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    -- TSInclude            { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+    -- TSKeyword            { };    -- For keywords that don't fall in previous categories.
+    -- TSKeywordFunction    { };    -- For keywords used to define a fuction.
+    -- TSLabel              { };    -- For labels: `label:` in C and `:label:` in Lua.
+    -- TSMethod             { };    -- For method calls and definitions.
+    -- TSNamespace          { };    -- For identifiers referring to modules and namespaces.
+    -- TSNone               { };    -- TODO: docs
+    -- TSNumber             { };    -- For all numbers
+    -- TSOperator           { };    -- For any operator: `+`, but also `->` and `*` in C.
+    -- TSParameter          { };    -- For parameters of a function.
+    -- TSParameterReference { };    -- For references to parameters of a function.
+    -- TSProperty           { };    -- Same as `TSField`.
+    -- TSPunctDelimiter     { };    -- For delimiters ie: `.`
+    -- TSPunctBracket       { };    -- For brackets and parens.
+    -- TSPunctSpecial       { };    -- For special punctutation that does not fall in the catagories before.
+    -- TSRepeat             { };    -- For keywords related to loops.
+    -- TSString             { };    -- For strings.
+    -- TSStringRegex        { };    -- For regexes.
+    -- TSStringEscape       { };    -- For escape characters within a string.
+    -- TSSymbol             { };    -- For identifiers referring to symbols or atoms.
+    -- TSType               { };    -- For types.
+    -- TSTypeBuiltin        { };    -- For builtin types.
+    -- TSVariable           { };    -- Any variable name that does not have another highlight.
+    -- TSVariableBuiltin    { };    -- Variable names that are defined by the languages, like `this` or `self`.
 
-    Error          { Normal, bg = ErrorMsg.fg },
+    -- TSTag                { };    -- Tags like html tag names.
+    -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
+    -- TSText               { };    -- For strings considered text in a markup language.
+    -- TSEmphasis           { };    -- For text to be represented with emphasis.
+    -- TSUnderline          { };    -- For text to be represented with an underline.
+    -- TSStrike             { };    -- For strikethrough text.
+    -- TSTitle              { };    -- Text that is part of a title.
+    -- TSLiteral            { };    -- Literal text.
+    -- TSURI                { };    -- Any URI like a link or email.
 
-    -- Todo           { },
-
-    -- These groups are for the native LSP client. Some other LSP clients may
-    -- use these groups, or use their own. Consult your LSP client's
-    -- documentation.
-
-    -- LspReferenceText                     { },
-    -- LspReferenceRead                     { },
-    -- LspReferenceWrite                    { },
-
-    LspDiagnosticsDefaultError           { ErrorMsg },
-    LspDiagnosticsDefaultWarning         { WarningMsg },
-    LspDiagnosticsDefaultInformation     { fg = colors.grn[2] },
-    LspDiagnosticsDefaultHint            { fg = colors.prp[1] },
-
-    -- LspDiagnosticsVirtualTextError       { },
-    -- LspDiagnosticsVirtualTextWarning     { },
-    -- LspDiagnosticsVirtualTextInformation { },
-    -- LspDiagnosticsVirtualTextHint        { },
-
-    -- LspDiagnosticsUnderlineError         { },
-    -- LspDiagnosticsUnderlineWarning       { },
-    -- LspDiagnosticsUnderlineInformation   { },
-    -- LspDiagnosticsUnderlineHint          { },
-
-    -- LspDiagnosticsFloatingError          { },
-    -- LspDiagnosticsFloatingWarning        { },
-    -- LspDiagnosticsFloatingInformation    { },
-    -- LspDiagnosticsFloatingHint           { },
-
-    -- LspDiagnosticsSignError              { },
-    -- LspDiagnosticsSignWarning            { },
-    -- LspDiagnosticsSignInformation        { },
-    -- LspDiagnosticsSignHint               { },
-
-    -- TSAnnotation         { },
-    -- TSAttribute          { },
-    -- TSBoolean            { },
-    -- TSCharacter          { },
-    -- TSComment            { },
-    -- TSConstructor        { },
-    -- TSConditional        { },
-    -- TSConstant           { },
-    -- TSConstBuiltin       { },
-    -- TSConstMacro         { },
-    -- TSError              { },
-    -- TSException          { },
-    -- TSField              { },
-    -- TSFloat              { },
-    -- TSFunction           { },
-    -- TSFuncBuiltin        { },
-    -- TSFuncMacro          { },
-    -- TSInclude            { },
-    -- TSKeyword            { },
-    -- TSKeywordFunction    { },
-    -- TSLabel              { },
-    -- TSMethod             { },
-    -- TSNamespace          { },
-    -- TSNone               { },
-    -- TSNumber             { },
-    -- TSOperator           { },
-    -- TSParameter          { },
-    -- TSParameterReference { },
-    -- TSProperty           { },
-    -- TSPunctDelimiter     { },
-    -- TSPunctBracket       { },
-    -- TSPunctSpecial       { },
-    -- TSRepeat             { },
-    -- TSString             { },
-    -- TSStringRegex        { },
-    -- TSStringEscape       { },
-    -- TSSymbol             { },
-    -- TSType               { },
-    -- TSTypeBuiltin        { },
-    -- TSVariable           { },
-    -- TSVariableBuiltin    { },
-
-    -- TSTag                { },
-    -- TSTagDelimiter       { },
-    -- TSText               { },
-    -- TSEmphasis           { },
-    -- TSUnderline          { },
-    -- TSStrike             { },
-    -- TSTitle              { },
-    -- TSLiteral            { },
-    -- TSURI                { },
   }
 end)
 

@@ -4,12 +4,10 @@ local gls = gl.section
 local fn = vim.fn
 
 local colors = {
-    bg = '#393E41',
-    blue = '#313B72',
-    amaranth = '#E83151',
-    ivory = '#F6F7EB',
-    prussian_blue = '#23395B',
-    warm_black = '#004643',
+    red = '#DC1874',
+    ivo = '#F6F7EB',
+    blu = '#044782',
+    grn = '#165C1A',
 }
 
 gls.left[1] = { -- Padding
@@ -17,7 +15,7 @@ gls.left[1] = { -- Padding
         provider = function()
             return '   '
         end,
-        highlight = {colors.ivory, colors.warm_black},
+        highlight = {colors.ivo, colors.grn},
     },
 }
 gls.left[2] = { -- Vi Mode
@@ -34,17 +32,17 @@ gls.left[2] = { -- Vi Mode
             }
             return (alias[fn.mode()] or fn.mode()) .. ' '
         end,
-        highlight = {colors.ivory, colors.warm_black},
+        highlight = {colors.ivo, colors.grn},
         separator = ' ',
-        separator_highlight = {colors.warm_black, colors.amaranth},
+        separator_highlight = {colors.grn, colors.red},
     },
 }
 gls.left[3] = { -- File Icon
     FileIcon = {
         provider = 'FileIcon',
-        highlight = {colors.ivory, colors.amaranth},
+        highlight = {colors.ivo, colors.red},
         separator = '',
-        separator_highlight = {colors.amaranth, colors.prussian_blue},
+        separator_highlight = {colors.red, colors.blu},
     },
 }
 
@@ -55,8 +53,8 @@ gls.right[1] = { -- Position
             local l = tonumber(fn.line '.')
             return (' %-3d| %-3d'):format(c, l)
         end,
-        highlight = {colors.ivory, colors.amaranth},
+        highlight = {colors.ivo, colors.red},
         separator = '',
-        separator_highlight = {colors.amaranth, colors.prussian_blue},
+        separator_highlight = {colors.red, colors.blu},
     },
 }
