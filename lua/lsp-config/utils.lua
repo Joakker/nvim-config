@@ -28,6 +28,11 @@ local function on_attach(client, bufnr)
     set_keymap('n', '<leader>rn',
                '<CMD>lua require"lspsaga.rename".rename()<CR>')
 
+    set_keymap('n', '<C-f>',
+               '<CMD>lua require"lspsaga.action".smart_scroll_with_saga(1)<CR>')
+    set_keymap('n', '<C-b>',
+               '<CMD>lua require"lspsaga.action".smart_scroll_with_saga(-1)<CR>')
+
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
         augroup lsp_doc_highlight
