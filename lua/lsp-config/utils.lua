@@ -8,30 +8,28 @@ local function on_attach(client, bufnr)
 
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
-    set_keymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
-    set_keymap('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
-    set_keymap('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
+    set_keymap('n', 'gD', '<LUA>vim.lsp.buf.declaration()<CR>')
+    set_keymap('n', 'gd', '<LUA>vim.lsp.buf.definition()<CR>')
+    set_keymap('n', 'gi', '<LUA>vim.lsp.buf.implementation()<CR>')
+    set_keymap('n', 'gr', '<LUA>vim.lsp.buf.references()<CR>')
 
-    set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>')
-    set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>')
+    set_keymap('n', '[d', '<LUA>vim.lsp.diagnostic.goto_prev()<CR>')
+    set_keymap('n', ']d', '<LUA>vim.lsp.diagnostic.goto_next()<CR>')
 
-    set_keymap('n', 'K',
-               '<CMD>lua require"lspsaga.hover".render_hover_doc()<CR>')
+    set_keymap('n', 'K', '<LUA>require"lspsaga.hover".render_hover_doc()<CR>')
 
     set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {noremap = false})
     set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)',
                {noremap = false})
 
     set_keymap('n', '<leader>ca',
-               '<CMD>lua require"lspsaga.codeaction".code_action()<CR>')
-    set_keymap('n', '<leader>rn',
-               '<CMD>lua require"lspsaga.rename".rename()<CR>')
+               '<LUA>require"lspsaga.codeaction".code_action()<CR>')
+    set_keymap('n', '<leader>rn', '<LUA>require"lspsaga.rename".rename()<CR>')
 
     set_keymap('n', '<C-f>',
-               '<CMD>lua require"lspsaga.action".smart_scroll_with_saga(1)<CR>')
+               '<LUA>require"lspsaga.action".smart_scroll_with_saga(1)<CR>')
     set_keymap('n', '<C-b>',
-               '<CMD>lua require"lspsaga.action".smart_scroll_with_saga(-1)<CR>')
+               '<LUA>require"lspsaga.action".smart_scroll_with_saga(-1)<CR>')
 
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
@@ -43,7 +41,7 @@ local function on_attach(client, bufnr)
         ]], false)
     end
     if client.resolved_capabilities.document_formatting then
-        set_keymap('n', '<leader>lf', '<CMD>lua vim.lsp.buf.formatting()<CR>')
+        set_keymap('n', '<leader>lf', '<LUA>vim.lsp.buf.formatting()<CR>')
         vim.api.nvim_exec([[
         augroup lsp_formatting
             autocmd! * <buffer>

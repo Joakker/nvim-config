@@ -2,6 +2,13 @@ local M = {}
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
+-- Replaces '<LUA>' by '<CMD>lua '
+---@param   str     string
+---@return  string
+local function l(str)
+    return str:gsub('<LUA>', '<CMD>lua ')
+end
+
 -- Sets the option key to value in the given scope, which can be one of:
 -- - o: Global option
 -- - b: Buffer option
@@ -42,6 +49,7 @@ end
 ---@param   opts    table       The options for the mapping
 function M.set_keymap(mode, lhs, rhs, opts, buffer)
     local options = {noremap = true, silent = true}
+    rhs = l(rhs)
     if opts then options = M.extend(options, opts) end
     if buffer then
         vim.api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
