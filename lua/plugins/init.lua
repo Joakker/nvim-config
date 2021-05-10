@@ -113,11 +113,13 @@ packer.startup(function()
             import 'plugins.autopairs'
         end,
     }
+    use { -- colorschemes
+        'christianchiarulli/nvcode-color-schemes.vim', 'Matsuuu/pinkmare',
+    }
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
     use 'rhysd/vim-goyacc'
-    use 'christianchiarulli/nvcode-color-schemes.vim'
     use 'rktjmp/lush.nvim'
     use 'b3nj5m1n/kommentary'
     use 'rafcamlet/nvim-luapad'
