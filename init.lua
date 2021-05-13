@@ -18,5 +18,4 @@ import 'config'
 import 'plugins'
 import 'lsp-config'
 
-vim.cmd [[colo aurora]]
--- vim.cmd [[colo cyber-knight]]
+vim.cmd [[colo palenight]]
