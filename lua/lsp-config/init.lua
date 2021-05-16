@@ -49,9 +49,9 @@ vim.cmd [[ autocmd BufEnter * lua require 'completion'.on_attach() ]]
 
 for _, server in ipairs(servers) do import('lsp-config.' .. server) end
 
-local sign_define = vim.fn.sign_define
+--[[ local sign_define = vim.fn.sign_define
 
 sign_define('LspDiagnosticsSignError', {text = '', texthl = 'ErrorMsg'})
 sign_define('LspDiagnosticsSignWarning', {text = '', texthl = 'WarningMsg'})
 sign_define('LspDiagnosticsSignInformation', {text = '', texthl = 'MoreMsg'})
-sign_define('LspDiagnosticsSignHint', {text = 'ﯦ', texthl = 'Label'})
+sign_define('LspDiagnosticsSignHint', {text = 'ﯦ', texthl = 'Label'}) ]]

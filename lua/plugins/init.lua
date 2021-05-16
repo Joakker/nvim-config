@@ -123,4 +123,5 @@ packer.startup(function()
     use 'rktjmp/lush.nvim'
     use 'b3nj5m1n/kommentary'
     use 'rafcamlet/nvim-luapad'
+    use 'folke/tokyonight.nvim'
 end)
