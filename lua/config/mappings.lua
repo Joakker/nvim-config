@@ -20,6 +20,8 @@ set_keymap('n', '<F7>', '<LUA>require"FTerm".toggle()<CR>')
 set_keymap('t', '<F7>', '<LUA>require"FTerm".toggle()<CR>')
 set_keymap('n', '<F8>', '<LUA>require"plugins.fterm".gitui()<CR>')
 set_keymap('t', '<F8>', '<LUA>require"plugins.fterm".gitui()<CR>')
+set_keymap('n', '<F9>', '<LUA>require"plugins.fterm".bpython()<CR>')
+set_keymap('t', '<F9>', '<LUA>require"plugins.fterm".bpython()<CR>')
 
 set_keymap('n', '<leader>vs', '<LUA>require"utils".reload_config()<CR>')
 set_keymap('n', '<leader>wo', '<CMD>only<CR>')
