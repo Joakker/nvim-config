@@ -1,1 +1,1 @@
-require'go'.setup {auto_lint = false}
+-- require'go'.setup {auto_lint = false}
