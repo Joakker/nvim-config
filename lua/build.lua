@@ -8,6 +8,8 @@ local Job = require 'plenary.job'
 ---@return table|nil
 function M.find_parents(file)
     local cur = Path:new(vim.loop.cwd())
+    print(cur / file)
+    if (cur / file):exists() then return cur end
     for _, path in ipairs(cur:parents()) do
         local test_path = Path:new(path)
         if (test_path / file):exists() then return test_path end
