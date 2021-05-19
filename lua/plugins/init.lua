@@ -116,6 +116,12 @@ packer.startup(function()
     use { -- colorschemes
         'christianchiarulli/nvcode-color-schemes.vim', 'Matsuuu/pinkmare',
     }
+    use {
+        'norcalli/nvim-terminal.lua',
+        config = function()
+            require 'terminal'.setup()
+        end
+    }
 
     -- Simple Plugins
     use 'Joakker/vim-antlr4'
