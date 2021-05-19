@@ -4,6 +4,11 @@ snippet #! "#!/usr/bin/env python3" b
 $0
 endsnippet
 
+snippet if "if statement" b
+if ${1:true}:
+	${2:${VISUAL:pass}}
+endsnippet
+
 snippet ifmain "ifmain" b
 if __name__ == 'main':
 	${1:${VISUAL:main()}}
@@ -11,5 +16,25 @@ endsnippet
 
 snippet for "for loop" b
 for ${1:item} in ${2:items}:
+	${2:${VISUAL:pass}}
+endsnippet
+
+snippet while "while loop" b
+while ${1:true}:
+	${2:${VISUAL:pass}}
+endsnippet
+
+snippet with "with statement" b
+with ${1:name} as ${2:expr}:
 	${3:${VISUAL:pass}}
+endsnippet
+
+snippet class "class statement" b
+class ${1:Name}:
+	def __init__(self, $2):
+		${3:${VISUAL:pass}}
+endsnippet
+
+snippet cndexpr "conditional expression"
+${1:value} if ${2:condition} else ${3:default}
 endsnippet

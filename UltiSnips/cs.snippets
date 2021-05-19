@@ -1,0 +1,53 @@
+snippet if "if statement" b
+if (${1:expr})
+{
+	$0
+}
+endsnippet
+
+snippet elif "else if statement" b
+else if (${1:expr})
+{
+	$0
+}
+endsnippet
+
+snippet else "else statement" b
+else
+{
+	$0
+}
+endsnippet
+
+snippet switch "switch statement" b
+switch (${1:expr})
+{
+	$0
+}
+endsnippet
+
+snippet case "case statement" b
+case ${1:const}:
+	$0
+	break;
+endsnippet
+
+snippet default "default statement" b
+default:
+	$0
+	break;
+endsnippet
+
+snippet fori "for statement" b
+for (var i = ${1:1}; ${3:i < ${2:10}}; ${5:i${4:++}})
+{
+	$0
+}
+endsnippet
+
+snippet fore "foreach statement" b
+for (var ${1:e} in ${2:collection})
+{
+	$0
+}
+endsnippet

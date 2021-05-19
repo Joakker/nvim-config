@@ -1,78 +1,82 @@
-snippet main "Main function"
+snippet pkg "package statement" b
+package "${1:main}"
+endsnippet
+
+snippet main "main function" b
 func main() {
 	$0
 }
 endsnippet
 
-snippet init "Init function"
+snippet init "init function" b
 func init() {
 	$0
 }
 endsnippet
 
-snippet tyi "Interface definition"
+snippet tyi "interface definition" b
 // $1...
 type ${1:Type} interface {
 	$0
 }
 endsnippet
 
-snippet tys "Struct definition"
+snippet tys "struct definition" b
 // $1...
 type ${1:Type} struct {
 	$0
 }
 endsnippet
 
-snippet meth "Method definition"
+snippet meth "method definition" b
 // $2...
 func (${1/\*?(.).*/\l$1 /}$1) ${2:Method}($3)${4/^(.).*/ /}$4 {
 	$0
 }
 endsnippet
 
-snippet func "Function definition"
+snippet func "function definition" b
 // $1...
 func ${1:Function}($2)${3/^(.).*/ /}$3 {
 	$0
 }
 endsnippet
 
-snippet forr "For range"
+snippet forr "for range" b
 for ${1:k}, ${2:v} := range $3 {
 	$0
 }
 endsnippet
 
-snippet fori "For i"
+snippet fori "for i" b
 for ${1:i} := ${2:0}; ${4:$1 < ${3:10}}; ${5:$1++} {
 	$0
 }
 endsnippet
 
-snippet if "If"
+snippet if "if" b
 if $1 {
 	$0
 }
 endsnippet
 
-snippet iferr "If error != nil"
+snippet iferr "if error != nil" b
 if err != nil {
 	$0
 }
 endsnippet
 
-snippet dff "Defer func"
+snippet dff "defer func" b
 defer func() {
 	$0
 }()
 endsnippet
 
-snippet def "Defer call"
+snippet def "defer call" b
 defer $1($0)
 endsnippet
 
-snippet switch "Switch statement"
+snippet switch "switch statement" b
 switch $1 {
 case $2:
 	$0

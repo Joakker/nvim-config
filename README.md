@@ -71,7 +71,7 @@ manually):
 - Rust analyzer
 - Tsserver
 
-With snippet support for most of them. Speaking of snippets, the following
+<!-- With snippet support for most of them. Speaking of snippets, the following
 filetypes also have snippets defined, without the need of a language server:
 
-- Vimwiki
+- Vimwiki -->
