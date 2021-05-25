@@ -1,3 +1,17 @@
+local fn = vim.fn
+local exec = vim.cmd
+
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system {
+        'git', 'clone', 'https://github.com/wbthomason/packer.nvim',
+        install_path,
+    }
+end
+
+exec 'packadd packer.nvim'
+
 local packer = require 'packer'
 
 packer.init {
@@ -13,9 +27,15 @@ packer.startup(function()
     use_rocks 'lua-cjson'
 
     -- Let packer manage itself
-    use 'wbthomason/packer.nvim'
+    use {'wbthomason/packer.nvim', opt = true}
 
     -- Plugins with configuration/dependencies
+    use { -- nvim-autopairs
+        'windwp/nvim-autopairs',
+        config = function()
+            import 'plugins.autopairs'
+        end,
+    }
     use { -- galaxyline.nvim
         'glepnir/galaxyline.nvim',
         branch = 'main',
@@ -67,13 +87,13 @@ packer.startup(function()
             require 'plugins.fterm'
         end,
     }
-    use { -- nvim-tree.lua
+    --[[ use { -- nvim-tree.lua
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require 'plugins.nvim-tree'
         end,
-    }
+    } ]]
     use { -- hop.nvim
         'phaazon/hop.nvim',
         as = 'hop',
@@ -107,20 +127,14 @@ packer.startup(function()
             import 'plugins.colorizer'
         end,
     }
-    use { -- nvim-autopairs
-        'windwp/nvim-autopairs',
-        config = function()
-            import 'plugins.autopairs'
-        end,
-    }
     use { -- colorschemes
         'christianchiarulli/nvcode-color-schemes.vim', 'Matsuuu/pinkmare',
     }
     use {
         'norcalli/nvim-terminal.lua',
         config = function()
-            require 'terminal'.setup()
-        end
+            require'terminal'.setup()
+        end,
     }
 
     -- Simple Plugins
