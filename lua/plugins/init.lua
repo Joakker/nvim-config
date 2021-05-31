@@ -54,8 +54,8 @@ packer.startup(function()
     use { -- nvim-lspconfig
         'neovim/nvim-lspconfig',
         requires = {
-            'nvim-lua/completion-nvim', 'SirVer/ultisnips',
-            'glepnir/lspsaga.nvim',
+            -- 'nvim-lua/completion-nvim',
+            'hrsh7th/nvim-compe', 'SirVer/ultisnips', 'glepnir/lspsaga.nvim',
         },
     }
     use { -- nvim-treesitter
@@ -87,13 +87,6 @@ packer.startup(function()
             require 'plugins.fterm'
         end,
     }
-    --[[ use { -- nvim-tree.lua
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require 'plugins.nvim-tree'
-        end,
-    } ]]
     use { -- hop.nvim
         'phaazon/hop.nvim',
         as = 'hop',

@@ -18,9 +18,14 @@ local function on_attach(client, bufnr)
 
     set_keymap('n', 'K', '<LUA>require"lspsaga.hover".render_hover_doc()<CR>')
 
-    set_keymap('i', '<TAB>', '<Plug>(completion_smart_tab)', {noremap = false})
-    set_keymap('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)',
-               {noremap = false})
+    set_keymap('i', '<TAB>', [[v:lua.tab_completion()]],
+               {expr = true, noremap = false})
+    set_keymap('s', '<TAB>', [[v:lua.tab_completion()]],
+               {expr = true, noremap = false})
+    set_keymap('i', '<S-TAB>', [[v:lua.shift_tab_completion()]],
+               {expr = true, noremap = false})
+    set_keymap('s', '<S-TAB>', [[v:lua.shift_tab_completion()]],
+               {expr = true, noremap = false})
 
     set_keymap('n', '<leader>ca',
                '<LUA>require"lspsaga.codeaction".code_action()<CR>')

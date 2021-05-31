@@ -20,18 +20,51 @@ vim.lsp.protocol.CompletionItemKind = {
 
 local npairs = require 'nvim-autopairs'
 
+local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local function prior_is_ws()
+    local col = vim.fn.col '.' - 1
+    if col == 0 or vim.fn.getline '.':sub(col, col):match '%s' then
+        return true
+    else
+        return false
+    end
+end
+
+function _G.tab_completion()
+    if vim.fn.pumvisible() == 1 then
+        return t '<C-n>'
+    elseif vim.fn['UltiSnips#CanExpandSnippet']() == 1
+        or vim.fn['UltiSnips#CanJumpForwards']() == 1 then
+        return t '<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>'
+    elseif prior_is_ws() then
+        return t '<TAB>'
+    else
+        return vim.fn['compe#complete']()
+    end
+end
+
+function _G.shift_tab_completion()
+    if vim.fn.pumvisible() == 1 then
+        return t '<C-p>'
+    elseif vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
+        return t '<C-R>=UltiSnips#JumpBackwards()<CR>'
+    else
+        return t '<S-TAB>'
+    end
+end
+
 function _G.completion_confirm()
     if vim.fn.pumvisible() ~= 0 then
         if vim.fn.complete_info()['selected'] ~= -1 then
-            require'completion'.confirmCompletion()
-            return npairs.esc('<c-y>')
+            return vim.fn['compe#confirm'](npairs.esc '<CR>')
         else
-            vim.api.nvim_select_popupmenu_item(0, false, false, {})
-            require'completion'.confirmCompletion()
-            return npairs.esc('<c-n><c-y>')
+            return npairs.esc '<CR>'
         end
     else
-        return npairs.check_break_line_char()
+        return npairs.autopairs_cr()
     end
 end
 
@@ -45,9 +78,14 @@ local servers = {
 
 require'lspsaga'.init_lsp_saga()
 
-vim.cmd [[ autocmd BufEnter * lua require 'completion'.on_attach() ]]
+-- vim.cmd [[ autocmd BufEnter * lua require 'completion'.on_attach() ]]
 
 for _, server in ipairs(servers) do import('lsp-config.' .. server) end
+
+require'compe'.setup {
+    enabled = true,
+    source = {nvim_lsp = true, ultisnips = true},
+}
 
 --[[ local sign_define = vim.fn.sign_define
 
