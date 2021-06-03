@@ -36,3 +36,6 @@ set_keymap('n', '<leader>pu', '<LUA>require"packer".update()<CR>')
 
 set_keymap('n', '<leader><leader>w', '<LUA>require"hop".hint_words()<CR>')
 set_keymap('n', '<leader><leader>l', '<LUA>require"hop".hint_lines()<CR>')
+
+set_keymap('v', '<', '<gv')
+set_keymap('v', '>', '>gv')
