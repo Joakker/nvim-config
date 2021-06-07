@@ -123,10 +123,19 @@ packer.startup(function()
     use { -- colorschemes
         'christianchiarulli/nvcode-color-schemes.vim', 'Matsuuu/pinkmare',
     }
-    use {
+    use { -- nvim-terminal
         'norcalli/nvim-terminal.lua',
         config = function()
             require'terminal'.setup()
+        end,
+    }
+    use { -- vhyrro/neorg
+        'vhyrro/neorg',
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function()
+            require'neorg'.setup {
+                load = {['core.defaults'] = {}, ['core.norg.concealer'] = {}},
+            }
         end,
     }
 

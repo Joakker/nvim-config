@@ -1,3 +1,3 @@
 local g = vim.g
 
-g.indentLine_fileTypeExclude = {'help', 'packer', 'lspinfo'}
+g.indentLine_fileTypeExclude = {'help', 'packer', 'lspinfo', 'FTerm'}
