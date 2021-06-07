@@ -100,13 +100,13 @@ packer.startup(function()
             require'godot'.setup {versionmsg = false}
         end,
     }
-    use { -- gitsigns.nvim
+    --[[ use { -- gitsigns.nvim
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
             import 'plugins.gitsigns'
         end,
-    }
+    } ]]
     use { -- indent-blankline.nvim
         'lukas-reineke/indent-blankline.nvim',
         branch = 'lua',
