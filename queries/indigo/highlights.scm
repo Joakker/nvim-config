@@ -55,10 +55,14 @@
     "for" @repeat
     "in" @keyword.operator)
 
+(function_call
+    (identifier) @function)
+
 ((identifier) @function.builtin
     (any-of? @function.builtin
         "print" "println"))
 
+(string) @string
 
 (number) @number
 
