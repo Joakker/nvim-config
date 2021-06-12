@@ -1,5 +1,7 @@
 local M = {}
 
+local Path = require 'plenary.path'
+
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
 -- Replaces '<LUA>' by '<CMD>lua '
@@ -62,6 +64,19 @@ function M.has_parent(dir, name)
     for _, path in ipairs(vim.split(dir, '/')) do
         if path == name then return true end
     end
+end
+
+---@param name string
+---@return string
+function M.find_in_parents(name)
+    local cur = Path:new(vim.loop.cwd())
+    local test_path = cur / name
+    if test_path:exists() then return test_path:absolute() end
+    for _, parent in ipairs(cur:parents()) do
+        test_path = Path:new(parent) / name
+        if test_path:exists() then return test_path:absolute() end
+    end
+    return nil
 end
 
 return M
