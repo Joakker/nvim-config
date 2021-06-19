@@ -18,4 +18,4 @@ import 'config'
 import 'plugins'
 import 'lsp-config'
 
-vim.cmd [[colo aurora]]
+vim.cmd [[colo pinkmare]]
