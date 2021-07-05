@@ -8,6 +8,15 @@ local function on_attach(client, bufnr)
 
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
+    set_keymap('i', '<TAB>', [[v:lua.tab_completion()]],
+               {expr = true, noremap = false})
+    set_keymap('s', '<TAB>', [[v:lua.tab_completion()]],
+               {expr = true, noremap = false})
+    set_keymap('i', '<S-TAB>', [[v:lua.shift_tab_completion()]],
+               {expr = true, noremap = false})
+    set_keymap('s', '<S-TAB>', [[v:lua.shift_tab_completion()]],
+               {expr = true, noremap = false})
+
     set_keymap('n', 'gD', '<LUA>vim.lsp.buf.declaration()<CR>')
     set_keymap('n', 'gd', '<LUA>vim.lsp.buf.definition()<CR>')
     set_keymap('n', 'gi', '<LUA>vim.lsp.buf.implementation()<CR>')
@@ -17,15 +26,6 @@ local function on_attach(client, bufnr)
     set_keymap('n', ']d', '<LUA>vim.lsp.diagnostic.goto_next()<CR>')
 
     set_keymap('n', 'K', '<LUA>require"lspsaga.hover".render_hover_doc()<CR>')
-
-    set_keymap('i', '<TAB>', [[v:lua.tab_completion()]],
-               {expr = true, noremap = false})
-    set_keymap('s', '<TAB>', [[v:lua.tab_completion()]],
-               {expr = true, noremap = false})
-    set_keymap('i', '<S-TAB>', [[v:lua.shift_tab_completion()]],
-               {expr = true, noremap = false})
-    set_keymap('s', '<S-TAB>', [[v:lua.shift_tab_completion()]],
-               {expr = true, noremap = false})
 
     set_keymap('n', '<leader>ca',
                '<LUA>require"lspsaga.codeaction".code_action()<CR>')

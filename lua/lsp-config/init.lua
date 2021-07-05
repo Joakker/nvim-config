@@ -36,9 +36,6 @@ end
 function _G.tab_completion()
     if vim.fn.pumvisible() == 1 then
         return t '<C-n>'
-    elseif vim.fn['UltiSnips#CanExpandSnippet']() == 1
-        or vim.fn['UltiSnips#CanJumpForwards']() == 1 then
-        return t '<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>'
     elseif prior_is_ws() then
         return t '<TAB>'
     else
@@ -49,8 +46,6 @@ end
 function _G.shift_tab_completion()
     if vim.fn.pumvisible() == 1 then
         return t '<C-p>'
-    elseif vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
-        return t '<C-R>=UltiSnips#JumpBackwards()<CR>'
     else
         return t '<S-TAB>'
     end
@@ -68,8 +63,11 @@ function _G.completion_confirm()
     end
 end
 
-require'utils'.set_keymap('i', '<CR>', 'v:lua.completion_confirm()',
-                          {expr = true, noremap = true})
+local set_keymap = require'utils'.set_keymap
+
+set_keymap('i', '<CR>', 'v:lua.completion_confirm()',
+           {expr = true, noremap = true})
+set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true})
 
 local servers = {
     'sumneko', 'omnisharp', 'pyright', 'tsserver', 'vimls', 'bashls', 'gopls',
@@ -78,18 +76,9 @@ local servers = {
 
 require'lspsaga'.init_lsp_saga()
 
--- vim.cmd [[ autocmd BufEnter * lua require 'completion'.on_attach() ]]
-
 for _, server in ipairs(servers) do import('lsp-config.' .. server) end
 
 require'compe'.setup {
     enabled = true,
     source = {nvim_lsp = true, ultisnips = true},
 }
-
---[[ local sign_define = vim.fn.sign_define
-
-sign_define('LspDiagnosticsSignError', {text = '', texthl = 'ErrorMsg'})
-sign_define('LspDiagnosticsSignWarning', {text = '', texthl = 'WarningMsg'})
-sign_define('LspDiagnosticsSignInformation', {text = '', texthl = 'MoreMsg'})
-sign_define('LspDiagnosticsSignHint', {text = 'ﯦ', texthl = 'Label'}) ]]

@@ -11,7 +11,7 @@ parser_config.indigo = {
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all',
-    highlight = {enable = true},
+    highlight = {enable = true, disable = {'packer'}},
     rainbow = {enable = true, extended_mode = true},
     indent = {enable = true},
     playground = {enable = true},

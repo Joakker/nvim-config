@@ -14,8 +14,8 @@ function _G.inspect(...)
     print(unpack(objs))
 end
 
-import 'config'
 import 'plugins'
+import 'config'
 import 'lsp-config'
 
 vim.cmd [[colo pinkmare]]

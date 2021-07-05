@@ -1,6 +1,8 @@
 local opt = import'utils'.opt
 local g = vim.g
 
+local json = require 'config.json'
+
 opt('o', 'termguicolors', true)
 opt('o', 'hidden', true)
 opt('o', 'splitbelow', true)
@@ -16,7 +18,7 @@ opt('o', 'clipboard', 'unnamedplus')
 opt('o', 'completeopt', 'menuone,noinsert,noselect')
 opt('o', 'shortmess', vim.o.shortmess .. 'c')
 
-local indent = 4
+local indent = json.get 'options.indent' or 4
 
 opt('b', 'expandtab', true)
 opt('b', 'smartindent', true)
@@ -32,7 +34,7 @@ opt('w', 'colorcolumn', '80')
 opt('w', 'foldmethod', 'expr')
 opt('w', 'foldexpr', 'nvim_treesitter#foldexpr()')
 opt('w', 'list', true)
-opt('w', 'listchars', 'eol:,tab:──,trail:·')
+opt('w', 'listchars', 'eol:,tab:│  ,trail:·')
 
 g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0

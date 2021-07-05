@@ -104,7 +104,6 @@ packer.startup(function()
     }
     use { -- indent-blankline.nvim
         'lukas-reineke/indent-blankline.nvim',
-        branch = 'lua',
         config = function()
             import 'plugins.indentlines'
         end,
@@ -126,6 +125,7 @@ packer.startup(function()
     }
     use { -- vhyrro/neorg
         'vhyrro/neorg',
+        branch = 'unstable',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
             require'neorg'.setup {
