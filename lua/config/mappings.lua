@@ -1,41 +1,40 @@
 local g = vim.g
-local set_keymap = require'utils'.set_keymap
+local k = require 'keymap'
 
 g.mapleader = ','
 
-set_keymap('n', '<C-k>', '<CMD>BufferLineCyclePrev<CR>')
-set_keymap('n', '<C-j>', '<CMD>BufferLineCycleNext<CR>')
-set_keymap('i', '<C-k>', '<CMD>BufferLineCyclePrev<CR>')
-set_keymap('i', '<C-j>', '<CMD>BufferLineCycleNext<CR>')
+k.nnoremap {'<C-k>', '<CMD>BufferLineCyclePrev<CR>'}
+k.nnoremap {'<C-j>', '<CMD>BufferLineCycleNext<CR>'}
+k.inoremap {'<C-k>', '<CMD>BufferLineCyclePrev<CR>'}
+k.inoremap {'<C-j>', '<CMD>BufferLineCycleNext<CR>'}
 
 for _, dir in ipairs {'h', 'j', 'k', 'l'} do
-    set_keymap('n', string.format('<M-%s>', dir), string.format('<C-w>%s', dir))
+    k.nnoremap {string.format('<M-%s>', dir), string.format('<C-w>%s', dir)}
 end
 
-set_keymap('n', '<F1>', '<CMD>Telescope help_tags<CR>')
-set_keymap('n', '<F2>', ':edit ', {silent = false})
-set_keymap('n', '<F3>', '<CMD>NvimTreeToggle<CR>')
-set_keymap('n', '<F5>', '<LUA>import"build".build()<CR>')
-set_keymap('n', '<F7>', '<LUA>require"FTerm".toggle()<CR>')
-set_keymap('t', '<F7>', '<LUA>require"FTerm".toggle()<CR>')
-set_keymap('n', '<F8>', '<LUA>require"plugins.fterm".gitui()<CR>')
-set_keymap('t', '<F8>', '<LUA>require"plugins.fterm".gitui()<CR>')
-set_keymap('n', '<F9>', '<LUA>require"plugins.fterm".bpython()<CR>')
-set_keymap('t', '<F9>', '<LUA>require"plugins.fterm".bpython()<CR>')
+k.nnoremap {'<F1>', '<CMD>Telescope help_tags<CR>'}
+k.nnoremap {'<F2>', ':edit ', silent = false}
+k.nnoremap {'<F5>', require'build'.build}
+k.nnoremap {'<F7>', require'FTerm'.toggle}
+k.tnoremap {'<F7>', require'FTerm'.toggle}
+k.nnoremap {'<F8>', require'plugins.fterm'.gitui}
+k.tnoremap {'<F8>', require'plugins.fterm'.gitui}
+k.nnoremap {'<F9>', require'plugins.fterm'.bpython}
+k.tnoremap {'<F9>', require'plugins.fterm'.bpython}
 
-set_keymap('n', '<leader>vs', '<LUA>require"utils".reload_config()<CR>')
-set_keymap('n', '<leader>wo', '<CMD>only<CR>')
-set_keymap('n', '<leader>wc', '<CMD>close<CR>')
-set_keymap('n', '<leader>ms', '<CMD>messages<CR>')
-set_keymap('n', '<leader>cc', '<CMD>cclose<CR>')
+k.nnoremap {'<leader>vs', require'utils'.reload_config}
+k.nnoremap {'<leader>wo', '<CMD>only<CR>'}
+k.nnoremap {'<leader>wc', '<CMD>close<CR>'}
+k.nnoremap {'<leader>ms', '<CMD>messages<CR>'}
+k.nnoremap {'<leader>cc', '<CMD>cclose<CR>'}
 
-set_keymap('n', '<leader>pc', '<LUA>require"packer".clean()<CR>')
-set_keymap('n', '<leader>pi', '<LUA>require"packer".install()<CR>')
-set_keymap('n', '<leader>pk', '<LUA>require"packer".compile()<CR>')
-set_keymap('n', '<leader>pu', '<LUA>require"packer".update()<CR>')
+k.nnoremap {'<leader>pc', require'packer'.clean}
+k.nnoremap {'<leader>pi', require'packer'.install}
+k.nnoremap {'<leader>pk', require'packer'.compile}
+k.nnoremap {'<leader>pu', require'packer'.update}
 
-set_keymap('n', '<leader><leader>w', '<LUA>require"hop".hint_words()<CR>')
-set_keymap('n', '<leader><leader>l', '<LUA>require"hop".hint_lines()<CR>')
+k.nnoremap {'<leader><leader>w', require'hop'.hint_words}
+k.nnoremap {'<leader><leader>l', require'hop'.hint_lines}
 
-set_keymap('v', '<', '<gv')
-set_keymap('v', '>', '>gv')
+k.vnoremap {'<', '<gv'}
+k.vnoremap {'>', '>gv'}

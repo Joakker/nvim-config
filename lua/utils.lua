@@ -4,13 +4,6 @@ local Path = require 'plenary.path'
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
--- Replaces '<LUA>' by '<CMD>lua '
----@param   str     string
----@return  string
-local function l(str)
-    return str:gsub('<LUA>', '<CMD>lua ')
-end
-
 -- Sets the option key to value in the given scope, which can be one of:
 -- - o: Global option
 -- - b: Buffer option
@@ -38,26 +31,6 @@ end
 function M.reload_config()
     vim.cmd('luafile ' .. vim.env.MYVIMRC)
     print 'Reloaded config! 🥰'
-end
-
--- Wraps vim.api.nvim_buf_set_keymap() and vim.api.nvim_set_keymap(). Which one
--- will be called depends on whether the opts parameter contains a member called
--- 'buffer'. If it does, it must be the number of the buffer that the mapping
--- takes place in (0 for current buffer)
---
----@param   mode    string      The mode in which the mapping is valid
----@param   lhs     string      The keys that trigger the mapping
----@param   rhs     string      The value the mapping corresponds to
----@param   opts    table       The options for the mapping
-function M.set_keymap(mode, lhs, rhs, opts, buffer)
-    local options = {noremap = true, silent = true}
-    rhs = l(rhs)
-    if opts then options = M.extend(options, opts) end
-    if buffer then
-        vim.api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, options)
-    else
-        vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-    end
 end
 
 function M.has_parent(dir, name)

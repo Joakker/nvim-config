@@ -63,11 +63,10 @@ function _G.completion_confirm()
     end
 end
 
-local set_keymap = require'utils'.set_keymap
+local k = require 'keymap'
 
-set_keymap('i', '<CR>', 'v:lua.completion_confirm()',
-           {expr = true, noremap = true})
-set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true})
+k.inoremap {'<CR>', completion_confirm, expr = true}
+k.inoremap {'<C-Space>', vim.fn['compe#complete'], expr = true}
 
 local servers = {
     'sumneko', 'omnisharp', 'pyright', 'tsserver', 'vimls', 'bashls', 'gopls',
