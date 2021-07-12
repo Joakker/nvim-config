@@ -9,6 +9,14 @@ parser_config.indigo = {
     },
 }
 
+parser_config.norg = {
+    install_info = {
+        url = 'https://github.com/vhyrro/tree-sitter-norg',
+        files = {'src/parser.c'},
+        branch = 'main',
+    },
+}
+
 require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all',
     highlight = {enable = true, disable = {'packer'}},
