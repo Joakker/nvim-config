@@ -1,17 +1,18 @@
 (comment) @comment
 
+(string) @string
+
 [
-    "return"
-] @keyword
+    "("
+    ")"
+    "{"
+    "}"
+] @punctuation.bracket
 
 [
     ":"
-] @punctuation
-
-[
-    "true"
-    "false"
-] @boolean
+    ","
+] @punctuation.delimiter
 
 [
     "="
@@ -19,51 +20,69 @@
     "-"
     "*"
     "/"
+    ">"
+    "<"
+    ".."
     "=="
     "!="
     ">="
     "<="
-    ".."
 ] @operator
 
 [
-    "{"
-    "}"
-    "("
-    ")"
-] @punctuation.bracket
+    "true"
+    ; "false"
+] @boolean
+
+(ERROR) @error
 
 (func_stmt
     "func" @keyword.function
-    name: (identifier) @function)
+    name: (identifier) @identifier)
 
-(type_annotation
-    type: (identifier) @type)
+(func_stmt
+    parameters: (param_list
+        (param_decl
+            name: (identifier) @parameter
+            type: (identifier) @type)))
 
-(const_stmt
-    "const" @keyword
-    name: (identifier) @constant)
-
-(if_stmt
-    "if" @conditional)
-
-(let_stmt
-    "let" @keyword
-    name: (identifier) @variable)
+((identifier)
+    @_type
+        (#any-of? @_type
+            "Number"
+            "Int"
+            "Float"
+            "String"
+            "Any")) @type.builtin
 
 (for_stmt
     "for" @repeat
     "in" @keyword.operator)
 
-(function_call
-    (identifier) @function)
+(class_stmt
+    "class" @keyword
+    (identifier) @type)
 
-((identifier) @function.builtin
-    (any-of? @function.builtin
-        "print" "println"))
+(return_stmt
+    "return" @keyword.return)
 
-(string) @string
+(call_expr
+    function:
+        (identifier) @function)
 
-(number) @number
+(call_expr
+    function:
+        ((identifier) @_name (#any-of? @_name
+            "print" "println")) @function.builtin)
 
-(ERROR) @error
+(if_stmt
+    "if" @conditional)
+
+(integer) @number
+(float) @float
+
+(var_decl
+    [
+        "let"
+        "const"
+    ] @keyword)

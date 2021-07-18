@@ -1,1 +1,1 @@
-; inherits: round,curly
+;inherits: curly,round
