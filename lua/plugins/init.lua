@@ -126,11 +126,16 @@ packer.startup(function()
     use { -- vhyrro/neorg
         'vhyrro/neorg',
         branch = 'unstable',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = 'nvim-lua/plenary.nvim',
         config = function()
-            require'neorg'.setup {
-                load = {['core.defaults'] = {}, ['core.norg.concealer'] = {}},
-            }
+            import'plugins.gitsigns'
+        end,
+    }
+    use { -- gitsigns.nvim
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            import 'plugins.gitsigns'
         end,
     }
 
