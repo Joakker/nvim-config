@@ -1,22 +1,22 @@
 local g = vim.g
 
 g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
+    default = '',
+    symlink = '',
     git = {
-        unstaged = "",
-        staged = "",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "",
-        deleted = ""
+        unstaged = '',
+        staged = '',
+        unmerged = '',
+        renamed = '➜',
+        untracked = '',
+        deleted = '',
     },
     folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-        symlink_open = ""
-    }
+        default = '',
+        open = '',
+        empty = '',
+        empty_open = '',
+        symlink = '',
+        symlink_open = '',
+    },
 }

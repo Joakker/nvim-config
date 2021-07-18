@@ -1,16 +1,16 @@
 local utils = require 'lsp-config.utils'
 local bin_path = utils.serv_path .. '/lua/bin/Linux/lua-language-server'
 
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {bin_path, '-E', utils.serv_path .. '/lua/main.lua'},
+require('lspconfig').sumneko_lua.setup {
+    cmd = { bin_path, '-E', utils.serv_path .. '/lua/main.lua' },
     on_attach = utils.on_attach,
     settings = {
         Lua = {
-            runtime = {version = 'LuaJIT'},
-            diagnostics = {globals = {'vim', 'inspect', 'import'}},
-            workspace = {library = vim.api.nvim_get_runtime_file('lua/', false)},
-            telemetry = {enable = false},
-            completion = {keywordSnippet = 'Disable', callSnippet = 'Disable'},
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = { 'vim', 'inspect', 'import' } },
+            workspace = { library = vim.api.nvim_get_runtime_file('lua/', false) },
+            telemetry = { enable = false },
+            completion = { keywordSnippet = 'Disable', callSnippet = 'Disable' },
         },
     },
 }

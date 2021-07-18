@@ -2,7 +2,7 @@ local M = {}
 
 local Path = require 'plenary.path'
 
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 
 -- Sets the option key to value in the given scope, which can be one of:
 -- - o: Global option
@@ -14,7 +14,9 @@ local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 ---@param   value   string|number|boolean   The value of the option
 function M.opt(scope, key, value)
     scopes[scope][key] = value
-    if scope ~= 'o' then scopes['o'][key] = value end
+    if scope ~= 'o' then
+        scopes['o'][key] = value
+    end
 end
 
 -- Wrapper around vim.tbl_extend so that it always forces extension
@@ -35,7 +37,9 @@ end
 
 function M.has_parent(dir, name)
     for _, path in ipairs(vim.split(dir, '/')) do
-        if path == name then return true end
+        if path == name then
+            return true
+        end
     end
 end
 
@@ -44,10 +48,14 @@ end
 function M.find_in_parents(name)
     local cur = Path:new(vim.loop.cwd())
     local test_path = cur / name
-    if test_path:exists() then return test_path:absolute() end
+    if test_path:exists() then
+        return test_path:absolute()
+    end
     for _, parent in ipairs(cur:parents()) do
         test_path = Path:new(parent) / name
-        if test_path:exists() then return test_path:absolute() end
+        if test_path:exists() then
+            return test_path:absolute()
+        end
     end
     return nil
 end

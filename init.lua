@@ -10,7 +10,7 @@ end
 
 ---Wrapper around vim.inspect so that it prints the result
 function _G.inspect(...)
-    local objs = vim.tbl_map(vim.inspect, {...})
+    local objs = vim.tbl_map(vim.inspect, { ... })
     print(unpack(objs))
 end
 

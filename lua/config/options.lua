@@ -1,4 +1,4 @@
-local opt = import'utils'.opt
+local opt = import('utils').opt
 local g = vim.g
 
 local json = require 'config.json'

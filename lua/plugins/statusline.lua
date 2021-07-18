@@ -15,7 +15,7 @@ gls.left[1] = { -- Padding
         provider = function()
             return '   '
         end,
-        highlight = {colors.ivo, colors.grn},
+        highlight = { colors.ivo, colors.grn },
     },
 }
 gls.left[2] = { -- Vi Mode
@@ -32,17 +32,17 @@ gls.left[2] = { -- Vi Mode
             }
             return (alias[fn.mode()] or fn.mode()) .. ' '
         end,
-        highlight = {colors.ivo, colors.grn},
+        highlight = { colors.ivo, colors.grn },
         separator = ' ',
-        separator_highlight = {colors.grn, colors.red},
+        separator_highlight = { colors.grn, colors.red },
     },
 }
 gls.left[3] = { -- File Icon
     FileIcon = {
         provider = 'FileIcon',
-        highlight = {colors.ivo, colors.red},
+        highlight = { colors.ivo, colors.red },
         separator = '',
-        separator_highlight = {colors.red, colors.blu},
+        separator_highlight = { colors.red, colors.blu },
     },
 }
 
@@ -53,8 +53,8 @@ gls.right[1] = { -- Position
             local l = tonumber(fn.line '.')
             return (' %-3d| %-3d'):format(c, l)
         end,
-        highlight = {colors.ivo, colors.red},
+        highlight = { colors.ivo, colors.red },
         separator = '',
-        separator_highlight = {colors.red, colors.blu},
+        separator_highlight = { colors.red, colors.blu },
     },
 }

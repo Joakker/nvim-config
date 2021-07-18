@@ -37,81 +37,83 @@ local theme = lush(function()
         VertSplit {}, --
         SignColumn {}, --
         --
-        Comment {fg = colors[2], gui = 'italic'}, --
-        ColorColumn {bg = colors[7]}, --
-        LineNr {fg = colors[3]}, --
-        CursorLineNr {fg = colors[8]}, --
-        NonText {fg = colors[4].darken(60)}, --
-        Normal {fg = colors[5]}, --
-        Folded {Normal, bg = colors[1]}, --
-        NormalFloat {Normal, bg = colors[1].darken(20)}, --
-        Pmenu {NormalFloat}, --
-        PmenuSel {fg = colors[4], bg = colors[1].darken(40)}, --
-        PmenuSbar {fg = colors[4], bg = colors[4]}, --
-        PmenuThumb {fg = colors[8], bg = colors[8]}, --
-        QuickFixLine {fg = colors[14]}, --
-        Search {bg = colors[14]}, --
-        SpecialKey {fg = colors[9]}, --
-        Title {fg = colors[5].rotate(20)}, --
-        Visual {fg = colors[4].lighten(20), bg = colors[1].darken(20)}, --
+        Comment { fg = colors[2], gui = 'italic' }, --
+        ColorColumn { bg = colors[7] }, --
+        LineNr { fg = colors[3] }, --
+        CursorLineNr { fg = colors[8] }, --
+        NonText { fg = colors[4].darken(60) }, --
+        Normal { fg = colors[5] }, --
+        Folded { Normal, bg = colors[1] }, --
+        NormalFloat { Normal, bg = colors[1].darken(20) }, --
+        Pmenu { NormalFloat }, --
+        PmenuSel { fg = colors[4], bg = colors[1].darken(40) }, --
+        PmenuSbar { fg = colors[4], bg = colors[4] }, --
+        PmenuThumb { fg = colors[8], bg = colors[8] }, --
+        QuickFixLine { fg = colors[14] }, --
+        Search { bg = colors[14] }, --
+        SpecialKey { fg = colors[9] }, --
+        Title { fg = colors[5].rotate(20) }, --
+        Visual { fg = colors[4].lighten(20), bg = colors[1].darken(20) }, --
         --
-        Constant {fg = colors[13]}, --
-        String {Constant, gui = 'bold,italic'}, --
-        Character {fg = colors[13].lighten(50)}, --
-        Number {fg = colors[8]}, --
-        Boolean {fg = Constant.fg.rotate(70)}, --
+        Constant { fg = colors[13] }, --
+        String { Constant, gui = 'bold,italic' }, --
+        Character { fg = colors[13].lighten(50) }, --
+        Number { fg = colors[8] }, --
+        Boolean { fg = Constant.fg.rotate(70) }, --
         --
-        Identifier {fg = colors[3]}, --
-        Function {fg = colors[11], gui = 'italic'}, --
+        Identifier { fg = colors[3] }, --
+        Function { fg = colors[11], gui = 'italic' }, --
         --
-        Statement {fg = colors[2]}, --
-        Conditional {fg = colors[8]}, --
-        Repeat {fg = colors[10]}, --
+        Statement { fg = colors[2] }, --
+        Conditional { fg = colors[8] }, --
+        Repeat { fg = colors[10] }, --
         -- Label          { }, --
         -- Operator       { }, --
         -- Keyword        { }, --
         -- Exception      { }, --
         --
-        PreProc {fg = colors[1].lighten(30)}, --
+        PreProc { fg = colors[1].lighten(30) }, --
         -- Include        { }, --
         -- Define         { }, --
         -- Macro          { }, --
         -- PreCondit      { }, --
         --
-        Type {fg = colors[14]}, --
+        Type { fg = colors[14] }, --
         -- StorageClass   { }, --
         -- Structure      { }, --
         -- Typedef        { }, --
         --
-        Special {fg = colors[13].rotate(20)}, --
+        Special { fg = colors[13].rotate(20) }, --
         -- SpecialChar    { }, --
         -- Tag            { }, --
         -- Delimiter      { }, --
         -- SpecialComment { }, --
         -- Debug          { }, --
         --
-        Error {fg = colors[1].lighten(40), gui = 'underline'}, --
+        Error { fg = colors[1].lighten(40), gui = 'underline' }, --
         --
-        Todo {fg = colors[14], gui = 'bold'}, --
-        ErrorMsg {fg = colors[2], gui = 'underline'}, --
-        WarningMsg {fg = colors[13], gui = 'underline'}, --
+        Todo { fg = colors[14], gui = 'bold' }, --
+        ErrorMsg { fg = colors[2], gui = 'underline' }, --
+        WarningMsg { fg = colors[13], gui = 'underline' }, --
         --
-        LspReferenceText {fg = colors[1], bg = colors[5], gui = 'bold'}, --
-        LspReferenceRead {LspReferenceText}, --
-        LspReferenceWrite {LspReferenceText}, --
+        LspReferenceText { fg = colors[1], bg = colors[5], gui = 'bold' }, --
+        LspReferenceRead { LspReferenceText }, --
+        LspReferenceWrite { LspReferenceText }, --
         --
-        LspDiagnosticsDefaultError {ErrorMsg}, --
-        LspDiagnosticsDefaultWarning {WarningMsg}, --
-        LspDiagnosticsDefaultInformation {fg = colors[8]}, --
-        LspDiagnosticsDefaultHint {fg = colors[9]}, --
+        LspDiagnosticsDefaultError { ErrorMsg }, --
+        LspDiagnosticsDefaultWarning { WarningMsg }, --
+        LspDiagnosticsDefaultInformation { fg = colors[8] }, --
+        LspDiagnosticsDefaultHint { fg = colors[9] }, --
         --
         LspDiagnosticsUnderlineError {
             LspDiagnosticsDefaultError,
             gui = 'underline',
-        }, LspDiagnosticsUnderlineWarning {
+        },
+        LspDiagnosticsUnderlineWarning {
             LspDiagnosticsDefaultWarning,
             gui = 'underline',
-        }, LspDiagnosticsUnderlineInformation {
+        },
+        LspDiagnosticsUnderlineInformation {
             LspDiagnosticsDefaultInformation,
             gui = 'underline',
         },
@@ -119,10 +121,10 @@ local theme = lush(function()
             LspDiagnosticsDefaultHint,
             gui = 'underline',
         }, --
-        LspDiagnosticsSignError {LspDiagnosticsDefaultError, gui = ''}, --
-        LspDiagnosticsSignWarning {LspDiagnosticsDefaultWarning, gui = ''}, --
+        LspDiagnosticsSignError { LspDiagnosticsDefaultError, gui = '' }, --
+        LspDiagnosticsSignWarning { LspDiagnosticsDefaultWarning, gui = '' }, --
         --
-        TSAnnotation {fg = colors[8].darken(10)}, --
+        TSAnnotation { fg = colors[8].darken(10) }, --
         -- TSAttribute          { },    --
         -- TSBoolean            { },    --
         -- TSCharacter          { },    --

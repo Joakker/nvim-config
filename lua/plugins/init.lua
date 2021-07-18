@@ -5,7 +5,9 @@ local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
     fn.system {
-        'git', 'clone', 'https://github.com/wbthomason/packer.nvim',
+        'git',
+        'clone',
+        'https://github.com/wbthomason/packer.nvim',
         install_path,
     }
 end
@@ -15,21 +17,21 @@ exec 'packadd packer.nvim'
 local packer = require 'packer'
 
 packer.init {
-    git = {clone_timeout = 3600},
-    display = {working_sym = '', error_sym = '', done_sym = ''},
-    luarocks = {python_cmd = 'python3'},
+    git = { clone_timeout = 3600 },
+    display = { working_sym = '', error_sym = '', done_sym = '' },
+    luarocks = { python_cmd = 'python3' },
 }
 
 local use = packer.use
 local use_rocks = packer.use_rocks
 
-require'packer.luarocks'.setup_paths()
+require('packer.luarocks').setup_paths()
 
 packer.startup(function()
     use_rocks 'lua-cjson'
 
     -- Let packer manage itself
-    use {'wbthomason/packer.nvim', opt = true}
+    use { 'wbthomason/packer.nvim', opt = true }
 
     -- Plugins with configuration/dependencies
     use { -- nvim-autopairs
@@ -57,27 +59,29 @@ packer.startup(function()
         'neovim/nvim-lspconfig',
         requires = {
             -- 'nvim-lua/completion-nvim',
-            'hrsh7th/nvim-compe', 'SirVer/ultisnips', 'glepnir/lspsaga.nvim',
+            'hrsh7th/nvim-compe',
+            'SirVer/ultisnips',
+            'glepnir/lspsaga.nvim',
         },
     }
     use { -- nvim-treesitter
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        requires = {'p00f/nvim-ts-rainbow', 'nvim-treesitter/playground'},
+        requires = { 'p00f/nvim-ts-rainbow', 'nvim-treesitter/playground' },
         config = function()
             require 'plugins.treesitter'
         end,
     }
     use { -- nvim-go
         'crispgm/nvim-go',
-        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
+        requires = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
         config = function()
             require 'plugins.go'
         end,
     }
     use { -- telescope.nvim
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
+        requires = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
         config = function()
             require 'plugins.telescope'
         end,
@@ -99,7 +103,7 @@ packer.startup(function()
     use { -- godot.nvim
         '~/Projects/godot.nvim',
         config = function()
-            require'godot'.setup {versionmsg = false}
+            require('godot').setup { versionmsg = false }
         end,
     }
     use { -- indent-blankline.nvim
@@ -115,12 +119,13 @@ packer.startup(function()
         end,
     }
     use { -- colorschemes
-        'christianchiarulli/nvcode-color-schemes.vim', 'Matsuuu/pinkmare',
+        'christianchiarulli/nvcode-color-schemes.vim',
+        'Matsuuu/pinkmare',
     }
     use { -- nvim-terminal
         'norcalli/nvim-terminal.lua',
         config = function()
-            require'terminal'.setup()
+            require('terminal').setup()
         end,
     }
     use { -- vhyrro/neorg
@@ -128,7 +133,7 @@ packer.startup(function()
         branch = 'unstable',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
-            import'plugins.gitsigns'
+            import 'plugins.gitsigns'
         end,
     }
     use { -- gitsigns.nvim

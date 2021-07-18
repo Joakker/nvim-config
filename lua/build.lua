@@ -8,20 +8,24 @@ local Job = require 'plenary.job'
 ---@return table|nil
 function M.find_parents(file)
     local cur = Path:new(vim.loop.cwd())
-    if (cur / file):exists() then return cur end
+    if (cur / file):exists() then
+        return cur
+    end
     for _, path in ipairs(cur:parents()) do
         local test_path = Path:new(path)
-        if (test_path / file):exists() then return test_path end
+        if (test_path / file):exists() then
+            return test_path
+        end
     end
     return nil
 end
 
-M.filetypes = {['latex'] = ':TexlabBuild'}
+M.filetypes = { ['latex'] = ':TexlabBuild' }
 
 M.conditions = {
     ['Makefile'] = 'make',
-    ['go.mod'] = {'go', args = {'build'}},
-    ['Cargo.toml'] = {'cargo', args = {'build'}},
+    ['go.mod'] = { 'go', args = { 'build' } },
+    ['Cargo.toml'] = { 'cargo', args = { 'build' } },
     ['tsconfig.json'] = 'tsc',
 }
 
@@ -41,21 +45,25 @@ function M.build()
                 cmd = v[1]
                 args = v.args
             else
-                print('build.lua: Invalid command for condition:' .. k .. '🧐')
+                print(
+                    'build.lua: Invalid command for condition:' .. k .. '🧐'
+                )
                 return
             end
-            Job:new{
-                command = cmd,
-                args = args,
-                cwd = test_path.filepath,
-                on_exit = function(_, return_val)
-                    if return_val ~= 0 then
-                        print [[build.lua: Exited with nonzero code 😨]]
-                    else
-                        print [[build.lua: Success! 😎]]
-                    end
-                end,
-            }:sync()
+            Job
+                :new({
+                    command = cmd,
+                    args = args,
+                    cwd = test_path.filepath,
+                    on_exit = function(_, return_val)
+                        if return_val ~= 0 then
+                            print [[build.lua: Exited with nonzero code 😨]]
+                        else
+                            print [[build.lua: Success! 😎]]
+                        end
+                    end,
+                })
+                :sync()
             return
         end
     end

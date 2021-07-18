@@ -1,4 +1,4 @@
-require'bufferline'.setup {
+require('bufferline').setup {
     options = {
         separator_style = 'slant',
         show_buffer_close_icons = false,
@@ -7,7 +7,9 @@ require'bufferline'.setup {
             return ' (' .. count .. ')'
         end,
         custom_filter = function(bufnr)
-            if vim.bo[bufnr].filetype ~= 'qf' then return true end
+            if vim.bo[bufnr].filetype ~= 'qf' then
+                return true
+            end
         end,
     },
 }
