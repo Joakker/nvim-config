@@ -1,5 +1,50 @@
 local k = require 'keymap'
 
+local npairs = require 'nvim-autopairs'
+
+local function t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local function prior_is_ws()
+    local col = vim.fn.col '.' - 1
+    if col == 0 or vim.fn.getline '.':sub(col, col):match '%s' then
+        return true
+    else
+        return false
+    end
+end
+
+local function tab_completion()
+    if vim.fn.pumvisible() == 1 then
+        return t '<C-n>'
+    elseif prior_is_ws() then
+        return t '<TAB>'
+    else
+        return vim.fn['compe#complete']()
+    end
+end
+
+local function shift_tab_completion()
+    if vim.fn.pumvisible() == 1 then
+        return t '<C-p>'
+    else
+        return t '<S-TAB>'
+    end
+end
+
+local function completion_confirm()
+    if vim.fn.pumvisible() ~= 0 then
+        if vim.fn.complete_info()['selected'] ~= -1 then
+            return vim.fn['compe#confirm'](npairs.esc '<CR>')
+        else
+            return npairs.esc '<CR>'
+        end
+    else
+        return npairs.autopairs_cr()
+    end
+end
+
 local function on_attach(client, bufnr)
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
@@ -54,7 +99,7 @@ local function on_attach(client, bufnr)
         vim.api.nvim_exec([[
         augroup lsp_formatting
             autocmd! * <buffer>
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync({}, 5000)
         augroup END
         ]], false)
     end

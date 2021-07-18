@@ -3,8 +3,8 @@ local g = vim.g
 g.completion_enable_snippet = 'UltiSnips'
 
 g.UltiSnipsExpandTrigger = '<TAB>'
-g.UltiSnipsJumpForwardTrigger = '<M-l>'
-g.UltiSnipsBackwardTrigger = '<M-h>'
+g.UltiSnipsJumpForwardTrigger = '<C-l>'
+g.UltiSnipsBackwardTrigger = '<C-h>'
 
 g.completion_confirm_key = ''
 
@@ -18,54 +18,9 @@ vim.lsp.protocol.CompletionItemKind = {
     '   (Operator)', '   (TypeParameter)',
 }
 
-local npairs = require 'nvim-autopairs'
-
-local function t(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local function prior_is_ws()
-    local col = vim.fn.col '.' - 1
-    if col == 0 or vim.fn.getline '.':sub(col, col):match '%s' then
-        return true
-    else
-        return false
-    end
-end
-
-function _G.tab_completion()
-    if vim.fn.pumvisible() == 1 then
-        return t '<C-n>'
-    elseif prior_is_ws() then
-        return t '<TAB>'
-    else
-        return vim.fn['compe#complete']()
-    end
-end
-
-function _G.shift_tab_completion()
-    if vim.fn.pumvisible() == 1 then
-        return t '<C-p>'
-    else
-        return t '<S-TAB>'
-    end
-end
-
-function _G.completion_confirm()
-    if vim.fn.pumvisible() ~= 0 then
-        if vim.fn.complete_info()['selected'] ~= -1 then
-            return vim.fn['compe#confirm'](npairs.esc '<CR>')
-        else
-            return npairs.esc '<CR>'
-        end
-    else
-        return npairs.autopairs_cr()
-    end
-end
-
 local k = require 'keymap'
 
-k.inoremap {'<CR>', completion_confirm, expr = true}
+k.inoremap {'<CR>', require'lsp-config.utils'.completion_confirm, expr = true}
 k.inoremap {'<C-Space>', vim.fn['compe#complete'], expr = true}
 
 local servers = {
