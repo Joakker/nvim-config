@@ -2,9 +2,7 @@ local utils = require 'lsp-config.utils'
 
 local lua_args = {
     {
-        formatCommand = 'lua-format -i --no-keep-simple-function-one-line'
-            .. ' --column-limit=80 --double-quote-to-single-quote'
-            .. ' --extra-sep-at-table-end --no-break-after-operator',
+        formatCommand = 'stylua -',
         formatStdin = true,
     },
 }
