@@ -18,6 +18,10 @@ local json_args = {
     },
 }
 
+local python_args = {
+    { formatCommand = 'black -', formatStdin = true },
+}
+
 require('lspconfig').efm.setup {
     on_attach = utils.on_attach,
     init_options = { documentFormatting = true, codeAction = false },
@@ -30,6 +34,7 @@ require('lspconfig').efm.setup {
             javascript = javascript_args,
             typescript = javascript_args,
             jsonc = json_args,
+            python = python_args,
         },
     },
 }
