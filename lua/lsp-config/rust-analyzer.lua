@@ -1,8 +1,12 @@
 local utils = require 'lsp-config.utils'
 
-local bin_path = utils.serv_path .. '/rust-analyzer'
+require('rust-tools').setup {
+    inlay_hints = {
+        parameter_hints_prefix = '← ',
+    },
+}
 
 require('lspconfig').rust_analyzer.setup {
-    cmd = { bin_path },
+    cmd = { 'rust-analyzer' },
     on_attach = utils.on_attach,
 }

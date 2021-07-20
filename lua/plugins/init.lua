@@ -62,12 +62,16 @@ packer.startup(function()
             'hrsh7th/nvim-compe',
             'SirVer/ultisnips',
             'glepnir/lspsaga.nvim',
+            'simrat39/rust-tools.nvim',
         },
     }
     use { -- nvim-treesitter
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        requires = { 'p00f/nvim-ts-rainbow', 'nvim-treesitter/playground' },
+        requires = {
+            'p00f/nvim-ts-rainbow',
+            'nvim-treesitter/playground',
+        },
         config = function()
             require 'plugins.treesitter'
         end,
