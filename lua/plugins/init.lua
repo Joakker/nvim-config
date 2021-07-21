@@ -137,7 +137,7 @@ packer.startup(function()
         branch = 'unstable',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
-            import 'plugins.gitsigns'
+            import 'plugins.neorg'
         end,
     }
     use { -- gitsigns.nvim
