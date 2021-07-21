@@ -25,7 +25,7 @@ local python_args = {
 require('lspconfig').efm.setup {
     on_attach = utils.on_attach,
     init_options = { documentFormatting = true, codeAction = false },
-    filetypes = { 'lua', 'python', 'javascript', 'typescript', 'jsonc' },
+    filetypes = { 'lua', 'python', 'javascript', 'typescript', 'jsonc', 'norg' },
     root_dir = vim.loop.cwd,
     settings = {
         rootMarkers = { '.git' },

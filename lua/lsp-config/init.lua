@@ -64,5 +64,5 @@ end
 
 require('compe').setup {
     enabled = true,
-    source = { nvim_lsp = true, ultisnips = true },
+    source = { nvim_lsp = true, ultisnips = true, neorg = true },
 }

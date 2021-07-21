@@ -57,6 +57,7 @@ local function on_attach(client, bufnr)
     k.nnoremap { 'gd', vim.lsp.buf.definition, buffer = bufnr }
     k.nnoremap { 'gi', vim.lsp.buf.implementation, buffer = bufnr }
     k.nnoremap { 'gr', vim.lsp.buf.references, buffer = bufnr }
+    k.nnoremap { 'gT', vim.lsp.buf.type_definition, buffer = bufnr }
 
     k.nnoremap { '[d', vim.lsp.diagnostic.goto_prev, buffer = bufnr }
     k.nnoremap { ']d', vim.lsp.diagnostic.goto_next, buffer = bufnr }
