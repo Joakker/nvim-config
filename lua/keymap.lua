@@ -3,8 +3,8 @@ _G.__mapping_exp = function(nr)
     return __mapping_rhs[nr]()
 end
 
-local cmd = [[<CMD>lua __mapping_exp(%s)<CR>]]
-local exp = [[v:lua.__mapping_exp(%s)<CR>]]
+local cmd = [[<CMD>lua __mapping_rhs[%s]()<CR>]]
+local exp = [[v:lua.__mapping_exp(%s)]]
 
 local function insert(f)
     table.insert(__mapping_rhs, f)
@@ -30,10 +30,6 @@ local function make_mapper(mode, defaults, opts)
     if type(rhs) == 'string' then
         mapping = rhs
     elseif type(rhs) == 'function' then
-        assert(
-            map_opts.noremap,
-            'if `rhs` is a function, `noremap` must be true'
-        )
         local func_id = insert(rhs)
         if map_opts.expr then
             mapping = exp:format(func_id)

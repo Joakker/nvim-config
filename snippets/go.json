@@ -1,0 +1,33 @@
+{
+  "Interface type": {
+    "prefix": ["tyi"],
+    "body": ["type $1 interface {", "\t$0", "}"]
+  },
+  "Struct type": {
+    "prefix": ["tys"],
+    "body": ["type $1 struct {", "\t$0", "}"]
+  },
+  "Type New": {
+    "prefix": ["tynew"],
+    "body": [
+      "type ${1:Name} struct {",
+      "\t$3",
+      "}",
+      "",
+      "func New${2:$1}($4) *$1 {",
+      "\treturn &$1{}",
+      "}"
+    ],
+    "description": "Struct with constructor"
+  },
+  "Method": {
+    "prefix": ["meth"],
+    "body": ["func ($1) ${2:name}($3) $4 {", "\t$0", "}"],
+    "description": "Method definition"
+  },
+  "func": {
+    "prefix": ["func"],
+    "body": ["func ${1:name}($2) $3 {", "\t$0", "}"],
+    "description": "function definition"
+  }
+}

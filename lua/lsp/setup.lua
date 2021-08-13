@@ -1,3 +1,7 @@
+import 'lsp.compe'
+import 'lsp.snippets'
+import 'lsp.saga'
+
 vim.lsp.protocol.CompletionItemKind = {
     '   (Text) ',
     '   (Method)',
