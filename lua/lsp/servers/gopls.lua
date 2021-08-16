@@ -1,6 +1,7 @@
 local json = require 'json'
 local on_attach = require('lsp.utils').on_attach
 local List = require 'plenary.collections.py_list'
+local k = require 'keymap'
 
 --@type string
 local tags = (function()
@@ -10,12 +11,15 @@ local tags = (function()
 end)()
 
 require('go').setup {
-    lint_prompt_style = 'vt',
+    max_line_len = 80,
+    dap_debug = true,
 }
 
 require('lspconfig').gopls.setup {
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
+        k.nnoremap { '<leader>gc', require('go.comment').gen }
+        k.nnoremap { '<leader>gb', require('go.dap').breakpt }
     end,
     settings = {
         gopls = {

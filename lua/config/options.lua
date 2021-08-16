@@ -12,6 +12,7 @@ opt.foldexpr = 'nvim_treesitter#foldexpr()'
 opt.shortmess:append 'c'
 
 opt.textwidth = 80
+opt.wrap = false
 
 opt.completeopt = { 'menuone', 'noselect' }
 opt.formatoptions:append { 'o', 'r' }

@@ -48,13 +48,6 @@ return packer.startup(function()
             require 'plugins.devicons'
         end,
     }
-    use { -- nvim-go
-        'crispgm/nvim-go',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-lua/popup.nvim',
-        },
-    }
     use { -- nvim-treesitter
         '~/Projects/nvim-treesitter',
         requires = {
@@ -97,13 +90,34 @@ return packer.startup(function()
             'kyazdani42/nvim-web-devicons',
         },
     }
-    use { -- norcalli/nvim-colorizer.lua
+    use { -- nvim-colorizer.lua
         'norcalli/nvim-colorizer.lua',
         config = function()
             require 'plugins.colorizer'
         end,
     }
+    use { -- telescope.nvim
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            'nvim-telescope/telescope-dap.nvim',
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require 'plugins.telescope'
+        end,
+    }
+    use { -- nvim-dap
+        'mfussenegger/nvim-dap',
+        requires = {
+            'rcarriga/nvim-dap-ui',
+            'theHamsta/nvim-dap-virtual-text',
+        },
+        config = function()
+            require 'plugins.dap'
+        end,
+    }
 
+    use 'ray-x/go.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'rktjmp/lush.nvim'
     use 'rafcamlet/nvim-luapad'

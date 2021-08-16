@@ -10,6 +10,7 @@ local packer = require 'packer'
 k.nnoremap { '<leader>cc', '<CMD>cclose<CR>' }
 k.nnoremap { '<leader>wo', '<CMD>only<CR>' }
 
+k.nnoremap { '<leader>so', '<CMD>source %<CR>' }
 k.nnoremap { '<leader>vs', '<CMD>source $MYVIMRC<CR>' }
 
 k.nnoremap { '<F2>', ':edit ', silent = false }
@@ -23,6 +24,8 @@ k.nnoremap { '<leader>pc', packer.compile }
 k.nnoremap { '<leader>pi', packer.install }
 k.nnoremap { '<leader>pu', packer.update }
 
+k.nnoremap { '<F1>', require('telescope.builtin').help_tags }
+k.nnoremap { '<F3>', require('telescope.builtin').fd }
 k.nnoremap { '<F6>', require('plugins.fterm').gitui }
 k.tnoremap { '<F6>', require('plugins.fterm').gitui }
 k.nnoremap { '<F7>', require('FTerm').toggle }

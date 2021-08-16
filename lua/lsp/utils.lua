@@ -11,10 +11,11 @@ local function on_attach(client, bufnr)
         require('lspsaga.codeaction').code_action,
         buffer = bufnr,
     }
-    k.nnoremap { 'gT', vim.lsp.buf.type_definition }
     k.nnoremap { '<leader>rn', require('lspsaga.rename').rename, buffer = bufnr }
 
+    k.nnoremap { 'gT', vim.lsp.buf.type_definition, buffer = bufnr }
     k.nnoremap { 'gd', vim.lsp.buf.definition, buffer = bufnr }
+    k.nnoremap { 'gr', vim.lsp.buf.references, buffer = bufnr }
 
     local scroll = require('lspsaga.action').smart_scroll_with_saga
 

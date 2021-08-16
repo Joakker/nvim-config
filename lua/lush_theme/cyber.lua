@@ -59,7 +59,6 @@ local theme = lush(function()
 
         Normal       { fg = colors.artic },
         NormalFloat  { Normal, bg = colors.background.da(40) },
-        FloatBorder  { NormalFloat },
         MsgArea      { Normal },
 
         Pmenu        { fg = Normal.fg, bg = colors.blue },
@@ -123,8 +122,9 @@ local theme = lush(function()
 
         Todo           { fg = colors.artic.ro(20).da(10), gui = 'bold' },
 
-        LspFloatWinNormal  { bg = colors.background.da(30) },
-        LspSagaHoverBorder { bg = colors.background.da(30) },
+        LspFloatWinNormal   { bg = colors.background.da(30) },
+        LspSagaHoverBorder  { bg = colors.background.da(30) },
+        LspSagaRenameBorder { bg = colors.background.da(30) },
 
         -- LspReferenceText                     { },
         -- LspReferenceRead                     { },
