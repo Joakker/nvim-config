@@ -63,12 +63,6 @@ return packer.startup(function()
             require 'plugins.kommentary'
         end,
     }
-    use { -- galaxyline.nvim
-        'glepnir/galaxyline.nvim',
-        config = function()
-            require 'plugins.galaxyline'
-        end,
-    }
     use { -- hop.nvim
         'phaazon/hop.nvim',
         config = function()
@@ -114,6 +108,12 @@ return packer.startup(function()
         },
         config = function()
             require 'plugins.dap'
+        end,
+    }
+    use { -- feline.nvim
+        'famiu/feline.nvim',
+        config = function()
+            require 'plugins.statusline'
         end,
     }
 
