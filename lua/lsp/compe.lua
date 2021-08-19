@@ -15,7 +15,8 @@ require('compe').setup {
         path = true,
         buffer = true,
         nvim_lsp = { kind = '   (LSP)' },
-        vsnip = true,
+        vsnip = { kind = ' ﬌  (Snippet)' },
+        neorg = true,
     },
 }
 
