@@ -16,9 +16,23 @@ parser_configs.kotlin = {
     filetype = 'kotlin',
 }
 
+parser_configs.norg = {
+    install_info = {
+        url = 'https://github.com/vhyrro/tree-sitter-norg',
+        files = { 'src/parser.c' },
+        branch = 'main',
+    },
+}
+
 require('nvim-treesitter.configs').setup {
     ensure_installed = 'maintained',
     highlight = {
+        enable = true,
+    },
+    playground = {
+        enable = true,
+    },
+    query_linter = {
         enable = true,
     },
 }

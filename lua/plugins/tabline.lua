@@ -1,4 +1,4 @@
-local fill_color = '#D17181'
+local fill_color = '#912F40'
 
 local ignored_ft = {
     qf = true,
@@ -9,6 +9,7 @@ require('bufferline').setup {
     highlights = {
         fill = { guibg = fill_color },
         separator = { guifg = fill_color },
+        separator_visible = { guifg = fill_color },
         separator_selected = { guifg = fill_color },
     },
     options = {

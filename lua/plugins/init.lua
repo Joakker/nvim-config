@@ -116,6 +116,19 @@ return packer.startup(function()
             require 'plugins.statusline'
         end,
     }
+    use { -- neorg
+        'vhyrro/neorg',
+        config = function()
+            require 'plugins.neorg'
+        end,
+        requires = 'nvim-lua/plenary.nvim',
+    }
+    use { -- which-key.nvim
+        'folke/which-key.nvim',
+        config = function()
+            require 'plugins.which-key'
+        end,
+    }
 
     use 'ray-x/go.nvim'
     use 'nvim-lua/plenary.nvim'
