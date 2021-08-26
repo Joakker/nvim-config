@@ -4,6 +4,7 @@ local bin_path = utils.server_dir
 
 require('lspconfig').sumneko_lua.setup {
     cmd = { bin_path, '-E', utils.server_dir .. 'lua-language-server/main.lua' },
+    on_attach = utils.on_attach,
     settings = {
         Lua = {
             runtime = { version = 'LuaJIT' },

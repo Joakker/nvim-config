@@ -49,7 +49,7 @@ return packer.startup(function()
         end,
     }
     use { -- nvim-treesitter
-        '~/Projects/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter',
         requires = {
             'nvim-treesitter/playground',
         },
