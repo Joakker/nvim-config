@@ -1,4 +1,3 @@
-local cjson = require 'cjson'
 local default = '{}'
 
 local data = (function()
@@ -12,7 +11,7 @@ local data = (function()
     end
     local content = f:read '*a'
     f:close()
-    return cjson.decode(content)
+    return require('json5').parse(content)
 end)()
 
 return function(name)

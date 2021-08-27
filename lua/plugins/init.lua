@@ -13,7 +13,7 @@ end
 
 local packer = require 'packer'
 local use = packer.use
-local use_rocks = packer.use_rocks
+-- local use_rocks = packer.use_rocks
 
 packer.init {
     git = { clone_timeout = 3600 },
@@ -29,7 +29,10 @@ end
 return packer.startup(function()
     use 'wbthomason/packer.nvim'
 
-    use_rocks 'lua-cjson'
+    use { -- lua-json5
+        '~/Projects/lua-json5',
+        run = './install.sh',
+    }
 
     use { -- nvim-lspconfig
         'neovim/nvim-lspconfig',
