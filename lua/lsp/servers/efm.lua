@@ -14,6 +14,13 @@ local json_args = {
     },
 }
 
+local json5_args = {
+    {
+        formatCommand = 'prettier --stdin-filepath ${INPUT} --parser json5',
+        formatStdin = true,
+    },
+}
+
 local javascript_args = {
     {
         formatCommand = 'prettier --stdin-filepath ${INPUT}',
@@ -23,7 +30,7 @@ local javascript_args = {
 
 require('lspconfig').efm.setup {
     on_attach = on_attach,
-    filetypes = { 'lua', 'javascript', 'typescript', 'json' },
+    filetypes = { 'lua', 'javascript', 'typescript', 'json', 'json5' },
     init_options = { documentFormatting = true, codeAction = false },
     root_dir = vim.loop.cwd,
     settings = {
@@ -31,6 +38,7 @@ require('lspconfig').efm.setup {
         languages = {
             lua = lua_args,
             json = json_args,
+            json5 = json5_args,
             javascript = javascript_args,
             typescript = javascript_args,
         },
