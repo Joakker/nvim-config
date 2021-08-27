@@ -37,5 +37,14 @@ require('nvim-treesitter.configs').setup {
     },
     rainbow = {
         enable = true,
+        extended_mode = true,
+        colors = {
+            '#DE3C4B',
+            '#912F40',
+            '#C678DD',
+            '#035E7B',
+            '#FF8864',
+        },
+        termcolors = { '1', '1', '1', '1', '1', '1', '1' },
     },
 }
