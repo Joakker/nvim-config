@@ -28,9 +28,25 @@ local javascript_args = {
     },
 }
 
+local sh_args = {
+    {
+        formatCommand = 'shfmt -filename ${INPUT} -',
+        formatStdin = true,
+    },
+}
+
 require('lspconfig').efm.setup {
     on_attach = on_attach,
-    filetypes = { 'lua', 'javascript', 'typescript', 'json', 'json5' },
+    filetypes = {
+        'lua',
+        'javascript',
+        'typescript',
+        'json',
+        'json5',
+        'sh',
+        'zsh',
+        'bash',
+    },
     init_options = { documentFormatting = true, codeAction = false },
     root_dir = vim.loop.cwd,
     settings = {
@@ -41,6 +57,9 @@ require('lspconfig').efm.setup {
             json5 = json5_args,
             javascript = javascript_args,
             typescript = javascript_args,
+            sh = sh_args,
+            zsh = sh_args,
+            bash = sh_args,
         },
     },
 }
