@@ -1,6 +1,4 @@
-import 'lsp.compe'
-import 'lsp.snippets'
-import 'lsp.saga'
+local json = require 'json'
 
 vim.lsp.protocol.CompletionItemKind = {
     '   (Text) ',
@@ -29,3 +27,9 @@ vim.lsp.protocol.CompletionItemKind = {
     '   (Operator)',
     '   (TypeParameter)',
 }
+
+local log_level = json 'lsp.log.level'
+
+if log_level then
+    vim.lsp.set_log_level(log_level)
+end
