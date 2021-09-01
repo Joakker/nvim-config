@@ -2,6 +2,7 @@ local json = require 'json'
 local opt = vim.opt
 local indent = json 'options.indent' or 4
 
+opt.clipboard = 'unnamedplus'
 opt.inccommand = 'nosplit'
 
 opt.number = true
