@@ -20,12 +20,6 @@ packer.init {
     luarocks = { python_cmd = 'python3' },
 }
 
-if not path_setup then
-    ---@diagnostic disable-next-line: lowercase-global
-    path_setup = true
-    require('packer.luarocks').setup_paths()
-end
-
 return packer.startup(function()
     use 'wbthomason/packer.nvim'
 
@@ -60,6 +54,7 @@ return packer.startup(function()
         config = function()
             require 'plugins.tree-sitter'
         end,
+        run = ':TSUpdate',
     }
     use { -- kommentary
         'b3nj5m1n/kommentary',
@@ -123,7 +118,7 @@ return packer.startup(function()
     use { -- neorg
         'vhyrro/neorg',
         config = function()
-            require 'plugins.neorg'
+            require 'plugins.norg'
         end,
         requires = 'nvim-lua/plenary.nvim',
     }
