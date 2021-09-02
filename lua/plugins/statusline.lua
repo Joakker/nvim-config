@@ -98,6 +98,26 @@ local component_defs = {
                 bg = colors[3],
             },
         },
+        position = {
+            provider = 'position',
+            right_sep = ' ',
+        },
+        scroll_bar = {
+            provider = 'scroll_bar',
+            right_sep = ' ',
+            hl = {
+                fg = colors[8]
+            }
+        },
+    },
+
+    lsp_name = {
+        provider = 'lsp_client_names',
+        left_sep = ' ',
+        icon = ' ',
+        hl = {
+            fg = colors[9],
+        }
     },
 
     diagnostic = {
@@ -133,6 +153,7 @@ local components = {
         active = {
             component_defs.vi_mode,
             component_defs.file.info,
+            component_defs.lsp_name,
         },
         inactive = {
             component_defs.vi_mode,
@@ -144,6 +165,8 @@ local components = {
             component_defs.diagnostic.info,
             component_defs.diagnostic.warn,
             component_defs.diagnostic.err,
+            component_defs.file.position,
+            component_defs.file.scroll_bar,
             component_defs.file.type,
         },
     },

@@ -1,4 +1,4 @@
-local fill_color = '#912F40'
+local fill_color = '#812F40'
 
 local ignored_ft = {
     qf = true,
