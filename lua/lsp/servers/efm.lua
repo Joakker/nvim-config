@@ -35,6 +35,13 @@ local sh_args = {
     },
 }
 
+local python_args = {
+    {
+        formatCommand = 'black --quiet -',
+        formatStdin = true,
+    },
+}
+
 require('lspconfig').efm.setup {
     on_attach = on_attach,
     filetypes = {
@@ -46,6 +53,7 @@ require('lspconfig').efm.setup {
         'sh',
         'zsh',
         'bash',
+        'python',
     },
     init_options = { documentFormatting = true, codeAction = false },
     root_dir = vim.loop.cwd,
@@ -60,6 +68,7 @@ require('lspconfig').efm.setup {
             sh = sh_args,
             zsh = sh_args,
             bash = sh_args,
+            python = python_args,
         },
     },
 }
