@@ -128,6 +128,13 @@ return packer.startup(function()
             require 'plugins.which-key'
         end,
     }
+    use { -- todo-comments.nvim
+        'folke/todo-comments.nvim',
+        config = function()
+            require 'plugins.comments'
+        end,
+        requires = 'nvim-lua/plenary.nvim',
+    }
 
     use 'ray-x/go.nvim'
     use 'nvim-lua/plenary.nvim'
