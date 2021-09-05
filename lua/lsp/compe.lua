@@ -2,7 +2,6 @@ local api = vim.api
 local fn = vim.fn
 local k = require 'keymap'
 
-require('nvim-autopairs').setup {}
 require('nvim-autopairs.completion.compe').setup {
     map_cr = true,
     map_complete = true,

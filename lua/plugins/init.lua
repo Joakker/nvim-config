@@ -34,10 +34,15 @@ return packer.startup(function()
             'hrsh7th/nvim-compe',
             'hrsh7th/vim-vsnip',
             'hrsh7th/vim-vsnip-integ',
-            'windwp/nvim-autopairs',
             'glepnir/lspsaga.nvim',
             'simrat39/rust-tools.nvim',
         },
+    }
+    use { -- nvim-autopairs
+        'windwp/nvim-autopairs',
+        config = function()
+            require 'plugins.pairs'
+        end,
     }
     use { -- nvim-web-devicons
         'kyazdani42/nvim-web-devicons',
@@ -46,7 +51,7 @@ return packer.startup(function()
         end,
     }
     use { -- nvim-treesitter
-        'nvim-treesitter/nvim-treesitter',
+        '~/Projects/nvim-treesitter',
         requires = {
             'nvim-treesitter/playground',
             'p00f/nvim-ts-rainbow',
