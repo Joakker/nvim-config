@@ -13,25 +13,22 @@ local function on_attach(client, bufnr)
     }
     k.nnoremap { '<leader>rn', require('lspsaga.rename').rename, buffer = bufnr }
 
+    local telescope = require 'telescope.builtin'
+
     k.nnoremap { 'gT', vim.lsp.buf.type_definition, buffer = bufnr }
-    k.nnoremap { 'gd', vim.lsp.buf.definition, buffer = bufnr }
-    k.nnoremap { 'gr', vim.lsp.buf.references, buffer = bufnr }
+    k.nnoremap { 'gd', telescope.lsp_definitions, buffer = bufnr }
+    k.nnoremap { 'gr', telescope.lsp_references, buffer = bufnr }
+    k.nnoremap { 'gi', telescope.lsp_implementations, buffer = bufnr }
 
     local scroll = require('lspsaga.action').smart_scroll_with_saga
 
     k.nnoremap { '<C-f>', f.partial(scroll, 1), buffer = bufnr }
     k.nnoremap { '<C-b>', f.partial(scroll, -1), buffer = bufnr }
 
-    k.nnoremap {
-        '[e',
-        require('lspsaga.diagnostic').lsp_jump_diagnostic_prev,
-        buffer = bufnr,
-    }
-    k.nnoremap {
-        ']e',
-        require('lspsaga.diagnostic').lsp_jump_diagnostic_next,
-        buffer = bufnr,
-    }
+    local diagnostics = require 'lspsaga.diagnostic'
+
+    k.nnoremap { '[e', diagnostics.lsp_jump_diagnostic_prev, buffer = bufnr }
+    k.nnoremap { ']e', diagnostics.lsp_jump_diagnostic_next, buffer = bufnr }
 
     -- Conditional functionality
     if client.resolved_capabilities.document_formatting then
