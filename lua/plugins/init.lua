@@ -29,7 +29,7 @@ return packer.startup(function()
     use { -- nvim-lspconfig
         'neovim/nvim-lspconfig',
         requires = {
-            'simrat39/rust-tools.nvim',
+            '~/Projects/rust-tools.nvim',
         },
     }
     use { -- nvim-cmp
