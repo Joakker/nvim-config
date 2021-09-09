@@ -15,6 +15,7 @@ k.nnoremap { '<leader><leader>l', require('hop').hint_lines }
 
 k.nnoremap { '<F1>', require('telescope.builtin').help_tags }
 k.nnoremap { '<F2>', ':edit<SPACE>', silent = false }
+k.nnoremap { '<F3>', require('nvim-tree').toggle }
 k.nnoremap { '<F6>', require('plugins.fterm').gitui }
 k.tnoremap { '<F6>', require('plugins.fterm').gitui }
 k.nnoremap { '<F7>', require('FTerm').toggle }

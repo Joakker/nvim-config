@@ -109,6 +109,13 @@ return packer.startup(function()
             require 'plugins.telescope'
         end,
     }
+    use { -- nvim-tree.lua
+        'kyazdani42/nvim-tree.lua',
+        config = function()
+            require 'plugins.nvim-tree'
+        end,
+    }
 
+    use 'b3nj5m1n/kommentary'
     use 'folke/tokyonight.nvim'
 end)
