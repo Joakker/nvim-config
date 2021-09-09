@@ -22,7 +22,7 @@ return {
         t { '', 'end' }
     }),
     s('for', {
-        t 'for ', i(1, 'k, v'), t ' in ', i(2, 'pairs {}'), t { ' do ', '' },
+        t 'for ', i(1, 'k, v'), t ' in ', i(2, 'pairs {}'), t { ' do', '' },
             t '\t', i(0),
         t { '', 'end' }
     }),
