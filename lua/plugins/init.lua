@@ -48,7 +48,7 @@ return packer.startup(function()
         end,
     }
     use { -- nvim-treesitter
-        'nvim-treesitter/nvim-treesitter',
+        '~/Projects/nvim-treesitter',
         requires = {
             'nvim-treesitter/playground',
             'p00f/nvim-ts-rainbow',
