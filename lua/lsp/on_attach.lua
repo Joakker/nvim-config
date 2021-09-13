@@ -8,12 +8,14 @@ return function(client, bufnr)
     local telescope = require 'telescope.builtin'
 
     k.nnoremap { 'K', vim.lsp.buf.hover, buffer = bufnr }
-    k.nnoremap { 'U', require 'lsp.handlers.hover'.hover, buffer = bufnr }
+    k.nnoremap { 'U', require('lsp.handlers.hover').hover, buffer = bufnr }
 
     k.nnoremap { 'gr', telescope.lsp_references, buffer = bufnr }
     k.nnoremap { 'gi', telescope.lsp_implementations, buffer = bufnr }
     k.nnoremap { 'gd', telescope.lsp_definitions, buffer = bufnr }
     k.nnoremap { 'gT', vim.lsp.buf.type_definition, buffer = bufnr }
+
+    k.nnoremap { '<leader>rn', vim.lsp.buf.rename, buffer = bufnr }
 
     k.nnoremap { '[e', vim.lsp.diagnostic.goto_prev, buffer = bufnr }
     k.nnoremap { ']e', vim.lsp.diagnostic.goto_next, buffer = bufnr }

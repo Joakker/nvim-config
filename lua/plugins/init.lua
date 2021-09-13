@@ -30,6 +30,7 @@ return packer.startup(function()
         'neovim/nvim-lspconfig',
         requires = {
             '~/Projects/rust-tools.nvim',
+            'ray-x/go.nvim',
         },
     }
     use { -- nvim-cmp
@@ -113,6 +114,13 @@ return packer.startup(function()
         'kyazdani42/nvim-tree.lua',
         config = function()
             require 'plugins.nvim-tree'
+        end,
+    }
+    use { -- trouble.nvim
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require 'plugins.trouble'
         end,
     }
 
