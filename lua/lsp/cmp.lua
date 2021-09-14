@@ -49,6 +49,7 @@ cmp.setup {
     sources = {
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
+        { name = 'neorg' },
     },
 
     formatting = {

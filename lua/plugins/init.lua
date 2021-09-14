@@ -123,6 +123,13 @@ return packer.startup(function()
             require 'plugins.trouble'
         end,
     }
+    use { -- neorg
+        'nvim-neorg/neorg',
+        config = function()
+            require 'plugins.norg'
+        end,
+        requires = 'nvim-lua/plenary.nvim',
+    }
 
     use 'b3nj5m1n/kommentary'
     use 'folke/tokyonight.nvim'
