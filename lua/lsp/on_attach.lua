@@ -8,7 +8,6 @@ return function(client, bufnr)
     local telescope = require 'telescope.builtin'
 
     k.nnoremap { 'K', vim.lsp.buf.hover, buffer = bufnr }
-    k.nnoremap { 'U', require('lsp.handlers.hover').hover, buffer = bufnr }
 
     k.nnoremap { 'gr', telescope.lsp_references, buffer = bufnr }
     k.nnoremap { 'gi', telescope.lsp_implementations, buffer = bufnr }
