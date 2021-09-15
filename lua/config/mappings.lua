@@ -1,30 +1,53 @@
-local k = require 'keymap'
 local bufferline = require 'bufferline'
+local wk = require 'which-key'
 
 vim.g.mapleader = ','
 
 -- Window/Buffer navigation
-k.nnoremap { '<C-k>', partial(bufferline.cycle, -1) }
-k.nnoremap { '<C-j>', partial(bufferline.cycle, 1) }
-k.nnoremap { '<Left>', '<C-w>h' }
-k.nnoremap { '<Right>', '<C-w>l' }
-k.nnoremap { '<Up>', '<C-w>k' }
-k.nnoremap { '<Down>', '<C-w>j' }
+wk.register {
+    ['<C-k>'] = { partial(bufferline.cycle, -1), 'PrevBuffer' },
+    ['<C-j>'] = { partial(bufferline.cycle, 1), 'NextBuffer' },
+    ['<Left>'] = { '<C-w>h', 'Left Window' },
+    ['<Right>'] = { '<C-w>l', 'Right Window' },
+    ['<Up>'] = { '<C-w>k', 'Up Window' },
+    ['<Down>'] = { '<C-w>j', 'Down Window' },
+}
 
 -- Packer specific mappings
-k.nnoremap { '<leader>pi', require('packer').install }
-k.nnoremap { '<leader>pu', require('packer').update }
-k.nnoremap { '<leader>pc', require('packer').compile }
+wk.register {
+    ['<leader>'] = {
+        p = {
+            name = 'Packer',
+            i = { require('packer').install, 'Install' },
+            u = { require('packer').update, 'Update' },
+            c = { require('packer').compile, 'Compile' },
+            s = { require('packer').sync, 'Sync' },
+        },
+    },
+}
 
 -- Bouncy bouncy
-k.nnoremap { '<leader><leader>w', require('hop').hint_words }
-k.nnoremap { '<leader><leader>l', require('hop').hint_lines }
+wk.register {
+    ['<leader>'] = {
+        ['<leader>'] = {
+            name = 'Hop',
+            w = { require('hop').hint_words, 'Words' },
+            l = { require('hop').hint_lines, 'Lines' },
+        },
+    },
+}
 
 -- Function keys
-k.nnoremap { '<F1>', require('telescope.builtin').help_tags }
-k.nnoremap { '<F2>', ':edit<SPACE>', silent = false }
-k.nnoremap { '<F3>', require('nvim-tree').toggle }
-k.nnoremap { '<F6>', require('plugins.fterm').gitui }
-k.tnoremap { '<F6>', require('plugins.fterm').gitui }
-k.nnoremap { '<F7>', require('FTerm').toggle }
-k.tnoremap { '<F7>', require('FTerm').toggle }
+wk.register({ ['<F2>'] = { ':edit<SPACE>', 'Edit' } }, { silent = false })
+wk.register {
+    ['<F1>'] = { require('telescope.builtin').help_tags, 'Help Tags' },
+    ['<F3>'] = { require('nvim-tree').toggle, 'Toggle Explorer' },
+    ['<F6>'] = { require('plugins.fterm').gitui, 'Toggle Gitui' },
+    ['<F7>'] = { require('FTerm').toggle, 'Toggle Terminal' },
+}
+wk.register({
+    ['<F6>'] = { require('plugins.fterm').gitui, 'Toggle Gitui' },
+    ['<F7>'] = { require('FTerm').toggle, 'Toggle Terminal' },
+}, {
+    mode = 't',
+})

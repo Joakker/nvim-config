@@ -130,6 +130,12 @@ return packer.startup(function()
         end,
         requires = 'nvim-lua/plenary.nvim',
     }
+    use { -- which-key.nvim
+        'folke/which-key.nvim',
+        config = function()
+            require 'plugins.which-key'
+        end,
+    }
 
     use 'b3nj5m1n/kommentary'
     use 'folke/tokyonight.nvim'

@@ -1,26 +1,34 @@
-local k = require 'keymap'
+local wk = require 'which-key'
+local telescope = require 'telescope.builtin'
 
 ---Common on_attach function for lsp clients. All clients are supposed to call it to set
 ---everything.
 ---@param client table
 ---@param bufnr number
 return function(client, bufnr)
-    local telescope = require 'telescope.builtin'
-
-    k.nnoremap { 'K', vim.lsp.buf.hover, buffer = bufnr }
-
-    k.nnoremap { 'gr', telescope.lsp_references, buffer = bufnr }
-    k.nnoremap { 'gi', telescope.lsp_implementations, buffer = bufnr }
-    k.nnoremap { 'gd', telescope.lsp_definitions, buffer = bufnr }
-    k.nnoremap { 'gT', vim.lsp.buf.type_definition, buffer = bufnr }
-
-    k.nnoremap { '<leader>rn', vim.lsp.buf.rename, buffer = bufnr }
-
-    k.nnoremap { '[e', vim.lsp.diagnostic.goto_prev, buffer = bufnr }
-    k.nnoremap { ']e', vim.lsp.diagnostic.goto_next, buffer = bufnr }
+    wk.register({
+        K = { vim.lsp.buf.hover, 'Hover' },
+        g = {
+            name = 'Go To',
+            r = { telescope.lsp_references, 'References' },
+            i = { telescope.lsp_implementations, 'Implementations' },
+            d = { telescope.lsp_definitions, 'Definitions' },
+            T = { vim.lsp.buf.type_definition, 'Type Definitions' },
+        },
+        ['[e'] = { vim.lsp.diagnostic.goto_prev, 'Previous Diagnostic' },
+        [']e'] = { vim.lsp.diagnostic.goto_next, 'Next Diagnostic' },
+        ['<leader>rn'] = { vim.lsp.buf.rename, 'Rename' },
+        ['<leader>c'] = {
+            name = 'Lsp Code...',
+        },
+    }, {
+        buffer = bufnr,
+    })
 
     if client.resolved_capabilities.code_action then
-        k.nnoremap { '<leader>ca', telescope.lsp_code_actions, buffer = bufnr }
+        wk.register({ ['<leader>ca'] = { vim.lsp.buf.code_action, 'Action' } }, {
+            buffer = bufnr,
+        })
     end
     if client.resolved_capabilities.document_formatting then
         vim.cmd [[
@@ -29,6 +37,8 @@ return function(client, bufnr)
             autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync({}, 5000)
         augroup END
         ]]
-        k.nnoremap { '<leader>lf', vim.lsp.buf.formatting, buffer = bufnr }
+        wk.register({ ['<leader>cf'] = { vim.lsp.buf.formatting, 'Formatting' } }, {
+            buffer = bufnr,
+        })
     end
 end

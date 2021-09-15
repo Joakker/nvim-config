@@ -1,6 +1,8 @@
 local json = require 'config.json'
 local opt = vim.opt
 
+opt.timeoutlen = 500
+
 opt.clipboard = 'unnamedplus'
 opt.inccommand = 'nosplit'
 

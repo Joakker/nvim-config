@@ -1,5 +1,5 @@
 local on_attach = require 'lsp.on_attach'
-local k = require 'keymap'
+local wk = require 'which-key'
 
 require('go').setup {
     lsp_cfg = true,
@@ -12,7 +12,9 @@ require('go').setup {
         augroup END
         ]]
 
-        k.nnoremap { '<leader>gc', require('go.comment').gen }
+        wk.register({ ['<leader>gc'] = { require('go.comment').gen, 'Generate comment' } }, {
+            buffer = bufnr,
+        })
     end,
     comment_placeholder = '   ',
     max_line_len = 100,
