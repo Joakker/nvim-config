@@ -24,12 +24,18 @@ require('lspconfig').sumneko_lua.setup {
             runtime = {
                 version = 'LuaJIT',
                 path = rtp,
+                special = {
+                    import = 'require',
+                },
+                unicodeName = true,
             },
             diagnostics = {
                 globals = { 'vim' },
+                libraryFiles = 'Enable',
             },
             workspace = {
                 library = work_lib,
+                preloadFileSize = 10,
             },
             telemetry = {
                 enable = false,
