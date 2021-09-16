@@ -29,7 +29,7 @@ return packer.startup(function()
     use { -- nvim-lspconfig
         'neovim/nvim-lspconfig',
         requires = {
-            '~/Projects/rust-tools.nvim',
+            'simrat39/rust-tools.nvim',
             'ray-x/go.nvim',
         },
     }
@@ -49,7 +49,7 @@ return packer.startup(function()
         end,
     }
     use { -- nvim-treesitter
-        '~/Projects/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter',
         requires = {
             'nvim-treesitter/playground',
             'p00f/nvim-ts-rainbow',
