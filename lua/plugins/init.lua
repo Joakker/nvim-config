@@ -136,6 +136,12 @@ return packer.startup(function()
             require 'plugins.which-key'
         end,
     }
+    use { -- nvim-colorizer.lua
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require 'plugins.colorizer'
+        end,
+    }
 
     use 'b3nj5m1n/kommentary'
     use 'folke/tokyonight.nvim'
