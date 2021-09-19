@@ -142,6 +142,10 @@ return packer.startup(function()
             require 'plugins.colorizer'
         end,
     }
+    use { -- lush.nvim
+        'rktjmp/lush.nvim',
+        '~/Projects/astro.nvim',
+    }
 
     use 'folke/lua-dev.nvim'
     use 'b3nj5m1n/kommentary'
