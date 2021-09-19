@@ -143,6 +143,7 @@ return packer.startup(function()
         end,
     }
 
+    use 'folke/lua-dev.nvim'
     use 'b3nj5m1n/kommentary'
     use 'folke/tokyonight.nvim'
 end)

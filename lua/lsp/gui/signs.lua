@@ -9,6 +9,6 @@ local signs = {
 }
 
 for k, v in pairs(signs) do
-    local name = 'LspDiagnosticsSign' .. k
+    local name = 'DiagnosticSign' .. k
     define(name, { text = v, texthl = name })
 end

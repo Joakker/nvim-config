@@ -1,50 +1,62 @@
-local server_dir = require('lsp.utils').server_dir .. '/lua-language-server'
+local utils = require 'lsp.utils'
+local server_dir = utils.server_dir .. '/lua-language-server'
 local bin_path = server_dir .. '/bin/Linux/lua-language-server'
 
-local rtp = vim.split(package.path, ';')
-table.insert(rtp, 'lua/?.lua')
-table.insert(rtp, 'lua/?/init.lua')
-
 local on_attach = require 'lsp.on_attach'
+local capabilities = utils.capabilities
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, '?.lua')
+table.insert(runtime_path, '?/init.lua')
 
 local work_lib = (function()
     ---@type string[]
-    local result = vim.api.nvim_get_runtime_file('', true)
-    table.insert(result, vim.fn.expand '$VIMRUNTIME/lua')
-    table.insert(result, vim.fn.expand '$VIMRUNTIME/lua/vim')
-    table.insert(result, vim.fn.expand '$VIMRUNTIME/lua/vim/lsp')
+    local result = {}
+    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+        local lua_path = path .. '/lua/'
+        if vim.fn.isdirectory(lua_path) then
+            result[lua_path] = true
+        end
+    end
+    result[vim.fn.expand '$VIMRUNTIME/lua'] = true
     return result
 end)()
 
-require('lspconfig').sumneko_lua.setup {
-    cmd = { bin_path, '-E', server_dir .. '/main.lua' },
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-                path = rtp,
-                special = {
-                    import = 'require',
+local luadev = require('lua-dev').setup {
+    lspconfig = {
+        cmd = { bin_path, '-E', server_dir .. '/main.lua' },
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT',
+                    special = {
+                        import = 'require',
+                    },
+                    unicodeName = true,
+                    path = runtime_path,
                 },
-                unicodeName = true,
-            },
-            diagnostics = {
-                globals = { 'vim' },
-                libraryFiles = 'Enable',
-            },
-            workspace = {
-                library = work_lib,
-                preloadFileSize = 10,
-            },
-            telemetry = {
-                enable = false,
-            },
-            completion = {
-                keywordSnippet = 'Disable',
-                callSnippet = 'Disable',
-                workspaceWord = false,
+                diagnostics = {
+                    globals = { 'vim' },
+                    libraryFiles = 'Enable',
+                },
+                workspace = {
+                    library = work_lib,
+                    preloadFileSize = 10000,
+                    maxPreload = 10000,
+                },
+                telemetry = {
+                    enable = false,
+                },
+                completion = {
+                    keywordSnippet = 'Disable',
+                    callSnippet = 'Disable',
+                    workspaceWord = false,
+                },
             },
         },
     },
 }
+
+require('lspconfig').sumneko_lua.setup(luadev)
