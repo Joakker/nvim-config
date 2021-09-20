@@ -1,6 +1,8 @@
 local fn = vim.fn
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
+local ok = false
+
 if fn.empty(fn.glob(install_path)) > 0 then
     fn.system {
         'git',
@@ -9,6 +11,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
         install_path,
     }
     vim.cmd [[ packadd packer.nvim ]]
+else
+    ok = true
 end
 
 local packer = require 'packer'
@@ -19,7 +23,7 @@ packer.init {
     luarocks = { python_cmd = 'python3' },
 }
 
-return packer.startup(function()
+packer.startup(function()
     use 'wbthomason/packer.nvim'
 
     use { -- lua-json5
@@ -151,3 +155,5 @@ return packer.startup(function()
     use 'b3nj5m1n/kommentary'
     use 'folke/tokyonight.nvim'
 end)
+
+return ok

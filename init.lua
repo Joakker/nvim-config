@@ -1,6 +1,10 @@
 require 'funcs'
 
-import 'plugins'
+-- If plugins aren't installed, do that now before everything else
+local ok = import 'plugins'
+if not ok then
+    require('packer').sync()
+end
 
 import 'snippets'
 
