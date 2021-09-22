@@ -2,10 +2,10 @@ local define = vim.fn.sign_define
 
 -- stylua: ignore
 local signs = {
-    Error       = '',
-    Warning     = '',
-    Information = 'כֿ',
-    Hint        = '',
+    Error = '',
+    Warn  = '',
+    Info  = 'כֿ',
+    Hint  = '',
 }
 
 for k, v in pairs(signs) do
