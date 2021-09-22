@@ -26,6 +26,13 @@ packer.init {
 packer.startup(function()
     use 'wbthomason/packer.nvim'
 
+    use { -- impatient.nvim
+        'lewis6991/impatient.nvim',
+        config = function()
+            require 'plugins.impatient'
+        end,
+    }
+
     use { -- lua-json5
         '~/Projects/lua-json5',
         run = './install.sh',
