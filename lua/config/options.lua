@@ -13,6 +13,8 @@ opt.pumblend = 20
 
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldtext = 'getline(v:foldstart) . " ... " . trim(getline(v:foldend))'
+opt.foldminlines = 1
 
 opt.shortmess:append 'c'
 
