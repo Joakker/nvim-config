@@ -12,7 +12,9 @@ require('go').setup {
         augroup END
         ]]
 
-        wk.register({ ['<leader>gc'] = { require('go.comment').gen, 'Generate comment' } }, {
+        wk.register({
+            ['<leader>gc'] = { require('go.comment').gen, 'Generate comment' },
+        }, {
             buffer = bufnr,
         })
     end,

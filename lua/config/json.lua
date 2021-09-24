@@ -26,5 +26,8 @@ return function(name, default)
         end
         cur = cur[field]
     end
+    if cur == nil then
+        return default
+    end
     return cur
 end
