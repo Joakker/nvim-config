@@ -20,4 +20,15 @@ require('nvim-treesitter.configs').setup {
     highlight = { enable = true },
     playground = { enable = true },
     query_linter = { enable = true },
+    rainbow = {
+        enable = true,
+        colors = {
+            '#80CED7',
+            '#63C7B2',
+            '#607B7D',
+            '#3A606E',
+            '#AF125A',
+            '#BD8B9C',
+        },
+    },
 }
