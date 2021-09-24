@@ -15,8 +15,8 @@ return function(client, bufnr)
             d = { telescope.lsp_definitions, 'Definitions' },
             T = { vim.lsp.buf.type_definition, 'Type Definitions' },
         },
-        ['[e'] = { vim.lsp.diagnostic.goto_prev, 'Previous Diagnostic' },
-        [']e'] = { vim.lsp.diagnostic.goto_next, 'Next Diagnostic' },
+        ['[e'] = { vim.diagnostic.goto_prev, 'Previous Diagnostic' },
+        [']e'] = { vim.diagnostic.goto_next, 'Next Diagnostic' },
         ['<leader>rn'] = { vim.lsp.buf.rename, 'Rename' },
         ['<leader>c'] = {
             name = 'Lsp Code...',

@@ -31,4 +31,19 @@ require('nvim-treesitter.configs').setup {
             '#BD8B9C',
         },
     },
+    textobjects = {
+        select = {
+            enable = true,
+            keymaps = {
+                ['af'] = '@function.outer',
+                ['ac'] = '@class.outer',
+                ['ak'] = '@comment.outer',
+                ['ai'] = '@conditional.outer',
+                ['al'] = '@loop.outer',
+
+                ['if'] = '@function.inner',
+                ['ic'] = '@class.inner',
+            },
+        },
+    },
 }

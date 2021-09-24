@@ -64,6 +64,7 @@ packer.startup(function()
         requires = {
             'nvim-treesitter/playground',
             'p00f/nvim-ts-rainbow',
+            'nvim-treesitter/nvim-treesitter-textobjects',
         },
         config = function()
             require 'plugins.tree-sitter'
