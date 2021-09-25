@@ -65,6 +65,7 @@ packer.startup(function()
             'nvim-treesitter/playground',
             'p00f/nvim-ts-rainbow',
             'nvim-treesitter/nvim-treesitter-textobjects',
+            'stsewd/sphinx.nvim',
         },
         config = function()
             require 'plugins.tree-sitter'
