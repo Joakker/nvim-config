@@ -138,6 +138,7 @@ packer.startup(function()
     }
     use { -- neorg
         'nvim-neorg/neorg',
+        branch = 'unstable',
         config = function()
             require 'plugins.norg'
         end,
