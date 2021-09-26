@@ -11,6 +11,35 @@ local VI_MODES = {
     [''] = '',
 }
 
+---Makes the necessary provider for diagnostic component with the given level.
+---@param level '"Information"'|'"Hint"'|'"Warning"'|'"Error"'
+---@return function
+local function make_diag_provider(level)
+    return function(winid)
+        local count = lsp_utils.get_diagnostics_count(
+            level,
+            vim.api.nvim_win_get_buf(winid)
+        )
+        return count ~= 0 and count or ''
+    end
+end
+
+---Makes the '' separator for diagnostic components.
+---@param fg string
+---@param bg string
+---@return table
+local function make_diag_separator(fg, bg)
+    return {
+        str = 'left_filled',
+        always_visible = true,
+        hl = {
+            fg = fg,
+            bg = bg,
+        },
+    }
+end
+
+-- Component definitions.
 local definitions = {
     vi_mode = {
         right_sep = 'right_filled',
@@ -36,60 +65,32 @@ local definitions = {
         right_sep = 'right_filled',
     },
 
-    lsp_errs = {
-        left_sep = 'left_filled',
-        enabled = function()
-            local count = lsp_utils.get_diagnostics_count 'Error'
-            return count and count ~= 0
-        end,
-        provider = function()
-            local count = lsp_utils.get_diagnostics_count 'Error'
-            return (' %s '):format(count)
-        end,
+    lsp_hint = {
+        left_sep = make_diag_separator '#33B389',
+        provider = make_diag_provider 'Hint',
         hl = {
-            bg = '#DD2040',
-        },
-    },
-    lsp_warn = {
-        left_sep = 'left_filled',
-        enabled = function()
-            local count = lsp_utils.get_diagnostics_count 'Warning'
-            return count and count ~= 0
-        end,
-        provider = function()
-            local count = lsp_utils.get_diagnostics_count 'Warning'
-            return (' %s '):format(count)
-        end,
-        hl = {
-            bg = '#FF9E64',
+            bg = '#33B389',
         },
     },
     lsp_info = {
-        left_sep = 'left_filled',
-        enabled = function()
-            local count = lsp_utils.get_diagnostics_count 'Information'
-            return count and count ~= 0
-        end,
-        provider = function()
-            local count = lsp_utils.get_diagnostics_count 'Information'
-            return (' %s '):format(count)
-        end,
+        left_sep = make_diag_separator('#333399', '#33B389'),
+        provider = make_diag_provider 'Information',
         hl = {
             bg = '#333399',
         },
     },
-    lsp_hint = {
-        left_sep = 'left_filled',
-        enabled = function()
-            local count = lsp_utils.get_diagnostics_count 'Hint'
-            return count and count ~= 0
-        end,
-        provider = function()
-            local count = lsp_utils.get_diagnostics_count 'Hint'
-            return (' %s '):format(count)
-        end,
+    lsp_warn = {
+        left_sep = make_diag_separator('#FF9E64', '#333399'),
+        provider = make_diag_provider 'Warning',
         hl = {
-            bg = '#33B389',
+            bg = '#FF9E64',
+        },
+    },
+    lsp_errs = {
+        left_sep = make_diag_separator('#DD2040', '#FF9E64'),
+        provider = make_diag_provider 'Error',
+        hl = {
+            bg = '#DD2040',
         },
     },
     lsp_clients = {
@@ -117,8 +118,14 @@ local definitions = {
     git_add = {},
 
     file_pos = {
+        left_sep = {
+            str = 'slant_left',
+            hl = {
+                fg = '#3A3A3A',
+                bg = '#DD2040',
+            },
+        },
         provider = 'position',
-        left_sep = 'slant_left',
         right_sep = 'block',
         hl = {
             bg = '#3A3A3A',
@@ -129,6 +136,7 @@ local definitions = {
     },
 }
 
+-- The actual components in the statusline.
 local components = {
     active = {
         {
