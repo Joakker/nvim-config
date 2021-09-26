@@ -37,12 +37,7 @@ local definitions = {
     },
 
     lsp_errs = {
-        left_sep = {
-            str = 'left',
-            hl = {
-                fg = 'white',
-            },
-        },
+        left_sep = 'left_filled',
         enabled = function()
             local count = lsp_utils.get_diagnostics_count 'Error'
             return count and count ~= 0
@@ -52,17 +47,11 @@ local definitions = {
             return (' %s '):format(count)
         end,
         hl = {
-            fg = '#DD2040',
+            bg = '#DD2040',
         },
     },
     lsp_warn = {
-        left_sep = {
-            str = 'left',
-            hl = {
-                fg = 'white',
-            },
-        },
-        right_sep = '',
+        left_sep = 'left_filled',
         enabled = function()
             local count = lsp_utils.get_diagnostics_count 'Warning'
             return count and count ~= 0
@@ -72,16 +61,11 @@ local definitions = {
             return (' %s '):format(count)
         end,
         hl = {
-            fg = '#FF9E64',
+            bg = '#FF9E64',
         },
     },
     lsp_info = {
-        left_sep = {
-            str = 'left',
-            hl = {
-                fg = 'white',
-            },
-        },
+        left_sep = 'left_filled',
         enabled = function()
             local count = lsp_utils.get_diagnostics_count 'Information'
             return count and count ~= 0
@@ -91,16 +75,11 @@ local definitions = {
             return (' %s '):format(count)
         end,
         hl = {
-            fg = '#333399',
+            bg = '#333399',
         },
     },
     lsp_hint = {
-        left_sep = {
-            str = 'left',
-            hl = {
-                fg = 'white',
-            },
-        },
+        left_sep = 'left_filled',
         enabled = function()
             local count = lsp_utils.get_diagnostics_count 'Hint'
             return count and count ~= 0
@@ -110,7 +89,7 @@ local definitions = {
             return (' %s '):format(count)
         end,
         hl = {
-            fg = '#33B389',
+            bg = '#33B389',
         },
     },
     lsp_clients = {
@@ -164,7 +143,6 @@ local components = {
             definitions.lsp_info,
             definitions.lsp_warn,
             definitions.lsp_errs,
-            definitions.git,
             definitions.file_pos,
             definitions.scroll_bar,
         },

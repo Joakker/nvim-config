@@ -86,6 +86,7 @@ packer.startup(function()
     }
     use { -- feline.nvim
         'famiu/feline.nvim',
+        tag = 'v0.2.1',
         config = function()
             require 'plugins.statusline'
         end,
