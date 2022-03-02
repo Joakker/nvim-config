@@ -5,6 +5,7 @@ This is my personal neovim config. It is tailored for the latest nightly release
 ## LSP
 
 Configured servers:
+
 - [sumneko's lua server](https://github.com/sumneko/lua-language-server)
 - [efm-langserver](https://github.com/mattn/efm-langserver)
 - [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer)
@@ -17,6 +18,7 @@ Configured servers:
 - [omnisharp](https://github.com/OmniSharp/omnisharp-roslyn)
 
 ## Todos
+
 - [ ] Improve the UI for lsp
 - [ ] Add more snippets
 - [ ] Add dap
